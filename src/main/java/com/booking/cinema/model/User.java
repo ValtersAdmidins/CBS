@@ -35,16 +35,16 @@ public class User {
         setUsername("DefaultUsername");
         setPass("DefaultPass");
         setEmail("default@gmail.com");
-        setStatuss(false);
+        setStatus(false);
      }
-    public User(String name, String surname,String username, String pass, String email, boolean statuss)
+    public User(String name, String surname,String username, String pass, String email, boolean status)
     {
         setName(name);
         setSurname(surname);
         setUsername(username);
         setPass(pass);
         setEmail(email);
-        setStatuss(statuss);
+        setStatus(status);
          
     }
 	public String getName() {
@@ -119,7 +119,7 @@ public class User {
 	public boolean isStatus() {
 		return status;
 	}
-	public void setStatuss(boolean status) {
+	public void setStatus(boolean status) {
 		 
             this.status = status;
         
