@@ -3,25 +3,30 @@ package com.booking.cinema.model;
 import java.util.ArrayList;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+
 @Entity
 @Table(name = "Users")
 public class User {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
+	
 	private String name;
 	private String surname;
 	@NotBlank
 	private String username;
 	@NotBlank
 	private String pass;
-	@Id
-    private int id;
 	@NotBlank
     private String email;
 	@NotBlank
-    private boolean statuss;
+    private boolean status;
     
     public User()
     {
@@ -94,7 +99,7 @@ public class User {
             this.pass = pass;
         }
 	}
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 	 
@@ -111,12 +116,12 @@ public class User {
             this.email = email;
         }
 	}
-	public boolean isStatuss() {
-		return statuss;
+	public boolean isStatus() {
+		return status;
 	}
-	public void setStatuss(boolean statuss) {
+	public void setStatuss(boolean status) {
 		 
-            this.statuss = statuss;
+            this.status = status;
         
 	}
 	public boolean isValidEmailAddress(String email) {
