@@ -19,7 +19,7 @@ public class Auditorium {
 	private int seatCountC;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int auditoriumId;
+	private int id;
 	
 	public Auditorium() {
 		this.seatCount=6;
@@ -52,7 +52,7 @@ public class Auditorium {
 		this.auditoriumSize = auditoriumSize;
 	}
 	public int getAuditoriumId() {
-		return auditoriumId;
+		return id;
 	}
 	
 	public boolean seatIsTaken(int seatCountR,int seatCountC ) {
@@ -65,18 +65,18 @@ public class Auditorium {
 	
 	public void setAuditoriumId(int auditoriumSize) {
 		
-		if (auditoriumId > 0) {
-			this.auditoriumId = auditoriumId;
+		if (id > 0) {
+			this.id = id;
 		}
 		else {
 			System.out.println("Auditorium id cannot less that 0");
-			this.auditoriumId = 0;
+			this.id = 0;
 		}
 		
 	}
 	
 	public String toString() {
-		return " "+auditoriumId+Arrays.toString(auditoriumSize);
+		return " "+id+Arrays.toString(auditoriumSize);
 	}
 	
 	
