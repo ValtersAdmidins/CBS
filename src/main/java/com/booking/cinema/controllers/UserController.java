@@ -21,7 +21,6 @@ public class UserController {
 		return "users";
 	}
 
-	// Get a Single User
 	@RequestMapping("/users/{id}")
 	public String getUserById(@PathVariable(value = "id") Long userId, Model model) {
 		model.addAttribute("user", userRepository.findById(userId)
