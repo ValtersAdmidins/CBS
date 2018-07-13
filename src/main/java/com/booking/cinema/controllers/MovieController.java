@@ -28,17 +28,11 @@ public class MovieController {
 
 	@Autowired
 	MovieRepository movieRepository;
-	
-	@RequestMapping("/")
-    public String showAllMovies(Model model){
-        model.addAttribute("movies", movieRepository.findAll());
-        return "index";
-    }
 
-	// Create a new Movie
-	@PostMapping("/movies/create")
-	public Movie createMovie(@Valid @RequestBody Movie movie) {
-		return movieRepository.save(movie);
+	@RequestMapping("/")
+	public String showAllMovies(Model model) {
+		model.addAttribute("movies", movieRepository.findAll());
+		return "index";
 	}
 
 	// Get a Single Movie
@@ -47,6 +41,13 @@ public class MovieController {
 		model.addAttribute("movie", movieRepository.findById(movieId)
 				.orElseThrow(() -> new ResourceNotFoundException("Movie", "id", movieId)));
 		return "movie";
+	}
+
+	// Create a new Movie
+	@PostMapping("/movies/addMovie")
+	public Movie createMovie(@Valid @RequestBody Movie movie) {
+
+		return movieRepository.save(movie);
 	}
 
 	// Update a Movie
@@ -73,31 +74,5 @@ public class MovieController {
 
 		return ResponseEntity.ok().build();
 	}
-	
-	// View sample movie
-	@GetMapping(path = "/movies/sample")
-	public String viewSampleMovie(Model model) {
-		
-		Movie movie = new Movie();
-		model.addAttribute("title", movie.getTitle());
-		AgeLimit al = movie.getAgeLimit();
-		switch (al) {
-		case NOLIMIT:
-			model.addAttribute("ageLimit", "U");
-			break;
-		case PLUSEIGHTTEEN:
-			model.addAttribute("ageLimit", "+18");
-			break;
-		case PLUSSIXTEEN:
-			model.addAttribute("ageLimit", "+16");
-			break;
-		}
 
-		model.addAttribute("genres", movie.getGenres());
-		model.addAttribute("lang", movie.getLanguage());
-		model.addAttribute("subs", movie.getSubtitles());
-		model.addAttribute("length", movie.getMovieLength());
-
-		return "displaymovie";
-	}
 }
