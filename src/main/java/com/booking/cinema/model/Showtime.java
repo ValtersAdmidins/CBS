@@ -1,42 +1,36 @@
 package com.booking.cinema.model;
 
-import java.util.Date;
+import java.sql.Date;
 
-import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
-@Embeddable
 @Entity
-@Table(name = "Showtimes")
 public class Showtime {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	private Long cinemaId;
-	private Long auditoriumId;
-	private Long movieId;
 	private Date dateAndTime;
+	private Cinema cinema;
 
-	public Long getCinemaId() {
-		return cinemaId;
+	public Showtime() {
+
 	}
 
-	public void setCinemaId(Long cinemaId) {
-		this.cinemaId = cinemaId;
+	public Showtime(Date dateAndTime) {
+		this.dateAndTime = dateAndTime;
 	}
 
-	public Showtime(Long id, Long movieId, Long auditoriumID, Date dateAndTime) {
-		setId(id);
-		setMovieId(movieId);
-		setAuditoriumId(auditoriumId);
-		setDateAndTime(dateAndTime);
+	public Showtime(Date dateAndTime, Cinema cinema) {
+		this.dateAndTime = dateAndTime;
+		this.cinema = cinema;
 	}
 
+	@Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
 	public Long getId() {
 		return id;
 	}
@@ -45,28 +39,22 @@ public class Showtime {
 		this.id = id;
 	}
 
-	public Long getMovieId() {
-		return movieId;
-	}
-
-	public void setMovieId(Long movieId) {
-		this.movieId = movieId;
-	}
-
-	public Long getAuditoriumId() {
-		return auditoriumId;
-	}
-
-	public void setAuditoriumId(Long auditoriumId) {
-		this.auditoriumId = auditoriumId;
-	}
-
 	public Date getDateAndTime() {
 		return dateAndTime;
 	}
 
 	public void setDateAndTime(Date dateAndTime) {
 		this.dateAndTime = dateAndTime;
+	}
+
+	@ManyToOne
+    @JoinColumn(name = "cinema_id")
+	public Cinema getCinema() {
+		return cinema;
+	}
+
+	public void setCinema(Cinema cinema) {
+		this.cinema = cinema;
 	}
 
 }
