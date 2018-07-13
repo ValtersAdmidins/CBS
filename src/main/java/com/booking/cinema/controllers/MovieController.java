@@ -53,7 +53,7 @@ public class MovieController {
 	public String getMovieById(@PathVariable(value = "id") Long movieId, Model model) {
 		model.addAttribute("movie", movieRepository.findById(movieId)
 				.orElseThrow(() -> new ResourceNotFoundException("Movie", "id", movieId)));
-		return "displaymovie";
+		return "movie";
 	}
 
 	// Update a Movie
