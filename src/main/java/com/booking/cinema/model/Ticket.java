@@ -3,6 +3,8 @@ package com.booking.cinema.model;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
@@ -11,34 +13,52 @@ import javax.validation.constraints.NotBlank;
 public class Ticket {
 
 	@Id
-	private int id;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
+	
+	private Long movieid;
+	private Long showtimeId;
+	
+	
+	public Long getMovieid() {
+		return movieid;
+	}
+
+	public void setMovieid(Long movieid) {
+		this.movieid = movieid;
+	}
+
+	public Long getShowtimeId() {
+		return showtimeId;
+	}
+
+	public void setShowtimeId(Long showtimeId) {
+		this.showtimeId = showtimeId;
+	}
+
 	@NotBlank
 	private int column;
 	@NotBlank
 	private int row;
-	private Showtime showtime;
+	
 	private Date date;
 	
 	
-	public Ticket(int id, int column, int row, Showtime showtime) {
+	public Ticket(Long id, int column, int row) {
 		setColumn(column);
 		setDate();
 		setId(id);
 		setRow(row);
-		setShowtime(showtime);
 	}
 	
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
-		if (id < 0) {
-			System.out.println("Column cannot be lower than 0");
-		}
-		else {
-			this.id = id;
-		}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
+
 	public int getColumn() {
 		return column;
 	}
@@ -61,17 +81,7 @@ public class Ticket {
 			this.row = row;
 		}
 	}
-	public Showtime getShowtime() {
-		return showtime;
-	}
-	public void setShowtime(Showtime showtime) {
-		if (showtime.equals(null)) {
-			System.out.println("Parameter cannot be null");
-		}
-		else {
-			this.showtime = showtime;
-		}
-	}
+	
 	public Date getDate() {
 		return date;
 	}
@@ -81,7 +91,7 @@ public class Ticket {
 
 	@Override
 	public String toString() {
-		return "Ticket [id=" + id + ", column=" + column + ", row=" + row + ", showtime=" + showtime + ", date=" + date
+		return "Ticket [id=" + id + ", column=" + column + ", row=" + row + ", date=" + date
 				+ "]";
 	}
 	

@@ -32,7 +32,7 @@ public class AuditoriumController {
 
 
 	
-	@RequestMapping("/")
+	@RequestMapping("/auditoriums")
     public String showAllauditorium(Model model){
         model.addAttribute("auditorium", auditoriumRepository.findAll());
         return "index";

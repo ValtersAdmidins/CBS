@@ -23,18 +23,14 @@ import com.booking.cinema.model.Ticket;
 import com.booking.cinema.repositories.AuditoriumRepository;
 import com.booking.cinema.repositories.TicketRepository;
  
- 
-
 @Controller
 //@RequestMapping("/api")
 public class TicketController {
 
 	@Autowired
 	TicketRepository ticketRepository;
-
-
 	
-	@RequestMapping("/")
+	@RequestMapping("/tickets")
     public String showAlltTickets(Model model){
         model.addAttribute("Ticket", ticketRepository.findAll());
         return "index";
@@ -51,7 +47,7 @@ public class TicketController {
 	}
 
 	// Get a Single Movie
-	@RequestMapping("/ticket/{id}")
+	@RequestMapping("/tickets/{id}")
 	public String getTicketById(@PathVariable(value = "id") long  id, Model model) {
 		model.addAttribute("ticket", ticketRepository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("ticket", "id", id)));

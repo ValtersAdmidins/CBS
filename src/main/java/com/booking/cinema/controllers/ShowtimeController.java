@@ -15,14 +15,14 @@ public class ShowtimeController {
 	@Autowired
 	ShowtimeRepository showtimeRepository;
 
-	@RequestMapping("/showtime")
+	@RequestMapping("/showtimes")
 	public String showAllShowtimes(Model model) {
 		model.addAttribute("showtimes", showtimeRepository.findAll());
 		return "showtimes";
 	}
 
 	// Get a Single Showtime
-	@RequestMapping("/showtime/{id}")
+	@RequestMapping("/showtimes/{id}")
 	public String getShowtimeById(@PathVariable(value = "id") Long showtimeId, Model model) {
 		model.addAttribute("showtime", showtimeRepository.findById(showtimeId)
 				.orElseThrow(() -> new ResourceNotFoundException("Showtime", "id", showtimeId)));
