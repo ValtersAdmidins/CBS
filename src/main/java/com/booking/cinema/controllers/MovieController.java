@@ -29,8 +29,6 @@ public class MovieController {
 
 	@Autowired
 	MovieRepository movieRepository;
-
-
 	
 	@RequestMapping("/")
     public String showAllMovies(Model model){
@@ -38,12 +36,8 @@ public class MovieController {
         return "index";
     }
 
-	public List<Movie> returnAListAllMovies() {
-		return movieRepository.findAll();
-	}
-
 	// Create a new Movie
-	//@PostMapping("/movies")
+	@PostMapping("/movies/create")
 	public Movie createMovie(@Valid @RequestBody Movie movie) {
 		return movieRepository.save(movie);
 	}
