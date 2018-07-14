@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: site-head">
+</head>
+<body>
+<header th:replace="layout :: site-header" />
+
+<div class="container">
+	<h2 th:text='${movie.title}'/>
+
+	<img href="">
+	<p th:text="'Plot: ' + ${movie.plot} "/>
+	<p th:text="'Age limit: ' + ${movie.ageLimit} " />
+	<p th:text="'Language: ' + ${movie.language} "/>
+	<p th:text="'Subtitles: ' + ${movie.subtitles} "/>
+	<p th:text="'Length ' + ${movie.movieLength} "/>
+
+
+<div class="container">
+
+<tr th:each="cinema : ${cinemas}">
+<div>
+  <h5 style="display: inline;"><td th:text="  ${cinema.name}"></td></h5>
+  <p style="display: inline"><td th:text="${cinema.surname}"></td></p>
+  <td><form  th:method="post" th:action="@{/buyaticket}>">
+  <input type="hidden" name="cinemaname" value="${cinema.name}">
+  <input type="hidden" name="moviename" value="${movie.title}">
+  	<input type="submit" value="Buy a ticket">
+  </form></td>
+    
+ </div>  
+</tr>
+<br>
+</div>
+
+</div>
+
+
+	
+<footer th:replace="layout :: site-footer"/>
+</body>
+</html>
+
+
