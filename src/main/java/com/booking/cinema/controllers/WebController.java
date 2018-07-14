@@ -16,7 +16,7 @@ public class WebController {
 	public String signup() {
 		return "signup";
 	}
-	@RequestMapping("/movie-create")
+	@RequestMapping("/movies/movie-create")
 	public String movieCreatePage() {
 		return "movie-create";
 
