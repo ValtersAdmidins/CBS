@@ -1,5 +1,6 @@
 package com.booking.cinema.model;
 
+import java.io.IOException;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -10,6 +11,11 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.google.maps.GeoApiContext;
+import com.google.maps.GeocodingApi;
+import com.google.maps.errors.ApiException;
+import com.google.maps.model.GeocodingResult;
+
 @Entity
 @Table(name = "cinema")
 public class Cinema {
@@ -17,8 +23,10 @@ public class Cinema {
 	private Long id;
 	private String name;
 	private String address;
-	private String location_koordinates;
-	
+
+	private double latitude;
+	private double longitude;
+
 	private Set<Auditorium> auditoriums;
 	private Set<Movie> movies;
 
@@ -26,10 +34,10 @@ public class Cinema {
 
 	}
 
-	public Cinema(String name, String address, String location_koordinates) {
+	public Cinema(String name, String address) {
 		this.name = name;
 		this.address = address;
-		this.location_koordinates = location_koordinates;
+		setLatitudeAndLongitudeFromAddress();
 	}
 
 	@Id
@@ -58,15 +66,22 @@ public class Cinema {
 		this.address = address;
 	}
 
-	public String getLocation_koordinates() {
-		return location_koordinates;
+	public double getLatitude() {
+		return latitude;
 	}
 
-	public void setLocation_koordinates(String location_koordinates) {
-		this.location_koordinates = location_koordinates;
+	public void setLatitude(double latitude) {
+		this.latitude = latitude;
 	}
 
-	
+	public double getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(double longitude) {
+		this.longitude = longitude;
+	}
+
 	@OneToMany(mappedBy = "cinema", cascade = CascadeType.ALL)
 	public Set<Auditorium> getAuditoriums() {
 		return auditoriums;
@@ -85,10 +100,23 @@ public class Cinema {
 		this.movies = movies;
 	}
 
+	public void setLatitudeAndLongitudeFromAddress() {
+		// Koordinatas iegust no adreses
+		GeoApiContext context = new GeoApiContext.Builder().apiKey("AIzaSyBwjphxymy_3q9dDmj8E7lyr6fB9O-B49w").build();
+		GeocodingResult[] results = new GeocodingResult[0];
+		try {
+			results = GeocodingApi.geocode(context, address).await();
+		} catch (ApiException | InterruptedException | IOException e) {
+			e.printStackTrace();
+		}
+		latitude = results[0].geometry.location.lat;
+		longitude = results[0].geometry.location.lng;
+	}
+
 	@Override
 	public String toString() {
-		return "Cinema [id=" + id + ", name=" + name + ", address=" + address + ", location_koordinates="
-				+ location_koordinates + ", auditoriums=" + auditoriums + ", movies=" + movies + "]";
+		return "Cinema [id=" + id + ", name=" + name + ", address=" + address + ", latitude=" + latitude
+				+ ", longitude=" + longitude + ", auditoriums=" + auditoriums + ", movies=" + movies + "]";
 	}
-	
+
 }

@@ -19,6 +19,7 @@ import com.booking.cinema.model.Movie;
 import com.booking.cinema.repositories.CinemaRepository;
 
 @Controller
+
 public class CinemaController {
 
 	@Autowired
@@ -30,7 +31,7 @@ public class CinemaController {
 		return "cinemas";
 	}
 
-	@RequestMapping("/cinema/{id}")
+	@RequestMapping("/cinemas/{id}")
 	public String showAllMoviesinCinema(@PathVariable(value = "id") Long cinemaID, Model model) {
 		Optional<Cinema> cin = cinemaRepository.findById(cinemaID);
 		Set<Movie> mov = new HashSet<>();
@@ -48,8 +49,7 @@ public class CinemaController {
 	@PostMapping("/cinemas/cinema-create/cinemaCreateProccess")
 	public Cinema createCinemaProccess(@Valid @RequestBody Cinema cinema) {
 
-		
-		
+		cinema.setLatitudeAndLongitudeFromAddress();
 		return cinemaRepository.save(cinema);
 	}
 }
