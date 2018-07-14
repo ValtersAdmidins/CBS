@@ -19,12 +19,8 @@ public class Movie {
 
 	private Long id;
 	
-	@NotBlank
 	private String title;
-	
-	@NotBlank
 	private String plot;
-	
 	private AgeLimit ageLimit;
 	private ArrayList<Genre> genres;
 	private Language language;
