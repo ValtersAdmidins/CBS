@@ -28,5 +28,11 @@ public class UserController {
 				.orElseThrow(() -> new ResourceNotFoundException("User", "id", userId)));
 		return "user";
 	}
+	
+	
+	@RequestMapping("/signup")
+	public String getUserById() {
+		return "signup";
+	}
 
 }
