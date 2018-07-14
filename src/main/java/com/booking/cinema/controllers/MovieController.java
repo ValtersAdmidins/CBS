@@ -24,7 +24,6 @@ import com.booking.cinema.model.Movie;
 import com.booking.cinema.repositories.MovieRepository;
 
 @Controller
-//@RequestMapping("/api")
 public class MovieController {
 
 	@Autowired
