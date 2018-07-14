@@ -6,78 +6,89 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 @Entity
-@Table(name = "Auditorium")
 public class Auditorium {
-	@NotBlank
-	private boolean[][]  auditoriumSize;
-	
-	private int seatCount;
-	private int seatCountR;
-	private int seatCountC;
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+
+	private Long id;
+	private int roomNumber;
+	private boolean seatCountR;
+	private boolean seatCountC;
+	private boolean[][] seats;
+	private Cinema cinema;
 	
 	public Auditorium() {
-		this.seatCount=6;
-		this.auditoriumSize = new boolean[seatCount][seatCount];
- 	}
-	public Auditorium(int seatCountR, int seatCountC, boolean[][] auditoriumSize) {
-		this.seatCountR=seatCountR;
-		this.seatCountC=seatCountC;
-		this.auditoriumSize = new boolean[seatCountR][seatCountC];
-
+		
 	}
 	
-	public int getSeatCountR() {
+	public Auditorium(int roomNumber) {
+		this.roomNumber = roomNumber;
+	}
+
+	public Auditorium(int roomNumber, Cinema cinema) {
+		this.roomNumber = roomNumber;
+		this.cinema = cinema;
+	}
+
+	@Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public int getRoomNumber() {
+		return roomNumber;
+	}
+
+	public void setRoomNumber(int roomNumber) {
+		this.roomNumber = roomNumber;
+	}
+
+	public boolean isSeatCountR() {
 		return seatCountR;
 	}
-	public void setSeatCountR(int seatCountR) {
+
+	public void setSeatCountR(boolean seatCountR) {
 		this.seatCountR = seatCountR;
 	}
-	public int getSeatCountC() {
+
+	public boolean isSeatCountC() {
 		return seatCountC;
 	}
-	public void setSeatCountC(int seatCountC) {
+
+	public void setSeatCountC(boolean seatCountC) {
 		this.seatCountC = seatCountC;
 	}
 
 	public boolean[][] getSeats() {
-		return auditoriumSize;
+		return seats;
 	}
-	public void setSeats(boolean[][] auditoriumSize) {
-		this.auditoriumSize = auditoriumSize;
-	}
-	public int getAuditoriumId() {
-		return id;
-	}
-	
-	public boolean seatIsTaken(int seatCountR,int seatCountC ) {
 
-		if (auditoriumSize[seatCountR][seatCountC] == true)
-			return true;
-		else 
-			return false;
+	public void setSeats(boolean[][] seats) {
+		this.seats = seats;
 	}
-	
-	public void setAuditoriumId(int auditoriumSize) {
-		
-		if (id > 0) {
-			this.id = id;
-		}
-		else {
-			System.out.println("Auditorium id cannot less that 0");
-			this.id = 0;
-		}
-		
+
+	@ManyToOne
+    @JoinColumn(name = "cinema_id")
+	public Cinema getCinema() {
+		return cinema;
 	}
-	
+
+	public void setCinema(Cinema cinema) {
+		this.cinema = cinema;
+	}
+
+	@Override
 	public String toString() {
-		return " "+id+Arrays.toString(auditoriumSize);
+		return "Auditorium [id=" + id + ", roomNumber=" + roomNumber + ", seatCountR=" + seatCountR + ", seatCountC="
+				+ seatCountC + ", seats=" + Arrays.toString(seats) + ", cinema=" + cinema + "]";
 	}
-	
+
 	
 }

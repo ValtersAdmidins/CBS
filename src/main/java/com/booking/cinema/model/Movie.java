@@ -6,7 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
 
 import com.booking.cinema.enums.AgeLimit;
@@ -14,11 +15,8 @@ import com.booking.cinema.enums.Genre;
 import com.booking.cinema.enums.Language;
 
 @Entity
-@Table(name = "Movies")
 public class Movie {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
 	@NotBlank
@@ -32,15 +30,11 @@ public class Movie {
 	private Language language;
 	private Language subtitles;
 	private double movieLength;
+	
+	private Cinema cinema;
 
 	public Movie() {
-		setTitle("NONE");
-		setPlot("NONE");
-		setAgeLimit(AgeLimit.NOLIMIT);
-		setGenres(new ArrayList<>());
-		setLanguage(Language.ENGLISH);
-		setSubtitles(Language.ENGLISH);
-		setMovieLength(0);
+		
 	}
 
 	public Movie(String title, String plot, AgeLimit ageLimit, ArrayList<Genre> genres, Language language,
@@ -62,6 +56,8 @@ public class Movie {
 		this.movieLength = movieLength;
 	}
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	public Long getId() {
 		return id;
 	}
@@ -118,4 +114,22 @@ public class Movie {
 		this.subtitles = subtitles;
 	}
 
+	@ManyToOne
+    @JoinColumn(name = "cinema_id")
+	public Cinema getCinema() {
+		return cinema;
+	}
+
+	public void setCinema(Cinema cinema) {
+		this.cinema = cinema;
+	}
+
+	@Override
+	public String toString() {
+		return "Movie [id=" + id + ", title=" + title + ", plot=" + plot + ", ageLimit=" + ageLimit + ", genres="
+				+ genres + ", language=" + language + ", subtitles=" + subtitles + ", movieLength=" + movieLength
+				+ ", cinema=" + cinema + "]";
+	}
+
+	
 }
