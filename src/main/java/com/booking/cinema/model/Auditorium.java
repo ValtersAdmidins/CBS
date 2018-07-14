@@ -14,8 +14,8 @@ public class Auditorium {
 
 	private Long id;
 	private int roomNumber;
-	private boolean seatCountR;
-	private boolean seatCountC;
+	private int seatCountR;
+	private int seatCountC;
 	private boolean[][] seats;
 	private Cinema cinema;
 	
@@ -50,19 +50,19 @@ public class Auditorium {
 		this.roomNumber = roomNumber;
 	}
 
-	public boolean isSeatCountR() {
+	public int getSeatCountR() {
 		return seatCountR;
 	}
 
-	public void setSeatCountR(boolean seatCountR) {
+	public void setSeatCountR(int seatCountR) {
 		this.seatCountR = seatCountR;
 	}
 
-	public boolean isSeatCountC() {
+	public int getSeatCountC() {
 		return seatCountC;
 	}
 
-	public void setSeatCountC(boolean seatCountC) {
+	public void setSeatCountC(int seatCountC) {
 		this.seatCountC = seatCountC;
 	}
 
