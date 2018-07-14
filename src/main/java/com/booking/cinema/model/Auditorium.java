@@ -30,6 +30,12 @@ public class Auditorium {
 	public Auditorium(int roomNumber, Cinema cinema) {
 		this.roomNumber = roomNumber;
 		this.cinema = cinema;
+		
+		
+		///TEMPORARY JUST FOR TESTING 
+		setSeatCountR(5);
+		setSeatCountC(10);
+		///TEMPORARY JUST FOR TESTING 
 	}
 
 	@Id
