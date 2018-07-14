@@ -1,5 +1,7 @@
 package com.booking.cinema.controllers;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
@@ -9,6 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.booking.cinema.enums.AgeLimit;
+import com.booking.cinema.enums.Language;
 import com.booking.cinema.model.Cinema;
 import com.booking.cinema.model.Movie;
 import com.booking.cinema.repositories.CinemaRepository;
@@ -25,17 +29,17 @@ public class CinemaController {
         return "cinemas";
     }
 	
-	@RequestMapping("/cinemas/{id}")
+	@RequestMapping("/cinema/{id}")
     public String showAllMoviesinCinema(@PathVariable(value = "id") Long cinemaID, Model model){
         Optional<Cinema> cin = cinemaRepository.findById(cinemaID);
+        Set<Movie> mov = new HashSet<>();
         if(cin.isPresent()) {
-        	Set<Movie> mov = cin.get().getMovies();
-        	model.addAttribute("movies",mov);
+        	mov = cin.get().getMovies();
+        	model.addAttribute("cinema",cin.get());
         }
-        
-        model.addAttribute("cinema",cinemaRepository.findById(cinemaID));
-        
+
+    	model.addAttribute("movies",mov);
 		
-        return "cinemas";
+        return "cinema";
     }
 }
