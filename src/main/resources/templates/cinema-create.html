@@ -11,9 +11,9 @@
 	<h1>Form</h1>
     <form action="#" th:action="@{/cinemas/cinema-create/cinemaCreateProccess}" th:object="cinema"
 		method="post">
-    	<p>Id: <input type="text" th:field="*{id}" />
+    	<p>Name: <input type="text" th:field="*{name}" />
 		</p>
-        <p>Message: <input type="text" th:field="*{content}" />
+        <p>Message: <input type="text" th:field="*{}" />
 		</p>
         <p>
 			<input type="submit" value="Submit" /> <input type="reset"
