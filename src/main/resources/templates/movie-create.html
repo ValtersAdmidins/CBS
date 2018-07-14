@@ -5,8 +5,69 @@
 <body>
 	<header th:replace="layout :: site-header" />
 
-	create a movie here!
-	
+	<form>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputTitle">Title</label>
+      <input type="text" class="form-control" id="inputTitle" placeholder="Title">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword">Plot</label>
+      <input type="text" class="form-control" id="inputPlot" placeholder="Plot">
+    </div>
+  </div>
+  <div class="form-group col-md-4">
+      <label for="inputAgeLimit">Age limit</label>
+      <select id="inputAgeLimit" class="form-control">
+        <option value="NOLIMIT">NOLIMIT</option>
+        <option value="PLUSSIXTEEN">PLUSSIXTEEN</option>
+        <option value="PLUSEIGHTTEEN">PLUSEIGHTTEEN</option>
+      </select>
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputGenres">Genres</label>
+      <select id="inputGenres" class="form-control">
+        <option value="ACTION">ACTION</option>
+        <option value="COMEDY">COMEDY</option>
+        <option value="HORROR">HORROR</option>
+        <option value="DRAMA">DRAMA</option>
+        <option value="ROMANCE">ROMANCE</option>
+        <option value="CRIME">CRIME</option>
+      </select>
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputLanguage">Language</label>
+      <select id="inputLanguage" class="form-control">
+        <option value="LATVIAN">LATVIAN</option>
+        <option value="ENGLISH">ENGLISH</option>
+        <option value="RUSSIAN">RUSSIAN</option>
+      </select>
+    </div>
+     <div class="form-group col-md-4">
+      <label for="inputSubtitles">Subtitles</label>
+      <select id="inputSubtitles" class="form-control">
+        <option value="LATVIAN">LATVIAN</option>
+        <option value="ENGLISH">ENGLISH</option>
+        <option value="RUSSIAN">RUSSIAN</option>
+      </select>
+      
+    </div>
+  <div class="form-group col-md-4">
+    <label for="inputMovieLength">Movie Length</label>
+    <input type="number" step="0.05" class="form-control" id="inputMovieLength" placeholder="Movie length">
+  </div>
+   
+    
+   
+   
+   
+  </div>
+  <div class="form-group col-md-4"> <br>
+  <button type="submit" class="btn btn-primary">Done</button>
+  
+</form>
+  
+	</div>
 	<footer th:replace="layout :: site-footer" />
 </body>
 </html>
