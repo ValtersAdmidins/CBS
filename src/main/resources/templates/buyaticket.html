@@ -2,19 +2,71 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="layout :: site-head">
 </head>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="jquery.seat-charts.min.js"></script>
 <body>
-<header th:replace="layout :: site-header" />
+	<header th:replace="layout :: site-header" />
 
 
-<p>
+	<h1>here will be a place where you can choose your seat</h1>
+	<div class="cinema">
+		<div>
+			<h5>Please select a seat</h5>
+			
+			<h3>SCREEN</h3>
+		</div>
+		<ol class="cabin fuselage">
+		<tr >
+		<tr th:each="column : ${columns}">
+			<li class="row">
+				<ol class="seats" type="A">
+					<li class="seat"><input type="checkbox" id="1A" /> <label
+						for="1A">1A</label></li>
+					<li class="seat"><input type="checkbox" id="1B" /> <label
+						for="1B">1B</label></li>
+					<li class="seat"><input type="checkbox" id="1C" /> <label
+						for="1C">1C</label></li>
+					<li class="seat"><input type="checkbox" disabled id="1D" /> <label
+						for="1D">Occupied</label></li>
+					<li class="seat"><input type="checkbox" id="1E" /> <label
+						for="1E">1E</label></li>
+					<li class="seat"><input type="checkbox" id="1F" /> <label
+						for="1F">1F</label></li>
+				</ol>
+			</li>
+			</tr></tr>
+		</ol>
+	</div>
+
+	<div class="demo">
+		<div id="seat-map">
+			<div class="front">SCREEN</div>
+		</div>
+		<div class="booking-details">
+			<p>
+				Movie: <span> Gingerclown</span>
+			</p>
+			<p>
+				Time: <span>November 3, 21:00</span>
+			</p>
+			<p>Seat:</p>
+			<ul id="selected-seats"></ul>
+			<p>
+				Tickets: <span id="counter">0</span>
+			</p>
+			<p>
+				Total: <b>$<span id="total">0</span></b>
+			</p>
+
+			<button class="checkout-button">BUY</button>
+
+			<div id="legend"></div>
+		</div>
+		<div style="clear: both"></div>
+	</div>
 
 
-here will be a place where you can choose your seat
 
-</p>
-
-
-	
-<footer th:replace="layout :: site-footer"/>
+	<footer th:replace="layout :: site-footer" />
 </body>
 </html>
