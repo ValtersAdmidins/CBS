@@ -4,14 +4,12 @@ import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.booking.cinema.model.Cinema;
@@ -45,11 +43,21 @@ public class CinemaController {
 		return "cinema";
 	}
 
+	@GetMapping("/cinemas/cinema-create")
+	public String cinemaCreatePage(Model model) {
+		model.addAttribute("cinema", new Cinema());
+		return "cinema-create";
+	}
+	
 	// Create a new Cinema
-	@PostMapping("/cinemas/cinema-create/cinemaCreateProccess")
-	public Cinema createCinemaProccess(@Valid @RequestBody Cinema cinema) {
+	@PostMapping("/cinemas/cinema-create")
+	public String createCinemaProccess(Cinema cinema) {
 
-		cinema.setLatitudeAndLongitudeFromAddress();
-		return cinemaRepository.save(cinema);
+		cinema.setLatitude(120);
+		cinema.setLongitude(80);
+		
+		//cinema.setLatitudeAndLongitudeFromAddress();
+		cinemaRepository.save(cinema);
+		return "redirect:/cinemas";
 	}
 }
