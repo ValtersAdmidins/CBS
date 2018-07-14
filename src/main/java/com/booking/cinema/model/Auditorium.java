@@ -1,5 +1,7 @@
 package com.booking.cinema.model;
 
+import java.util.Arrays;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -82,4 +84,11 @@ public class Auditorium {
 		this.cinema = cinema;
 	}
 
+	@Override
+	public String toString() {
+		return "Auditorium [id=" + id + ", roomNumber=" + roomNumber + ", seatCountR=" + seatCountR + ", seatCountC="
+				+ seatCountC + ", seats=" + Arrays.toString(seats) + ", cinema=" + cinema + "]";
+	}
+
+	
 }
