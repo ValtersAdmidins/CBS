@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:fragment="site-head">
+<html>
+<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" th:href="@{/myTheme/css/main.css}" href="../myTheme/css/main.css">
+<link rel="stylesheet"
+	href="resources/myTheme/main.css">
 
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -13,7 +14,6 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-<header th:fragment="site-header">
 <nav class="navbar navbar-default navbar-inverse" role="navigation">
 	<div class="container-fluid">
 		<!-- Brand and toggle get grouped for better mobile display -->
@@ -24,15 +24,26 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="/">CBS</a>
+			<a class="navbar-brand" href="#">Login dropdown</a>
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="/">Movies</a></li>
-				<li><a href="cinemas" >Cinemas</a></li>
+				<li class="active"><a href="#">Link</a></li>
+				<li><a href="#">Link</a></li>
+				<li class="dropdown"><a href="#" class="dropdown-toggle"
+					data-toggle="dropdown">Dropdown <span class="caret"></span></a>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="#">Action</a></li>
+						<li><a href="#">Another action</a></li>
+						<li><a href="#">Something else here</a></li>
+						<li class="divider"></li>
+						<li><a href="#">Separated link</a></li>
+						<li class="divider"></li>
+						<li><a href="#">One more separated link</a></li>
+					</ul></li>
 			</ul>
 			<form class="navbar-form navbar-right" role="search">
 				<div class="form-group">
@@ -42,20 +53,34 @@
 							name="password" placeholder="Password*">
 						<button type="submit" name="submit">Login</button>
 					</form>
-					<a href="signup">Sign up</a>
+					<a href="register.php">Register</a>
 				</div>
 			</form>
 		</div>
 		<!-- /.navbar-collapse -->
 	</div>
 	<!-- /.container-fluid -->
-</nav></header>
+</nav>
 
 
+<div class="container">
+
+<tr th:each="user : ${users}">
+<div style="background-color: lightgrey;">
+
+    <a th:href="${'/users/' + user.id}"><h2><td th:text="${user.name} + ${user.surname}"></td></h2></a>
+    <p><td th:text="${user.username}"></td></p>
+    <td th:text="${user.email}"></td><br>
+    <td th:text="${user.status}"></td><br>
+    </div>
+</tr>
+
+</div>
 
 
-<footer th:fragment="site-footer">
-        &copy;CBS
-    </footer>
+	
+	
+	
+
 </body>
 </html>

@@ -23,7 +23,7 @@
 <div>
   <h5 style="display: inline;"><td th:text="  ${cinema.name}"></td></h5>
   <p style="display: inline"><td th:text="${cinema.surname}"></td></p>
-  <td><form  th:method="post" th:action="@{/buyaticket>">
+  <td><form  th:method="post" th:action="@{/buyaticket}>">
   <input type="hidden" name="cinemaname" value="${cinema.name}">
   <input type="hidden" name="moviename" value="${movie.title}">
   	<input type="submit" value="Buy a ticket">
