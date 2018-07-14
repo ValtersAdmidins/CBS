@@ -124,4 +124,12 @@ public class Movie {
 		this.cinema = cinema;
 	}
 
+	@Override
+	public String toString() {
+		return "Movie [id=" + id + ", title=" + title + ", plot=" + plot + ", ageLimit=" + ageLimit + ", genres="
+				+ genres + ", language=" + language + ", subtitles=" + subtitles + ", movieLength=" + movieLength
+				+ ", cinema=" + cinema + "]";
+	}
+
+	
 }

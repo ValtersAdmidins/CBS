@@ -84,5 +84,11 @@ public class Cinema {
 	public void setMovies(Set<Movie> movies) {
 		this.movies = movies;
 	}
+
+	@Override
+	public String toString() {
+		return "Cinema [id=" + id + ", name=" + name + ", address=" + address + ", location_koordinates="
+				+ location_koordinates + ", auditoriums=" + auditoriums + ", movies=" + movies + "]";
+	}
 	
 }
