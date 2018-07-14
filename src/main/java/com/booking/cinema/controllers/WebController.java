@@ -10,4 +10,9 @@ public class WebController {
 	public String cinemaCreatePage() {
 		return "cinema-create";
 	}
+	
+	@RequestMapping("/signup")
+	public String signup() {
+		return "signup";
+	}
 }
