@@ -3,9 +3,10 @@
 <head th:replace="layout :: site-head">
 </head>
 <body>
-	<header th:replace="layout :: site-header" />
-	<button onclick="location.href='/cinemas/cinema-create'" type="button"
-		class="btn btn-primary">Add Cinema</button>
+
+	<header th:replace="layout :: site-header" /></header>
+
+	<button onclick="location.href='/cinemas/cinema-create'" type="button" class="btn btn-primary">Add Cinema</button>
 	<div class="container">
 
 		<tr th:each="cinema : ${cinemas}">
@@ -24,14 +25,11 @@
 					<td th:text="${cinema.longitude}"></td>
 				</p>
 			</div>
-
-
-
 		</tr>
 	</div>
 	<br>
 
+	<footer th:replace="layout :: site-footer" /></footer>
 
-	<footer th:replace="layout :: site-footer" />
 </body>
 </html>

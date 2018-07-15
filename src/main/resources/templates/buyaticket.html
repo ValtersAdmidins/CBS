@@ -5,36 +5,31 @@
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="jquery.seat-charts.min.js"></script>
 <body>
-	<header th:replace="layout :: site-header" />
+	<header th:replace="layout :: site-header" /></header>
 
 
 	<h1>here will be a place where you can choose your seat</h1>
 	<div class="cinema">
 		<div>
 			<h5>Please select a seat</h5>
-			
+
 			<h3>SCREEN</h3>
 		</div>
 		<ol class="cabin fuselage">
-		<tr >
-		<tr th:each="column : ${columns}">
-			<li class="row">
-				<ol class="seats" type="A">
-					<li class="seat"><input type="checkbox" id="1A" /> <label
-						for="1A">1A</label></li>
-					<li class="seat"><input type="checkbox" id="1B" /> <label
-						for="1B">1B</label></li>
-					<li class="seat"><input type="checkbox" id="1C" /> <label
-						for="1C">1C</label></li>
-					<li class="seat"><input type="checkbox" disabled id="1D" /> <label
-						for="1D">Occupied</label></li>
-					<li class="seat"><input type="checkbox" id="1E" /> <label
-						for="1E">1E</label></li>
-					<li class="seat"><input type="checkbox" id="1F" /> <label
-						for="1F">1F</label></li>
-				</ol>
-			</li>
-			</tr></tr>
+			<tr>
+			<tr th:each="column : ${columns}">
+				<li class="row">
+					<ol class="seats" type="A">
+						<li class="seat"><input type="checkbox" id="1A" /> <label for="1A">1A</label></li>
+						<li class="seat"><input type="checkbox" id="1B" /> <label for="1B">1B</label></li>
+						<li class="seat"><input type="checkbox" id="1C" /> <label for="1C">1C</label></li>
+						<li class="seat"><input type="checkbox" disabled id="1D" /> <label for="1D">Occupied</label></li>
+						<li class="seat"><input type="checkbox" id="1E" /> <label for="1E">1E</label></li>
+						<li class="seat"><input type="checkbox" id="1F" /> <label for="1F">1F</label></li>
+					</ol>
+				</li>
+			</tr>
+			</tr>
 		</ol>
 	</div>
 
@@ -67,6 +62,6 @@
 
 
 
-	<footer th:replace="layout :: site-footer" />
+	<footer th:replace="layout :: site-footer" /></footer>
 </body>
 </html>

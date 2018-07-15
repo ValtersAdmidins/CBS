@@ -17,14 +17,15 @@ public class Auditorium {
 	private int seatCountR;
 	private int seatCountC;
 	private boolean[][] seats;
-	
+
 	private Cinema cinema;
-	
+
 	public Auditorium() {
-		
+
 	}
 
-	public Auditorium(int roomNumber, int seatCountR, int seatCountC, boolean[][] seats) {
+	public Auditorium(int roomNumber, int seatCountR, int seatCountC,
+			boolean[][] seats) {
 		this.roomNumber = roomNumber;
 		this.seatCountR = seatCountR;
 		this.seatCountC = seatCountC;
@@ -32,7 +33,7 @@ public class Auditorium {
 	}
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	public Long getId() {
 		return id;
 	}
@@ -74,7 +75,7 @@ public class Auditorium {
 	}
 
 	@ManyToOne
-    @JoinColumn(name = "cinema_id")
+	@JoinColumn(name = "cinema_id")
 	public Cinema getCinema() {
 		return cinema;
 	}
@@ -85,9 +86,10 @@ public class Auditorium {
 
 	@Override
 	public String toString() {
-		return "Auditorium [id=" + id + ", roomNumber=" + roomNumber + ", seatCountR=" + seatCountR + ", seatCountC="
-				+ seatCountC + ", seats=" + Arrays.toString(seats) + ", cinema=" + cinema + "]";
+		return "Auditorium [id=" + id + ", roomNumber=" + roomNumber
+				+ ", seatCountR=" + seatCountR + ", seatCountC=" + seatCountC
+				+ ", seats=" + Arrays.toString(seats) + ", cinema=" + cinema
+				+ "]";
 	}
 
-	
 }

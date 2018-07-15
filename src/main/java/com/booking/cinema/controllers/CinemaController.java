@@ -29,7 +29,8 @@ public class CinemaController {
 	}
 
 	@RequestMapping("/cinemas/{id}")
-	public String showAllMoviesinCinema(@PathVariable(value = "id") Long cinemaID, Model model) {
+	public String showAllMoviesinCinema(
+			@PathVariable(value = "id") Long cinemaID, Model model) {
 		Optional<Cinema> cinema = cinemaRepository.findById(cinemaID);
 		Set<Movie> movies = new HashSet<>();
 		if (cinema.isPresent()) {

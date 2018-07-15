@@ -3,10 +3,10 @@
 <head th:replace="layout :: site-head">
 </head>
 <body>
-	<header th:replace="layout :: site-header" />
+
+	<header th:replace="layout :: site-header" /></header>
 
 	<div class="container">
-
 
 		<div style="background-color: lightblue;">
 			<h3>
@@ -30,8 +30,7 @@
 				<td th:text="${movie.subtitles}"></td> <br>
 				<td th:text="${movie.movieLength}"></td>
 				<form action="/buyaticket" th:action="@{/buyaticket}">
-					<input type="hidden" value="${movie.id}"> <input
-						type="submit" value="Buy a Ticket">
+					<input type="hidden" value="${movie.id}"> <input type="submit" value="Buy a Ticket">
 
 				</form>
 				<br>
@@ -40,7 +39,7 @@
 	</div>
 	<br>
 
+	<footer th:replace="layout :: site-footer" /></footer>
 
-	<footer th:replace="layout :: site-footer" />
 </body>
 </html>

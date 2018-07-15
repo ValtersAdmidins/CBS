@@ -3,9 +3,10 @@
 <head th:replace="layout :: site-head">
 </head>
 <body>
-	<header th:replace="layout :: site-header" />
-	<button onclick="location.href='/movies/movie-create'" type="button"
-		class="btn btn-primary">Add Movie</button>
+
+	<header th:replace="layout :: site-header" /></header>
+
+	<button onclick="location.href='/movies/movie-create'" type="button" class="btn btn-primary">Add Movie</button>
 	<div class="container">
 
 		<tr th:each="movie : ${movies}">
@@ -17,16 +18,11 @@
 				<p>
 					<td th:text="${movie.plot}"></td>
 				</p>
-				<td th:text="${movie.genres}"></td>
-				<br>
-				<td th:text="${movie.ageLimit}"></td>
-				<br>
-				<td th:text="${movie.language}"></td>
-				<br>
-				<td th:text="${movie.subtitles}"></td>
-				<br>
-				<td th:text="${movie.movieLength}"></td>
-				<br>
+				<td th:text="${movie.genres}"></td> <br>
+				<td th:text="${movie.ageLimit}"></td> <br>
+				<td th:text="${movie.language}"></td> <br>
+				<td th:text="${movie.subtitles}"></td> <br>
+				<td th:text="${movie.movieLength}"></td> <br>
 			</div>
 
 		</tr>
@@ -91,8 +87,7 @@
 	<br>
 	<br>
 
+	<footer th:replace="layout :: site-footer" /></footer>
 
-
-	<footer th:replace="layout :: site-footer" />
 </body>
 </html>

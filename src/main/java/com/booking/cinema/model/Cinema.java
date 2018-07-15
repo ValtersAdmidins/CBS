@@ -34,7 +34,8 @@ public class Cinema {
 
 	}
 
-	public Cinema(String name, String address, double latitude, double longitude) {
+	public Cinema(String name, String address, double latitude,
+			double longitude) {
 		this.name = name;
 		this.address = address;
 		this.latitude = latitude;
@@ -103,7 +104,8 @@ public class Cinema {
 
 	public void setLatitudeAndLongitudeFromAddress() {
 		// Koordinatas iegust no adreses
-		GeoApiContext context = new GeoApiContext.Builder().apiKey("AIzaSyBwjphxymy_3q9dDmj8E7lyr6fB9O-B49w").build();
+		GeoApiContext context = new GeoApiContext.Builder()
+				.apiKey("AIzaSyBwjphxymy_3q9dDmj8E7lyr6fB9O-B49w").build();
 		GeocodingResult[] results = new GeocodingResult[0];
 		try {
 			results = GeocodingApi.geocode(context, address).await();
@@ -116,8 +118,9 @@ public class Cinema {
 
 	@Override
 	public String toString() {
-		return "Cinema [id=" + id + ", name=" + name + ", address=" + address + ", latitude=" + latitude
-				+ ", longitude=" + longitude + ", auditoriums=" + auditoriums + ", movies=" + movies + "]";
+		return "Cinema [id=" + id + ", name=" + name + ", address=" + address
+				+ ", latitude=" + latitude + ", longitude=" + longitude
+				+ ", auditoriums=" + auditoriums + ", movies=" + movies + "]";
 	}
 
 }
