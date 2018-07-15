@@ -34,10 +34,11 @@ public class Cinema {
 
 	}
 
-	public Cinema(String name, String address) {
+	public Cinema(String name, String address, double latitude, double longitude) {
 		this.name = name;
 		this.address = address;
-		setLatitudeAndLongitudeFromAddress();
+		this.latitude = latitude;
+		this.longitude = longitude;
 	}
 
 	@Id

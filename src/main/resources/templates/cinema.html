@@ -9,30 +9,34 @@
 
 
 		<div style="background-color: lightblue;">
-			<h3><td th:text="${cinema.name}"></td></h3>
-			<p><td th:text="${cinema.address}"></td></p>
+			<h3>
+				<td th:text="${cinema.name}"></td>
+			</h3>
+			<p>
+				<td th:text="${cinema.address}"></td>
+			</p>
 		</div>
-		</tr>
 
+		<tr th:each="movie : ${movies}">
+			<div style="background-color: lightgrey;">
 
-			<tr th:each="movie : ${movies}">
-				<div style="background-color: lightgrey;">
-
-					<h4><td th:text="${movie.title}"></td></h4>
+				<h4>
+					<td th:text="${movie.title}"></td>
+				</h4>
 				<td th:text="${movie.plot}"></td>
-				<td th:text="${movie.genres}"></td><br>
-				<td th:text="${movie.ageLimit}"></td><br>
-				<td th:text="${movie.language}"></td><br>
-				<td th:text="${movie.subtitles}"></td><br>
+				<td th:text="${movie.genres}"></td> <br>
+				<td th:text="${movie.ageLimit}"></td> <br>
+				<td th:text="${movie.language}"></td> <br>
+				<td th:text="${movie.subtitles}"></td> <br>
 				<td th:text="${movie.movieLength}"></td>
 				<form action="/buyaticket" th:action="@{/buyaticket}">
-				<input type="hidden" value="${movie.id}">
-				<input type="submit" value="Buy a Ticket">
-				
+					<input type="hidden" value="${movie.id}"> <input
+						type="submit" value="Buy a Ticket">
+
 				</form>
 				<br>
-				</div>
-			</tr>
+			</div>
+		</tr>
 	</div>
 	<br>
 

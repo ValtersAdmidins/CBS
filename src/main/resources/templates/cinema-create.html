@@ -8,8 +8,7 @@
 	create a cinema here!
 
 	<h1>Form</h1>
-	<form action="#"
-		th:action="@{/cinemas/cinema-create}"
+	<form th:action="@{/cinemas/cinema-create}"
 		th:object="${cinema}" method="post">
 		<p>
 			Name: <input type="text" th:field="*{name}" />

@@ -17,7 +17,6 @@ import com.booking.cinema.model.Movie;
 import com.booking.cinema.repositories.CinemaRepository;
 
 @Controller
-
 public class CinemaController {
 
 	@Autowired
@@ -31,32 +30,30 @@ public class CinemaController {
 
 	@RequestMapping("/cinemas/{id}")
 	public String showAllMoviesinCinema(@PathVariable(value = "id") Long cinemaID, Model model) {
-		Optional<Cinema> cin = cinemaRepository.findById(cinemaID);
-		Set<Movie> mov = new HashSet<>();
-		if (cin.isPresent()) {
-			mov = cin.get().getMovies();
-			model.addAttribute("cinema", cin.get());
+		Optional<Cinema> cinema = cinemaRepository.findById(cinemaID);
+		Set<Movie> movies = new HashSet<>();
+		if (cinema.isPresent()) {
+			movies = cinema.get().getMovies();
+			model.addAttribute("cinema", cinema.get());
 		}
 
-		model.addAttribute("movies", mov);
+		model.addAttribute("movies", movies);
 
 		return "cinema";
 	}
 
+	// Loads the cinama-create html page.
 	@GetMapping("/cinemas/cinema-create")
 	public String cinemaCreatePage(Model model) {
 		model.addAttribute("cinema", new Cinema());
 		return "cinema-create";
 	}
-	
-	// Create a new Cinema
+
+	// Proccesses the cinema creation and insertion into the database.
 	@PostMapping("/cinemas/cinema-create")
 	public String createCinemaProccess(Cinema cinema) {
 
-		cinema.setLatitude(120);
-		cinema.setLongitude(80);
-		
-		//cinema.setLatitudeAndLongitudeFromAddress();
+		cinema.setLatitudeAndLongitudeFromAddress();
 		cinemaRepository.save(cinema);
 		return "redirect:/cinemas";
 	}

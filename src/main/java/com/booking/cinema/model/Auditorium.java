@@ -17,25 +17,18 @@ public class Auditorium {
 	private int seatCountR;
 	private int seatCountC;
 	private boolean[][] seats;
+	
 	private Cinema cinema;
 	
 	public Auditorium() {
 		
 	}
-	
-	public Auditorium(int roomNumber) {
-		this.roomNumber = roomNumber;
-	}
 
-	public Auditorium(int roomNumber, Cinema cinema) {
+	public Auditorium(int roomNumber, int seatCountR, int seatCountC, boolean[][] seats) {
 		this.roomNumber = roomNumber;
-		this.cinema = cinema;
-		
-		
-		///TEMPORARY JUST FOR TESTING 
-		setSeatCountR(5);
-		setSeatCountC(10);
-		///TEMPORARY JUST FOR TESTING 
+		this.seatCountR = seatCountR;
+		this.seatCountC = seatCountC;
+		this.seats = seats;
 	}
 
 	@Id
