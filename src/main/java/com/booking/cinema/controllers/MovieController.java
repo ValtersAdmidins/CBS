@@ -17,11 +17,11 @@ import com.booking.cinema.repositories.MovieRepository;
 public class MovieController {
 
 	@Autowired
-	MovieRepository movieRepository;
+	CinemaRepository cinemaRepository;
 	
 	@Autowired
-	CinemaRepository cinemaRepository;
-
+	MovieRepository movieRepository;
+	
 	@RequestMapping("/")
 	public String showAllMovies(Model model) {
 		model.addAttribute("movies", movieRepository.findAll());

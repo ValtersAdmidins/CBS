@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<header th:replace="layout :: site-header" /></header>
+
+	create an auditorium here!
+
+	<h1>Form</h1>
+	<form th:action="@{/cinemas/cinema-create}" th:object="${cinema}" method="post">
+		<p>
+			Name: <input type="text" th:field="*{name}" />
+		</p>
+		<p>
+			Address: <input type="text" th:field="*{address}" />
+		</p>
+		<p>
+			<input type="submit" value="Submit" /> <input type="reset" value="Reset" />
+		</p>
+	</form>
+
+	<footer th:replace="layout :: site-footer" /></footer>
+
+</body>
+</html>

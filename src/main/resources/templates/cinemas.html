@@ -7,6 +7,7 @@
 	<header th:replace="layout :: site-header" /></header>
 
 	<button onclick="location.href='/cinemas/cinema-create'" type="button" class="btn btn-primary">Add Cinema</button>
+
 	<div class="container">
 
 		<tr th:each="cinema : ${cinemas}">
@@ -24,12 +25,13 @@
 				<p>
 					<td th:text="${cinema.longitude}"></td>
 				</p>
+
 			</div>
+			<button type="button" class="btn btn-primary">Add auditorium</button>
 		</tr>
-	</div>
-	<br>
 
-	<footer th:replace="layout :: site-footer" /></footer>
+		<br>
 
+		<footer th:replace="layout :: site-footer" /></footer>
 </body>
 </html>
