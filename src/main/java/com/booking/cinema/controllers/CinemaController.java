@@ -58,4 +58,5 @@ public class CinemaController {
 		cinemaRepository.save(cinema);
 		return "redirect:/cinemas";
 	}
+
 }

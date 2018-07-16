@@ -13,7 +13,7 @@ import javax.persistence.ManyToOne;
 public class Auditorium {
 
 	private Long id;
-	private int roomNumber;
+	private String roomNumber;
 	private int seatCountR;
 	private int seatCountC;
 	private boolean[][] seats;
@@ -24,7 +24,7 @@ public class Auditorium {
 
 	}
 
-	public Auditorium(int roomNumber, int seatCountR, int seatCountC,
+	public Auditorium(String roomNumber, int seatCountR, int seatCountC,
 			boolean[][] seats) {
 		this.roomNumber = roomNumber;
 		this.seatCountR = seatCountR;
@@ -42,11 +42,11 @@ public class Auditorium {
 		this.id = id;
 	}
 
-	public int getRoomNumber() {
+	public String getRoomNumber() {
 		return roomNumber;
 	}
 
-	public void setRoomNumber(int roomNumber) {
+	public void setRoomNumber(String roomNumber) {
 		this.roomNumber = roomNumber;
 	}
 
