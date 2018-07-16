@@ -21,9 +21,9 @@ public class Auditorium {
 	private int seatCountR;
 	private int seatCountC;
 	private boolean[][] seats;
-	@ManyToOne
-	@JoinColumn(name = "cinema_id")
-	private Cinema cinema;
+	//@ManyToOne
+	//@JoinColumn(name = "cinema_id")
+	//private Cinema cinema;
 	
 
 	public Auditorium() {
@@ -81,21 +81,14 @@ public class Auditorium {
 		this.seats = seats;
 	}
 
-	
-	public Cinema getCinema() {
-		return cinema;
-	}
-
-	public void setCinema(Cinema cinema) {
-		this.cinema = cinema;
-	}
-
 	@Override
 	public String toString() {
-		return "Auditorium [id=" + id + ", roomNumber=" + roomNumber
-				+ ", seatCountR=" + seatCountR + ", seatCountC=" + seatCountC
-				+ ", seats=" + Arrays.toString(seats) + ", cinema=" + cinema
-				+ "]";
+		return "Auditorium [id=" + id + ", roomNumber=" + roomNumber + ", seatCountR=" + seatCountR + ", seatCountC="
+				+ seatCountC + ", seats=" + Arrays.toString(seats) + "]";
 	}
+
+	
+	 
+	 
 
 }

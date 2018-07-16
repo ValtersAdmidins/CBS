@@ -18,7 +18,8 @@
 	
 	 @Column(length = 100)
 	 private String fullName;
-
+ 
+ 
  public Long getId() {
 	 return id;
  }

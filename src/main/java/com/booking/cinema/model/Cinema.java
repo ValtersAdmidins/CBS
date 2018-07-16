@@ -32,7 +32,9 @@ public class Cinema {
 	private double latitude;
 	
 	private double longitude;
-
+	
+	//@OneToMany(mappedBy = "cinema", cascade = CascadeType.ALL,  orphanRemoval = true )
+	//private Set<Auditorium> auditorium;
 	public Cinema() {
 
 	}
@@ -50,6 +52,10 @@ public class Cinema {
 	public Long getId() {
 		return id;
 	}
+
+	
+
+	
 
 	public void setId(Long id) {
 		this.id = id;

@@ -27,7 +27,7 @@ public class CinemaController {
 		model.addAttribute("cinemas", cinemaRepository.findAll());
 		return "cinemas";
 	}
-
+/*
 	@RequestMapping("/cinemas/{id}")
 	public String showAllMoviesinCinema(
 			@PathVariable(value = "id") Long cinemaID, Model model) {
@@ -42,7 +42,7 @@ public class CinemaController {
 
 		return "cinema";
 	}
-
+*/
 	// Loads the cinama-create html page.
 	@GetMapping("/cinemas/cinema-create")
 	public String cinemaCreatePage(Model model) {

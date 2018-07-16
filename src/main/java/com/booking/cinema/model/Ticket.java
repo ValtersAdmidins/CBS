@@ -38,20 +38,16 @@ public class Ticket {
 	@JoinColumn(name = "showtime_id")
 	private Showtime showtime;
 
-	public Ticket(long id, int column, int row, double price, Date date) {
+	public Ticket(long id, int column, int row, double price) {
 		setId(id);
 		setColumn(column);
 		setRow(row);
 		setPrice(price);
-		setDate();
+		 
 	}
 
 	public Showtime getShowtime() {
 		return showtime;
-	}
-
-	public void setShowtime(Showtime showtime) {
-		this.showtime = showtime;
 	}
 
 	public User getUser() {
@@ -61,6 +57,12 @@ public class Ticket {
 	public void setUser(User user) {
 		this.user = user;
 	}
+
+	public void setShowtime(Showtime showtime) {
+		this.showtime = showtime;
+	}
+
+	
 
 	private void setPrice(double price) {
 		if (price < 0.01) {
@@ -111,13 +113,7 @@ public class Ticket {
 		}
 	}
 
-	public Date getDate() {
-		return date;
-	}
-
-	public void setDate() {
-		this.date = new Date();
-	}
+	  
 
 	@Override
 	public String toString() {
