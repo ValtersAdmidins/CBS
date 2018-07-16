@@ -11,7 +11,7 @@ import com.booking.cinema.model.User;
 import com.booking.cinema.repositories.UserRepository;
 
 @Controller
-public class SignupController {
+public class UserController {
 
 	@Autowired
 	UserRepository userRepository;
