@@ -6,20 +6,38 @@
 
 	<header th:replace="layout :: site-header" /></header>
 
-	<div class="container">
+	<h1 th:text="#{label.form.title}">form</h1>
+	<form th:action="@{/signup}" th:object="${user}" method="post">
 
+		<div>
+			<label>first</label> <input th:field="*{firstname}" />
+			<p th:each="error: ${#fields.errors('firstname')}" th:text="${error}">Validation error</p>
+		</div>
+		<div>
+			<label>last</label> <input th:field="*{lastname}" />
+			<p th:each="error : ${#fields.errors('lastname')}" th:text="${error}">Validation error</p>
+		</div>
+		<div>
+			<label>username</label> <input type="text" th:field="*{username}" />
+			<p th:each="error : ${#fields.errors('username')}" th:text="${error}">Validation error</p>
+		</div>
+		<div>
+			<label>email</label> <input type="email" th:field="*{email}" />
+			<p th:each="error : ${#fields.errors('email')}" th:text="${error}">Validation error</p>
+		</div>
+		<div>
+			<label>password</label> <input type="password" th:field="*{password}" />
+			<p th:each="error : ${#fields.errors('password')}" th:text="${error}">Validation error</p>
+		</div>
+		<div>
+			<label>confirm</label> <input type="password" th:field="*{repeatedPassword}" />
+		</div>
+		<div>
+			<label th:text="#{label.user.adminStatus}">admin</label> <input type="text" th:field="*{adminStatus}" />
+		</div>
+		<button type="submit" th:text="#{label.form.submit}">submit</button>
+	</form>
 
-		<h1>this is a sign up page</h1>
-
-		<form method="post" id="loginform" th:action="@{/}">
-			<input type="text" name="name" placeholder="Name"><br> <input type="text" name="lastname" placeholder="Lastname"><br> <input type="email" name="email"
-				placeholder="Your Email"><br> <input type="password" name="pass" placeholder="Password"><br> <input type="password" name="passagain"
-				placeholder="Password again"><br> <input type="submit" value="Sign Up">
-
-
-
-		</form>
-
-		<footer th:replace="layout :: site-footer" /></footer>
+	<footer th:replace="layout :: site-footer" /></footer>
 </body>
 </html>
