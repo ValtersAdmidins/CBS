@@ -12,8 +12,7 @@ import com.booking.cinema.repositories.CinemaRepository;
 
 @Controller
 public class WebController {
-<<<<<<< HEAD
-=======
+
 	@Autowired
 	CinemaRepository cinemaRepository;
 	
@@ -21,7 +20,7 @@ public class WebController {
 	public String cinemaCreatePage() {
 		return "cinema-create";
 	}
->>>>>>> gita3
+
 
 	
 	@RequestMapping("/signup")
