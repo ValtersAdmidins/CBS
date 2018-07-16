@@ -12,7 +12,7 @@ import com.booking.cinema.repositories.CinemaRepository;
 
 @Controller
 public class WebController {
-<<<<<<< HEAD
+
 
 	@Autowired
 	CinemaRepository cinemaRepository;
@@ -22,8 +22,8 @@ public class WebController {
 		return "cinema-create";
 	}
 
-=======
->>>>>>> e16361b4b1571a4c6e2aa8eb30fe806d970624ad
+
+
 
 	// @Autowired
 	// CinemaRepository cinemaRepository;
