@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -19,16 +21,17 @@ import com.google.maps.model.GeocodingResult;
 @Entity
 @Table(name = "cinema")
 public class Cinema {
-
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
 	private String name;
+	
 	private String address;
 
 	private double latitude;
+	
 	private double longitude;
-
-	private Set<Auditorium> auditoriums;
-	private Set<Movie> movies;
 
 	public Cinema() {
 
@@ -51,7 +54,7 @@ public class Cinema {
 	public void setId(Long id) {
 		this.id = id;
 	}
-
+	
 	public String getName() {
 		return name;
 	}
@@ -84,23 +87,7 @@ public class Cinema {
 		this.longitude = longitude;
 	}
 
-	@OneToMany(mappedBy = "cinema", cascade = CascadeType.ALL)
-	public Set<Auditorium> getAuditoriums() {
-		return auditoriums;
-	}
-
-	public void setAuditoriums(Set<Auditorium> auditoriums) {
-		this.auditoriums = auditoriums;
-	}
-
-	@OneToMany(mappedBy = "cinema", cascade = CascadeType.ALL)
-	public Set<Movie> getMovies() {
-		return movies;
-	}
-
-	public void setMovies(Set<Movie> movies) {
-		this.movies = movies;
-	}
+	 
 
 	public void setLatitudeAndLongitudeFromAddress() {
 		// Koordinatas iegust no adreses
@@ -118,9 +105,10 @@ public class Cinema {
 
 	@Override
 	public String toString() {
-		return "Cinema [id=" + id + ", name=" + name + ", address=" + address
-				+ ", latitude=" + latitude + ", longitude=" + longitude
-				+ ", auditoriums=" + auditoriums + ", movies=" + movies + "]";
+		return "Cinema [id=" + id + ", name=" + name + ", address=" + address + ", latitude=" + latitude
+				+ ", longitude=" + longitude + "]";
 	}
+
+	 
 
 }

@@ -1,24 +1,30 @@
 package com.booking.cinema.model;
 
 import java.util.Arrays;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Auditorium {
-
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private int roomNumber;
 	private int seatCountR;
 	private int seatCountC;
 	private boolean[][] seats;
-
+	@ManyToOne
+	@JoinColumn(name = "cinema_id")
 	private Cinema cinema;
+	
 
 	public Auditorium() {
 
@@ -41,6 +47,7 @@ public class Auditorium {
 	public void setId(Long id) {
 		this.id = id;
 	}
+	 
 
 	public int getRoomNumber() {
 		return roomNumber;
@@ -74,8 +81,7 @@ public class Auditorium {
 		this.seats = seats;
 	}
 
-	@ManyToOne
-	@JoinColumn(name = "cinema_id")
+	
 	public Cinema getCinema() {
 		return cinema;
 	}
