@@ -28,7 +28,7 @@
 				<td th:text="${movie.ageLimit}"></td> <br>
 				<td th:text="${movie.language}"></td> <br>
 				<td th:text="${movie.subtitles}"></td> <br>
-				<td th:text="${movie.movieLength}"></td>
+				<td th:text="${movie.movieLengthMinutes}"></td>
 				<form action="/buyaticket" th:action="@{/buyaticket}">
 					<input type="hidden" value="${movie.id}"> <input type="submit" value="Buy a Ticket">
 
