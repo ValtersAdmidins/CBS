@@ -18,7 +18,7 @@ import com.booking.cinema.enums.Language;
 public class Movie {
 
 	private Long id;
-	
+
 	private String title;
 	private String plot;
 	private AgeLimit ageLimit;
@@ -26,15 +26,16 @@ public class Movie {
 	private Language language;
 	private Language subtitles;
 	private double movieLength;
-	
+
 	private Cinema cinema;
 
 	public Movie() {
-		
+
 	}
 
-	public Movie(String title, String plot, AgeLimit ageLimit, ArrayList<Genre> genres, Language language,
-			Language subtitles, double movieLength) {
+	public Movie(String title, String plot, AgeLimit ageLimit,
+			ArrayList<Genre> genres, Language language, Language subtitles,
+			double movieLength) {
 		setTitle(title);
 		setPlot(plot);
 		setAgeLimit(ageLimit);
@@ -111,7 +112,7 @@ public class Movie {
 	}
 
 	@ManyToOne
-    @JoinColumn(name = "cinema_id")
+	@JoinColumn(name = "cinema_id")
 	public Cinema getCinema() {
 		return cinema;
 	}
@@ -122,10 +123,10 @@ public class Movie {
 
 	@Override
 	public String toString() {
-		return "Movie [id=" + id + ", title=" + title + ", plot=" + plot + ", ageLimit=" + ageLimit + ", genres="
-				+ genres + ", language=" + language + ", subtitles=" + subtitles + ", movieLength=" + movieLength
-				+ ", cinema=" + cinema + "]";
+		return "Movie [id=" + id + ", title=" + title + ", plot=" + plot
+				+ ", ageLimit=" + ageLimit + ", genres=" + genres
+				+ ", language=" + language + ", subtitles=" + subtitles
+				+ ", movieLength=" + movieLength + ", cinema=" + cinema + "]";
 	}
 
-	
 }
