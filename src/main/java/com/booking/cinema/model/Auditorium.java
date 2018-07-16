@@ -13,33 +13,27 @@ import javax.persistence.ManyToOne;
 public class Auditorium {
 
 	private Long id;
-	private int roomNumber;
+	private String roomNumber;
 	private int seatCountR;
 	private int seatCountC;
 	private boolean[][] seats;
+
 	private Cinema cinema;
-	
+
 	public Auditorium() {
-		
-	}
-	
-	public Auditorium(int roomNumber) {
-		this.roomNumber = roomNumber;
+
 	}
 
-	public Auditorium(int roomNumber, Cinema cinema) {
+	public Auditorium(String roomNumber, int seatCountR, int seatCountC,
+			boolean[][] seats) {
 		this.roomNumber = roomNumber;
-		this.cinema = cinema;
-		
-		
-		///TEMPORARY JUST FOR TESTING 
-		setSeatCountR(5);
-		setSeatCountC(10);
-		///TEMPORARY JUST FOR TESTING 
+		this.seatCountR = seatCountR;
+		this.seatCountC = seatCountC;
+		this.seats = seats;
 	}
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	public Long getId() {
 		return id;
 	}
@@ -48,11 +42,11 @@ public class Auditorium {
 		this.id = id;
 	}
 
-	public int getRoomNumber() {
+	public String getRoomNumber() {
 		return roomNumber;
 	}
 
-	public void setRoomNumber(int roomNumber) {
+	public void setRoomNumber(String roomNumber) {
 		this.roomNumber = roomNumber;
 	}
 
@@ -81,7 +75,7 @@ public class Auditorium {
 	}
 
 	@ManyToOne
-    @JoinColumn(name = "cinema_id")
+	@JoinColumn(name = "cinema_id")
 	public Cinema getCinema() {
 		return cinema;
 	}
@@ -92,9 +86,10 @@ public class Auditorium {
 
 	@Override
 	public String toString() {
-		return "Auditorium [id=" + id + ", roomNumber=" + roomNumber + ", seatCountR=" + seatCountR + ", seatCountC="
-				+ seatCountC + ", seats=" + Arrays.toString(seats) + ", cinema=" + cinema + "]";
+		return "Auditorium [id=" + id + ", roomNumber=" + roomNumber
+				+ ", seatCountR=" + seatCountR + ", seatCountC=" + seatCountC
+				+ ", seats=" + Arrays.toString(seats) + ", cinema=" + cinema
+				+ "]";
 	}
 
-	
 }

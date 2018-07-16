@@ -3,24 +3,35 @@
 <head th:replace="layout :: site-head">
 </head>
 <body>
-<header th:replace="layout :: site-header" />
-<button onclick="location.href='/cinemas/cinema-create'" type="button" class="btn btn-primary">Add Cinema</button>
-<div class="container">
- 
-<tr th:each="cinema : ${cinemas}">
-<div style="background-color: lightgrey;">
 
-    <a th:href="${'/cinemas/' + cinema.id}"><h2><td th:text="${cinema.name}"></td></h2></a>
-    <p><td th:text="${cinema.address}"></td></p>
-    </div>
-    
-    
-    
-</tr>
-</div>
-<br>	
-	
-	
-<footer th:replace="layout :: site-footer"/>
+	<header th:replace="layout :: site-header" /></header>
+
+	<button onclick="location.href='/cinemas/cinema-create'" type="button" class="btn btn-primary">Add Cinema</button>
+
+	<div class="container">
+
+		<tr th:each="cinema : ${cinemas}">
+			<div style="background-color: lightgrey;">
+
+				<a th:href="${'/cinemas/' + cinema.id}"><h2>
+						<td th:text="${cinema.name}"></td>
+					</h2></a>
+				<p>
+					<td th:text="${cinema.address}"></td>
+				</p>
+				<p>
+					<td th:text="${cinema.latitude}"></td>
+				</p>
+				<p>
+					<td th:text="${cinema.longitude}"></td>
+				</p>
+
+			</div>
+			<button onclick="location.href='/cinemas/auditorium-create'" type="button" class="btn btn-primary">Add auditorium</button>
+		</tr>
+
+		<br>
+
+		<footer th:replace="layout :: site-footer" /></footer>
 </body>
 </html>

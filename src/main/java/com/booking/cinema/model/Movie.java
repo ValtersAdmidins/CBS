@@ -18,38 +18,31 @@ import com.booking.cinema.enums.Language;
 public class Movie {
 
 	private Long id;
-	
+
 	private String title;
 	private String plot;
 	private AgeLimit ageLimit;
 	private ArrayList<Genre> genres;
 	private Language language;
 	private Language subtitles;
-	private double movieLength;
-	
+	private int movieLengthMinutes;
+
 	private Cinema cinema;
 
 	public Movie() {
-		
+
 	}
 
-	public Movie(String title, String plot, AgeLimit ageLimit, ArrayList<Genre> genres, Language language,
-			Language subtitles, double movieLength) {
+	public Movie(String title, String plot, AgeLimit ageLimit,
+			ArrayList<Genre> genres, Language language, Language subtitles,
+			int movieLengthMinutes) {
 		setTitle(title);
 		setPlot(plot);
 		setAgeLimit(ageLimit);
 		setGenres(genres);
 		setLanguage(language);
 		setSubtitles(subtitles);
-		setMovieLength(movieLength);
-	}
-
-	public double getMovieLength() {
-		return movieLength;
-	}
-
-	public void setMovieLength(double movieLength) {
-		this.movieLength = movieLength;
+		setMovieLengthMinutes(movieLengthMinutes);
 	}
 
 	@Id
@@ -110,8 +103,16 @@ public class Movie {
 		this.subtitles = subtitles;
 	}
 
+	public int getMovieLengthMinutes() {
+		return movieLengthMinutes;
+	}
+
+	public void setMovieLengthMinutes(int movieLengthMinutes) {
+		this.movieLengthMinutes = movieLengthMinutes;
+	}
+
 	@ManyToOne
-    @JoinColumn(name = "cinema_id")
+	@JoinColumn(name = "cinema_id")
 	public Cinema getCinema() {
 		return cinema;
 	}
@@ -122,10 +123,10 @@ public class Movie {
 
 	@Override
 	public String toString() {
-		return "Movie [id=" + id + ", title=" + title + ", plot=" + plot + ", ageLimit=" + ageLimit + ", genres="
-				+ genres + ", language=" + language + ", subtitles=" + subtitles + ", movieLength=" + movieLength
-				+ ", cinema=" + cinema + "]";
+		return "Movie [id=" + id + ", title=" + title + ", plot=" + plot
+				+ ", ageLimit=" + ageLimit + ", genres=" + genres
+				+ ", language=" + language + ", subtitles=" + subtitles
+				+ ", movieLength=" + movieLengthMinutes + ", cinema=" + cinema + "]";
 	}
 
-	
 }
