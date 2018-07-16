@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.booking.cinema.exceptions.ResourceNotFoundException;
 import com.booking.cinema.model.Movie;
+import com.booking.cinema.repositories.CinemaRepository;
 import com.booking.cinema.repositories.MovieRepository;
 
 @Controller
@@ -17,6 +18,9 @@ public class MovieController {
 
 	@Autowired
 	MovieRepository movieRepository;
+	
+	@Autowired
+	CinemaRepository cinemaRepository;
 
 	@RequestMapping("/")
 	public String showAllMovies(Model model) {
@@ -38,13 +42,13 @@ public class MovieController {
 	@GetMapping("/movies/movie-create")
 	public String movieCreatePage(Model model) {
 		model.addAttribute("movie", new Movie());
+		model.addAttribute("cinemas", cinemaRepository.findAll());
 		return "movie-create";
 	}
 
 	// Proccesses the movie creation and insertion into the database.
 	@PostMapping("/movies/movie-create")
 	public String createMovieProccess(Movie movie) {
-
 		movieRepository.save(movie);
 		return "redirect:/";
 	}

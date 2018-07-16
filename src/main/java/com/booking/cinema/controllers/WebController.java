@@ -14,13 +14,13 @@ import com.booking.cinema.repositories.CinemaRepository;
 public class WebController {
 
 
-	@Autowired
-	CinemaRepository cinemaRepository;
-	
-	@RequestMapping("/cinemas/cinema-create")
-	public String cinemaCreatePage() {
-		return "cinema-create";
-	}
+//	@Autowired
+//	CinemaRepository cinemaRepository;
+//	
+//	@RequestMapping("/cinemas/cinema-create")
+//	public String cinemaCreatePage() {
+//		return "cinema-create";
+//	}
 
 
 
