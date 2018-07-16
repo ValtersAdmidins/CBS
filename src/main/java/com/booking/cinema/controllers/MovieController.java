@@ -52,7 +52,8 @@ public class MovieController {
 		movieRepository.save(movie);
 		return "redirect:/";
 	}
-
+	
+	
 	/*
 	 * // Update a Movie
 	 * 

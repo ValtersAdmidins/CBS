@@ -22,6 +22,7 @@ public class AuditoriumController {
 	@GetMapping("/cinemas/auditorium-create")
 	public String cinemaCreatePage(Model model) {
 		model.addAttribute("auditorium", new Auditorium());
+		
 		return "auditorium-create";
 	}
 
