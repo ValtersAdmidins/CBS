@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.booking.cinema.model.Auditorium;
-import com.booking.cinema.repository.CinemaRepository;
+import com.booking.cinema.repositories.CinemaRepository;
 
 @Controller
 public class TicketController {

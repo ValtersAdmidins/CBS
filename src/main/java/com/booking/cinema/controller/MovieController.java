@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.booking.cinema.exceptions.ResourceNotFoundException;
 import com.booking.cinema.model.Movie;
-import com.booking.cinema.repository.MovieRepository;
+import com.booking.cinema.repositories.MovieRepository;
 
 @Controller
 public class MovieController {
