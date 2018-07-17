@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.booking.cinema.exceptions.ResourceNotFoundException;
+import com.booking.cinema.model.Auditorium;
 import com.booking.cinema.model.Cinema;
+import com.booking.cinema.repositories.AuditoriumRepository;
 import com.booking.cinema.repositories.CinemaRepository;
 import com.booking.cinema.repositories.UserRepository;
 
@@ -20,6 +22,9 @@ public class CinemaController {
 	CinemaRepository cinemaRepository;
 
 	@Autowired
+	AuditoriumRepository auditoriumRepository;
+
+	@Autowired
 	UserRepository userRepository;
 
 	@RequestMapping("/cinemas")
@@ -27,7 +32,7 @@ public class CinemaController {
 		model.addAttribute("cinemas", cinemaRepository.findAll());
 		return "cinemas";
 	}
-	
+
 	@RequestMapping("/cinemas/{id}")
 	public String getCinemaById(@PathVariable(value = "id") Long cinemaId,
 			Model model) {
@@ -50,6 +55,21 @@ public class CinemaController {
 	public String cinemaCreateProccess(Cinema cinema) {
 		cinema.setLatitudeAndLongitudeFromAddress();
 		cinemaRepository.save(cinema);
+		return "redirect:/cinemas";
+	}
+
+	// Loads the auditorium-create html page for admin.
+	@GetMapping("/cinemas/auditorium-create")
+	public String auditoriumCreateForm(Model model) {
+		model.addAttribute("auditorium", new Auditorium());
+		return "admin/auditorium-create";
+	}
+
+	// Proccesses the auditorium creation and insertion into the database.
+	@PostMapping("/cinemas/auditorium-create")
+	public String auditoriumCreateProccess(Auditorium auditorium) {
+
+		auditoriumRepository.save(auditorium);
 		return "redirect:/cinemas";
 	}
 
