@@ -8,11 +8,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.booking.cinema.model.Cinema;
-<<<<<<< HEAD
+
 import com.booking.cinema.repositories.CinemaRepository;
-=======
-import com.booking.cinema.repository.CinemaRepository;
->>>>>>> valters3
+
+ 
 
 @Controller
 public class CinemaController {

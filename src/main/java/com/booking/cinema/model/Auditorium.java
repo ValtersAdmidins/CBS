@@ -17,44 +17,18 @@ public class Auditorium {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-<<<<<<< HEAD
-=======
-	private int roomNumber;
-	private int seatCountR;
-	private int seatCountC;
-	private boolean[][] seats;
-	//@ManyToOne
-	//@JoinColumn(name = "cinema_id")
-	//public Cinema cinema;
-	// @OneToMany(mappedBy = "auditorium", cascade = CascadeType.ALL)
-	//public Set<Showtime> showtime;
-	
-   
-	
->>>>>>> valters3
 
 	private String roomNumber;
 	private String seats;
- 
+
 	public Auditorium() {
 
 	}
-<<<<<<< HEAD
 	
 	
 	public Auditorium(String roomNumber, String seats) {
 		setRoomNumber(roomNumber);
 		setSeats(seats);
-=======
-
-	
-	public Auditorium(int roomNumber, int seatCountR, int seatCountC,
-			boolean[][] seats) {
-		this.roomNumber = roomNumber;
-		this.seatCountR = seatCountR;
-		this.seatCountC = seatCountC;
-		this.seats = seats;
->>>>>>> valters3
 	}
 
 	@Id
@@ -68,11 +42,11 @@ public class Auditorium {
 	}
 	 
 
-	public int getRoomNumber() {
+	public String getRoomNumber() {
 		return roomNumber;
 	}
 
-	public void setRoomNumber(int roomNumber) {
+	public void setRoomNumber(String roomNumber) {
 		this.roomNumber = roomNumber;
 	}
 
@@ -80,24 +54,16 @@ public class Auditorium {
 		this.seats = seats;
 	}
 
+
 	@Override
 	public String toString() {
-<<<<<<< HEAD
-		return "Auditorium [id=" + id + ", roomNumber=" + roomNumber
-				+ ", seats=" + seats + ", cinema=" + "]";
-
-=======
-		return "Auditorium [id=" + id + ", roomNumber=" + roomNumber + ", seatCountR=" + seatCountR + ", seatCountC="
-				+ seatCountC + ", seats=" + Arrays.toString(seats) + "]";
->>>>>>> valters3
+		return "Auditorium [id=" + id + ", roomNumber=" + roomNumber + ", seats=" + seats + "]";
 	}
+
+	
 
 	
 	 
 	 
 
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> valters3

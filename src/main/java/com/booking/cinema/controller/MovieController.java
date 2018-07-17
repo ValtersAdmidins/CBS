@@ -10,11 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.booking.cinema.exceptions.ResourceNotFoundException;
 import com.booking.cinema.model.Movie;
-<<<<<<< HEAD
+
 import com.booking.cinema.repositories.MovieRepository;
-=======
-import com.booking.cinema.repository.MovieRepository;
->>>>>>> valters3
+
 
 @Controller
 public class MovieController {
