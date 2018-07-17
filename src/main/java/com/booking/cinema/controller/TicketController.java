@@ -12,7 +12,7 @@ import com.booking.cinema.repositories.CinemaRepository;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.booking.cinema.repository.TicketRepository;
+import com.booking.cinema.repositories.TicketRepository;
  
 @Controller
 public class TicketController {
