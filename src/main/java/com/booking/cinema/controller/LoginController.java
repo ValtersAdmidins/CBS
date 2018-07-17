@@ -20,13 +20,12 @@ public class LoginController {
 	@Autowired
 	private UserService userService;
 
-//	@RequestMapping(value={"/"}, method = RequestMethod.GET)
-//	public ModelAndView login(){
-//		ModelAndView modelAndView = new ModelAndView();
-//		modelAndView.setViewName("/");
-//		return modelAndView;
-//	}
-	
+	@RequestMapping(value={"/"}, method = RequestMethod.GET)
+	public ModelAndView login(){
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("index");
+		return modelAndView;
+	}
 	
 	@RequestMapping(value="/registration", method = RequestMethod.GET)
 	public ModelAndView registration(){
