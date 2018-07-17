@@ -1,30 +1,41 @@
 package com.booking.cinema.model;
 
 import java.util.Arrays;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Auditorium {
-
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String roomNumber;
+	private int roomNumber;
 	private int seatCountR;
 	private int seatCountC;
 	private boolean[][] seats;
-
-	private Cinema cinema;
+	//@ManyToOne
+	//@JoinColumn(name = "cinema_id")
+	//public Cinema cinema;
+	// @OneToMany(mappedBy = "auditorium", cascade = CascadeType.ALL)
+	//public Set<Showtime> showtime;
+	
+   
+	
 
 	public Auditorium() {
 
 	}
 
-	public Auditorium(String roomNumber, int seatCountR, int seatCountC,
+	
+	public Auditorium(int roomNumber, int seatCountR, int seatCountC,
 			boolean[][] seats) {
 		this.roomNumber = roomNumber;
 		this.seatCountR = seatCountR;
@@ -41,12 +52,13 @@ public class Auditorium {
 	public void setId(Long id) {
 		this.id = id;
 	}
+	 
 
-	public String getRoomNumber() {
+	public int getRoomNumber() {
 		return roomNumber;
 	}
 
-	public void setRoomNumber(String roomNumber) {
+	public void setRoomNumber(int roomNumber) {
 		this.roomNumber = roomNumber;
 	}
 
@@ -74,22 +86,14 @@ public class Auditorium {
 		this.seats = seats;
 	}
 
-	@ManyToOne
-	@JoinColumn(name = "cinema_id")
-	public Cinema getCinema() {
-		return cinema;
-	}
-
-	public void setCinema(Cinema cinema) {
-		this.cinema = cinema;
-	}
-
 	@Override
 	public String toString() {
-		return "Auditorium [id=" + id + ", roomNumber=" + roomNumber
-				+ ", seatCountR=" + seatCountR + ", seatCountC=" + seatCountC
-				+ ", seats=" + Arrays.toString(seats) + ", cinema=" + cinema
-				+ "]";
+		return "Auditorium [id=" + id + ", roomNumber=" + roomNumber + ", seatCountR=" + seatCountR + ", seatCountC="
+				+ seatCountC + ", seats=" + Arrays.toString(seats) + "]";
 	}
+
+	
+	 
+	 
 
 }

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: site-head">
+</head>
+<body>
+
+	<header th:replace="layout :: site-header" /></header>
+
+	<button onclick="location.href='/movies/movie-create'" type="button" class="btn btn-primary">Add Movie</button>
+	<div class="container">
+
+		<tr th:each="movie : ${movies}">
+			<div style="background-color: lightgrey;">
+
+				<a th:href="${'/movies/' + movie.id}"><h2>
+						<td th:text="${movie.title}"></td>
+					</h2></a>
+				<p>
+					<td th:text="${movie.plot}"></td>
+				</p>
+				<td th:text="${movie.genres}"></td> <br>
+				<td th:text="${movie.ageLimit}"></td> <br>
+				<td th:text="${movie.language}"></td> <br>
+				<td th:text="${movie.subtitles}"></td> <br>
+				<td th:text="${movie.movieLength}"></td> <br>
+			</div>
+
+		</tr>
+	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+
+	<footer th:replace="layout :: site-footer" /></footer>
+
+</body>
+</html>

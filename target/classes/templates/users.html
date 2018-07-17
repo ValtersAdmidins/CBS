@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: site-head">
+</head>
+<body>
+
+	<header th:replace="layout :: site-header" /></header>
+
+	<div class="container">
+
+		<tr th:each="user : ${users}">
+			<div style="background-color: lightgrey;">
+
+				<a th:href="${'/users/' + user.id}"><h2>
+						<td th:text="${user.name} + ${user.surname}"></td>
+					</h2></a>
+				<p>
+					<td th:text="${user.username}"></td>
+				</p>
+				<td th:text="${user.email}"></td> <br>
+				<td th:text="${user.status}"></td> <br>
+			</div>
+		</tr>
+
+	</div>
+
+	<footer th:replace="layout :: site-footer" /></footer>
+
+</body>
+</html>
