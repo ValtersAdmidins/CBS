@@ -17,10 +17,10 @@ public class Auditorium {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private int roomNumber;
-	private int seatCountR;
-	private int seatCountC;
-	private boolean[][] seats;
+
+	private String roomNumber;
+	private String seats;
+ 
 	//@ManyToOne
 	//@JoinColumn(name = "cinema_id")
 	//public Cinema cinema;
@@ -28,19 +28,14 @@ public class Auditorium {
 	//public Set<Showtime> showtime;
 	
    
-	
-
 	public Auditorium() {
 
 	}
-
 	
-	public Auditorium(int roomNumber, int seatCountR, int seatCountC,
-			boolean[][] seats) {
-		this.roomNumber = roomNumber;
-		this.seatCountR = seatCountR;
-		this.seatCountC = seatCountC;
-		this.seats = seats;
+	
+	public Auditorium(String roomNumber, String seats) {
+		setRoomNumber(roomNumber);
+		setSeats(seats);
 	}
 
 	@Id
@@ -54,42 +49,23 @@ public class Auditorium {
 	}
 	 
 
-	public int getRoomNumber() {
+	public String getRoomNumber() {
 		return roomNumber;
 	}
 
-	public void setRoomNumber(int roomNumber) {
+	public void setRoomNumber(String roomNumber) {
 		this.roomNumber = roomNumber;
 	}
 
-	public int getSeatCountR() {
-		return seatCountR;
-	}
-
-	public void setSeatCountR(int seatCountR) {
-		this.seatCountR = seatCountR;
-	}
-
-	public int getSeatCountC() {
-		return seatCountC;
-	}
-
-	public void setSeatCountC(int seatCountC) {
-		this.seatCountC = seatCountC;
-	}
-
-	public boolean[][] getSeats() {
-		return seats;
-	}
-
-	public void setSeats(boolean[][] seats) {
+	public void setSeats(String seats) {
 		this.seats = seats;
 	}
 
 	@Override
 	public String toString() {
-		return "Auditorium [id=" + id + ", roomNumber=" + roomNumber + ", seatCountR=" + seatCountR + ", seatCountC="
-				+ seatCountC + ", seats=" + Arrays.toString(seats) + "]";
+		return "Auditorium [id=" + id + ", roomNumber=" + roomNumber
+				+ ", seats=" + seats + ", cinema="  + "]";
+
 	}
 
 	
