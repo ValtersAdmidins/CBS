@@ -1,34 +1,6 @@
-function seatCheckBox(id) {
 
-	// <div> elements kura likt sarakstu ar izveletajam sedvietam
-	var checkedSeats = document.getElementById("chosenseats");
 
-	// checkbox uz kuru tika nospiests
-	var seat = document.getElementById(id);
-
-	if (seat.checked == false) {
-		// ja checkbox jau bija iezimets iegust <p> elementu kura ierakstita
-		// izveleta bilete
-		// un to izdzes
-		var para = document.getElementById("p" + id);
-		checkedSeats.removeChild(para);
-
-	} else {
-		// izveido <p> elementu kur paradit izveleto bileti un to pievieto <div>
-		// elemetnam
-		// ar id checkedseats
-		var para = document.createElement("p");
-		para.setAttribute("id", "p" + id);
-		var node = document.createTextNode(id);
-		para.appendChild(node);
-
-		checkedSeats.appendChild(para);
-	}
-
-	calculateTotal();
-
-}
-
+/*
 // sum total money
 function calculateTotal() {
 
@@ -48,6 +20,8 @@ function calculateTotal() {
 	document.getElementById("counter").innerHTML = ticketCount;
 	document.getElementById("total").innerHTML = total + "€";
 }
+*/
+
 
 
 /*/
@@ -60,12 +34,10 @@ function createAuditorium() {
 	if (tmp == null) {
 
 		document.getElementById("message").innerHTML = "<h3>Create custom shape auditorium: click on the seat to remove/add it to the auditorium</h3>"
-				+ "<h4 style='color: red'>ONLY SEATS WITH THE COLOUR GREEN WILL BE ADDED TO THE AUDITORIUM</h4>";
+				+ "<h5 style='color: red'>ONLY SEATS WITH THE COLOUR GREEN WILL BE ADDED TO THE AUDITORIUM</h5>";
 		
 		var rows = document.getElementById("rowsInput").value;
 		var columns = document.getElementById("columnsInput").value;
-
-		// <div> elements
 
 		var olrows = document.createElement("ol");
 		olrows.setAttribute("id", "rows");
@@ -84,9 +56,10 @@ function createAuditorium() {
 				var chB = document.createElement("input");
 				chB.setAttribute("type", "button");
 				chB.setAttribute("id", "R" + (j + 1) + "C" + (i + 1));
+				chB.setAttribute("value", "R" + (j + 1) + "C" + (i + 1));
 				chB.setAttribute(
 								"style",
-								"background-color:lightseagreen; width: 30px; height: 30px; border-radius: 15px;");
+								"background-color:lightseagreen; width: 50px; height: 50px; border-radius: 25px;");
 				chB.setAttribute("onclick", "changeSeatButton(this.id)");
 				listEl.appendChild(chB);
 				olseats.appendChild(listEl);
@@ -102,25 +75,69 @@ function createAuditorium() {
 		createAuditorium();
 	}
 
-	var addColumnButton = document.createElement("input");
-	addColumnButton.setAttribute("type", "button");
-	addColumnButton.setAttribute("value", "Add Column");
-
-	var addRowButton = document.createElement("input");
-	addRowButton.setAttribute("type", "button");
-	addRowButton.setAttribute("value", "Add Row");
-
-	// auditorium.appendChild(addRowButton);
-	// auditorium.appendChild(addColumnButton);
+	
+	document.getElementById("addrowbutton").style.display = "inline";
+	document.getElementById("addcolumnbutton").style.display = "inline";
+	document.getElementById("submitauditoriumbutton").style.display = "block";
 
 }
-/*
- * function addColumn(){
- *  }
- * 
- * function addRow(){
- *  }
- */
+
+ function addColumn(){
+	 var seatmap = document.getElementById("rows");
+	 if(seatmap == null){
+		 document.createElement("ol");
+		 column.setAttribute("id", "rows");
+		 column.setAttribute("class", "seats");
+	 }
+	 
+	 var column = document.createElement("ol");
+	 column.setAttribute("id", "seats");
+	 column.setAttribute("class", "rows");
+	 var columnCount = document.getElementsByClassName("rows").length;
+	 var j = document.getElementsByClassName("seat").length/columnCount;
+	 
+	 for(var i = 0; i < j; i++){
+		 var listEl = document.createElement("li");
+			listEl.setAttribute("class", "seat");
+
+			var chB = document.createElement("input");
+			chB.setAttribute("type", "button");
+			chB.setAttribute("value", "R" + (i + 1) + "C" + (columnCount+1));
+			chB.setAttribute("id", "R" + (i + 1) + "C" + (columnCount+1));
+			chB.setAttribute(
+							"style",
+							"background-color:lightseagreen; width: 50px; height: 50px; border-radius: 25px;");
+			chB.setAttribute("onclick", "changeSeatButton(this.id)");
+			listEl.appendChild(chB);
+			column.appendChild(listEl);
+	 }
+	 seatmap.appendChild(column);
+	 
+ }
+ 
+ 
+ 
+ function addRow(){
+	 var columns = document.getElementsByClassName("rows");
+	 var j = document.getElementsByClassName("seat") / columns.length;
+	 for(var i = 0 ; i<columns.length; i++){
+		 var listEl = document.createElement("li");
+			listEl.setAttribute("class", "seat");
+
+			var chB = document.createElement("input");
+			chB.setAttribute("type", "button");
+			chB.setAttribute("id", "R" + (j) + "C" + (i+1));
+			chB.setAttribute("value", "R" + (j) + "C" + (i+1));
+			chB.setAttribute(
+							"style",
+							"background-color:lightseagreen; width: 50px; height: 50px; border-radius: 25px;");
+			chB.setAttribute("onclick", "changeSeatButton(this.id)");
+			listEl.appendChild(chB);
+		 columns[i].appendChild(listEl);
+	 }
+ 
+ }
+ 
 
 
 
@@ -144,12 +161,15 @@ function changeSeatButton(id) {
 function submitAuditorium() {
 	//var array = [];
 	var seatmapstring="";
-	var rows = document.getElementById("rowsInput").value;
-	var columns = document.getElementById("columnsInput").value;
+	var rows = document.getElementsByClassName("rows").length;
+	var columns = document.getElementsByClassName("seat").length/rows;
+	console.log("rowcount: " + rows);
+	console.log("column count: " + columns);
+	
 	var id;
 	var button;
-	for(var i = 1; i<=rows; i++){
-		for(var j = 1; j<=columns; j++){
+	for(var i = 1; i<=columns; i++){
+		for(var j = 1; j<=rows; j++){
 			id = "R"+i+"C"+j;
 			
 			button = document.getElementById(id);

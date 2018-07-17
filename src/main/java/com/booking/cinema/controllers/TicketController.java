@@ -20,11 +20,7 @@ public class TicketController {
 	 //temporary - auditorium has to be taken from database
 	 Long l = (long) 1;
 	 Auditorium tmp = new Auditorium();
-	 tmp.setSeatCountC(5);
-	 tmp.setSeatCountR(3);
-	 model.addAttribute("auditoriumString", "111110211141021100102111111210111121111112");
-	 model.addAttribute("columns",tmp.getSeatCountC());
-	 model.addAttribute("rows",tmp.getSeatCountR());
+	 model.addAttribute("auditoriumString", "03310211033213033");
 	 return "buyaticket";
 	 }
 	

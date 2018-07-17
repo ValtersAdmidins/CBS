@@ -14,22 +14,16 @@ public class Auditorium {
 
 	private Long id;
 	private String roomNumber;
-	private int seatCountR;
-	private int seatCountC;
-	private boolean[][] seats;
-
+	private String seats;
 	private Cinema cinema;
 
 	public Auditorium() {
 
 	}
 
-	public Auditorium(String roomNumber, int seatCountR, int seatCountC,
-			boolean[][] seats) {
-		this.roomNumber = roomNumber;
-		this.seatCountR = seatCountR;
-		this.seatCountC = seatCountC;
-		this.seats = seats;
+	public Auditorium(String roomNumber, String seats) {
+		setRoomNumber(roomNumber);
+		setSeats(seats);
 	}
 
 	@Id
@@ -50,27 +44,7 @@ public class Auditorium {
 		this.roomNumber = roomNumber;
 	}
 
-	public int getSeatCountR() {
-		return seatCountR;
-	}
-
-	public void setSeatCountR(int seatCountR) {
-		this.seatCountR = seatCountR;
-	}
-
-	public int getSeatCountC() {
-		return seatCountC;
-	}
-
-	public void setSeatCountC(int seatCountC) {
-		this.seatCountC = seatCountC;
-	}
-
-	public boolean[][] getSeats() {
-		return seats;
-	}
-
-	public void setSeats(boolean[][] seats) {
+	public void setSeats(String seats) {
 		this.seats = seats;
 	}
 
@@ -87,9 +61,7 @@ public class Auditorium {
 	@Override
 	public String toString() {
 		return "Auditorium [id=" + id + ", roomNumber=" + roomNumber
-				+ ", seatCountR=" + seatCountR + ", seatCountC=" + seatCountC
-				+ ", seats=" + Arrays.toString(seats) + ", cinema=" + cinema
-				+ "]";
+				+ ", seats=" + seats + ", cinema=" + cinema + "]";
 	}
 
 }

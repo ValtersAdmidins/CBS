@@ -15,55 +15,25 @@
 		<div>
 			<h3 style="text-align: center;">SCREEN</h3>
 		</div>
-		<!--  
-		<div class="cinema" id="seat-map">
 
-			<ol class="rows" id="rows">
-				<th:block th:each="i: ${#numbers.sequence(1, rows)}">
-					<ol class="seats" id="seats" type="A">
-						<th:block th:each="j: ${#numbers.sequence(1, columns)}">
-
-							<li class="seat">
-							
-							<input type="checkbox"
-								style="width: 20px; height: 20px;" autocomplete="off"
-								class="seatcheckbox" th:id="'R'+${i}	+'C'+${j}"
-								onclick="seatCheckBox(this.id)" /> 
-								
-							<label
-								th:text="'R'+${i}	+'C'+${j}" th:for="'R'+${i}	+'C'+${j}">
-							</label>
-							
-							</li>
-
-						</th:block>
-					</ol>
-				</th:block>
-			</ol>
-
-
-
-		</div>-->
 		
 		<div id="stringauditorium">
 		</div>
+		
 		<div style="width: 50%; margin-left: auto; margin-right: auto;">
-			<h3>
-				Movie:
-				<p style="text-decoration: line-through;">dynamic movie name</p>
-			</h3>
+			<h3>Movie: <p style="text-decoration: line-through;">dynamic movie name</p></h3>
 
 			<h3>Chosen seats:</h3>
 			<div id="chosenseats"></div>
-			<h3>
-				Tickets: <span id="counter">0</span>
-			</h3>
+			<h3>Tickets: <span id="counter">0</span></h3>
 
-			<h3>
-				Total: <span id="total">0</span>
-			</h3>
+			<h3>Total: <span id="total">0</span></h3>
+			
+			<form onsubmit="makingSeatsTaken()" action="/">
+				<input type="hidden" value="" id="newseatmapstring">
+				<input type="submit" value="Buy Tickets">
+			</form>
 
-			<button class="checkout-button">BUY</button>
 
 
 		</div>
