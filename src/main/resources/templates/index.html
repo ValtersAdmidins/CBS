@@ -17,6 +17,7 @@
  	<div sec:authorize="!hasAuthority('ADMIN')">
 	
  		NOT ADMIN
+ 		
  	</div>
 
 	<div class="container">
@@ -34,7 +35,7 @@
 				<td th:text="${movie.ageLimit}"></td> <br>
 				<td th:text="${movie.language}"></td> <br>
 				<td th:text="${movie.subtitles}"></td> <br>
-				<td th:text="${movie.movieLength}"></td> <br>
+				<td th:text="${movie.movieLengthMinutes}"></td> <br>
 			</div>
 
 		</tr>

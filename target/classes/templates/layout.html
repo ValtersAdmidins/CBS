@@ -15,7 +15,6 @@
 	<header th:fragment="site-header">
 		<div sec:authorize="hasAuthority('ADMIN')">
 
-			LOGGED IN AS ADMIN.
 			<nav class="navbar navbar-default navbar-inverse" role="navigation">
 				<div class="container-fluid">
 					<!-- Brand and toggle get grouped for better mobile display -->
@@ -39,19 +38,6 @@
 							</form>
 						</div>
 
-						<div class="container">
-							<form th:action="@{/login}" method="POST" class="form-signin">
-								<h3 class="form-signin-heading" th:text="Welcome"></h3>
-								<br /> <input type="text" id="email" name="email" th:placeholder="Email" class="form-control" /> <br /> <input type="password" th:placeholder="Password" id="password"
-									name="password" class="form-control" /> <br />
-
-								<div align="center" th:if="${param.error}">
-									<p style="font-size: 20; color: #FF1C19;">Email or Password invalid, please verify</p>
-								</div>
-								<button class="btn btn-lg btn-primary btn-block" name="Submit" value="Login" type="Submit" th:text="Login"></button>
-							</form>
-							<a href="/registration">Sign up</a>
-						</div>
 					</div>
 					<!-- /.navbar-collapse -->
 				</div>
@@ -60,7 +46,7 @@
 		</div>
 
 		<div sec:authorize="!hasAuthority('ADMIN')">
-			DEBIL
+			
 			<nav class="navbar navbar-default navbar-inverse" role="navigation">
 				<div class="container-fluid">
 					Brand and toggle get grouped for better mobile display
@@ -71,7 +57,7 @@
 						<a class="navbar-brand" href="/">CBS</a>
 					</div>
 
-					Collect the nav links, forms, and other content for toggling
+					<!-- 					Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav">
 							<li class="active"><a href="/">Movies</a></li>
@@ -98,9 +84,9 @@
 							<a href="/registration">Sign up</a>
 						</div>
 					</div>
-					/.navbar-collapse
+<!-- 					/.navbar-collapse -->
 				</div>
-				/.container-fluid
+<!-- 				/.container-fluid -->
 			</nav>
 		</div>
 
