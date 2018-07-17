@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 
 import com.booking.cinema.model.Role;
 import com.booking.cinema.model.User;
-import com.booking.cinema.repository.RoleRepository;
-import com.booking.cinema.repository.UserRepository;
+import com.booking.cinema.repositories.RoleRepository;
+import com.booking.cinema.repositories.UserRepository;
 
 @Service("userService")
 public class UserServiceImpl implements UserService{

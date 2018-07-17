@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.booking.cinema.model.Cinema;
-import com.booking.cinema.repository.CinemaRepository;
+import com.booking.cinema.repositories.CinemaRepository;
 
 @Controller
 public class CinemaController {
