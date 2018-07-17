@@ -12,8 +12,8 @@ import com.booking.cinema.repository.CinemaRepository;
 @Controller
 public class AuditoriumController {
 
-	@Autowired
-	CinemaRepository cinemaRepository;
+	///@Autowired
+	//CinemaRepository cinemaRepository;
 	
 	@Autowired
 	AuditoriumRepository auditoriumRepository;
