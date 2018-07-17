@@ -30,6 +30,11 @@ public class Movie {
 	private Language language;
 	private Language subtitles;
 	private double movieLength;
+	//@OneToMany(mappedBy = "movie", cascade = CascadeType.ALL)
+	//public Set<Showtime> showtime;
+
+	
+	 
 
 	public Movie() {
 

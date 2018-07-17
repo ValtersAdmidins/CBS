@@ -32,12 +32,17 @@ public class Cinema {
 	private double latitude;
 	
 	private double longitude;
+	//@OneToMany(mappedBy = "cinema", cascade = CascadeType.ALL)
+	//public Set<Showtime> showtime;
+	////@OneToMany(mappedBy = "cinema", cascade = CascadeType.ALL,  orphanRemoval = true )
+	////private Set<Auditorium> auditorium;
 	
-	//@OneToMany(mappedBy = "cinema", cascade = CascadeType.ALL,  orphanRemoval = true )
-	//private Set<Auditorium> auditorium;
+	
 	public Cinema() {
 
 	}
+    
+	 
 
 	public Cinema(String name, String address, double latitude,
 			double longitude) {

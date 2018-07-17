@@ -23,13 +23,18 @@ public class Auditorium {
 	private boolean[][] seats;
 	//@ManyToOne
 	//@JoinColumn(name = "cinema_id")
-	//private Cinema cinema;
+	//public Cinema cinema;
+	// @OneToMany(mappedBy = "auditorium", cascade = CascadeType.ALL)
+	//public Set<Showtime> showtime;
+	
+   
 	
 
 	public Auditorium() {
 
 	}
 
+	
 	public Auditorium(int roomNumber, int seatCountR, int seatCountC,
 			boolean[][] seats) {
 		this.roomNumber = roomNumber;

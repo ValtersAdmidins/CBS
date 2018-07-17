@@ -23,25 +23,25 @@ public class Ticket {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	@Column(nullable = false, length = 5)
-	private int column;
+	private int columnn;
 	@Column(nullable = false, length = 5)
-	private int row;
+	private int roww;
 	@Column(length = 5)
 	private double price;
 
 	@ManyToOne
 	@JoinColumn(name = "user_id")
-	private User user;
+	public User user;
 	@Column
 	private Date date;
 	@ManyToOne
 	@JoinColumn(name = "showtime_id")
-	private Showtime showtime;
+	public Showtime showtime;
 
-	public Ticket(long id, int column, int row, double price) {
+	public Ticket(long id, int columnn, int roww, double price) {
 		setId(id);
-		setColumn(column);
-		setRow(row);
+		setColumn(columnn);
+		setRow(roww);
 		setPrice(price);
 		 
 	}
@@ -90,26 +90,26 @@ public class Ticket {
 	}
 
 	public int getColumn() {
-		return column;
+		return columnn;
 	}
 
-	public void setColumn(int column) {
-		if (column < 0) {
+	public void setColumn(int columnn) {
+		if (columnn < 0) {
 			System.out.println("Column cannot be lower than 1");
 		} else {
-			this.column = column;
+			this.columnn = columnn;
 		}
 	}
 
 	public int getRow() {
-		return row;
+		return roww;
 	}
 
-	public void setRow(int row) {
-		if (row < 0) {
+	public void setRow(int roww) {
+		if (roww < 0) {
 			System.out.println("Row cannot be lower than 1");
 		} else {
-			this.row = row;
+			this.roww = roww;
 		}
 	}
 
@@ -117,7 +117,7 @@ public class Ticket {
 
 	@Override
 	public String toString() {
-		return "Ticket [id=" + id + ", column=" + column + ", row=" + row + " + " + "]";
+		return "Ticket [id=" + id + ", column=" + columnn + ", row=" + roww + " + " + "]";
 	}
 
 }

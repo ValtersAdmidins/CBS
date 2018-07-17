@@ -18,9 +18,14 @@
 	
 	 @Column(length = 100)
 	 private String fullName;
+     
+	// @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+	// public Set<Ticket> tickets;
+	 
+	
  
- 
- public Long getId() {
+
+public Long getId() {
 	 return id;
  }
 
