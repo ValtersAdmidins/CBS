@@ -18,10 +18,17 @@ public class Auditorium {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	private int roomNumber;
 	private int seatCountR;
 	private int seatCountC;
 	private boolean[][] seats;
+=======
+
+	private String roomNumber;
+	private String seats;
+ 
+>>>>>>> arturs
 	//@ManyToOne
 	//@JoinColumn(name = "cinema_id")
 	//public Cinema cinema;
@@ -29,6 +36,7 @@ public class Auditorium {
 	//public Set<Showtime> showtime;
 	
    
+<<<<<<< HEAD
 	
 =======
 	private String roomNumber;
@@ -53,6 +61,16 @@ public class Auditorium {
 		setRoomNumber(roomNumber);
 		setSeats(seats);
 >>>>>>> gita
+=======
+	public Auditorium() {
+
+	}
+	
+	
+	public Auditorium(String roomNumber, String seats) {
+		setRoomNumber(roomNumber);
+		setSeats(seats);
+>>>>>>> arturs
 	}
 
 	@Id
@@ -66,11 +84,11 @@ public class Auditorium {
 	}
 	 
 
-	public int getRoomNumber() {
+	public String getRoomNumber() {
 		return roomNumber;
 	}
 
-	public void setRoomNumber(int roomNumber) {
+	public void setRoomNumber(String roomNumber) {
 		this.roomNumber = roomNumber;
 	}
 
@@ -81,12 +99,18 @@ public class Auditorium {
 	@Override
 	public String toString() {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return "Auditorium [id=" + id + ", roomNumber=" + roomNumber + ", seatCountR=" + seatCountR + ", seatCountC="
 				+ seatCountC + ", seats=" + Arrays.toString(seats) + "]";
 =======
 		return "Auditorium [id=" + id + ", roomNumber=" + roomNumber
 				+ ", seats=" + seats + ", cinema=" + cinema + "]";
 >>>>>>> gita
+=======
+		return "Auditorium [id=" + id + ", roomNumber=" + roomNumber
+				+ ", seats=" + seats + ", cinema="  + "]";
+
+>>>>>>> arturs
 	}
 
 	
