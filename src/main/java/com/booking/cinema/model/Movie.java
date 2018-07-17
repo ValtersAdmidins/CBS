@@ -29,7 +29,7 @@ public class Movie {
 	private ArrayList<Genre> genres;
 	private Language language;
 	private Language subtitles;
-	private double movieLength;
+	private int movieLength;
 	//@OneToMany(mappedBy = "movie", cascade = CascadeType.ALL)
 	//public Set<Showtime> showtime;
 
@@ -42,7 +42,7 @@ public class Movie {
 
 	public Movie(String title, String plot, AgeLimit ageLimit,
 			ArrayList<Genre> genres, Language language, Language subtitles,
-			double movieLength) {
+			int movieLength) {
 		setTitle(title);
 		setPlot(plot);
 		setAgeLimit(ageLimit);
@@ -58,7 +58,7 @@ public class Movie {
 
 	
 
-	public void setMovieLength(double movieLength) {
+	public void setMovieLength(int movieLength) {
 		this.movieLength = movieLength;
 	}
 
