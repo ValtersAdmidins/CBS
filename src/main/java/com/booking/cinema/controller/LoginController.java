@@ -12,20 +12,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.booking.cinema.model.User;
-import com.booking.cinema.service.UserService;
+import com.booking.cinema.repositories.UserRepository;
 
 @Controller
 public class LoginController {
 	
 	@Autowired
-	private UserService userService;
-
-	@RequestMapping(value={"/login"}, method = RequestMethod.GET)
-	public ModelAndView login(){
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("login");
-		return modelAndView;
-	}
+	UserRepository userRepository;
 	
 	@RequestMapping(value="/registration", method = RequestMethod.GET)
 	public ModelAndView registration(){
@@ -39,7 +32,7 @@ public class LoginController {
 	@RequestMapping(value = "/registration", method = RequestMethod.POST)
 	public ModelAndView createNewUser(@Valid User user, BindingResult bindingResult) {
 		ModelAndView modelAndView = new ModelAndView();
-		User userExists = userService.findUserByEmail(user.getEmail());
+		User userExists = userRepository.findByEmail(user.getEmail());
 		if (userExists != null) {
 			bindingResult
 					.rejectValue("email", "error.user",
@@ -48,7 +41,7 @@ public class LoginController {
 		if (bindingResult.hasErrors()) {
 			modelAndView.setViewName("registration");
 		} else {
-			userService.saveUser(user);
+			userRepository.save(user);
 			modelAndView.addObject("successMessage", "User has been registered successfully");
 			modelAndView.addObject("user", new User());
 			modelAndView.setViewName("registration");
@@ -61,7 +54,7 @@ public class LoginController {
 	public ModelAndView home(){
 		ModelAndView modelAndView = new ModelAndView();
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		User user = userService.findUserByEmail(auth.getName());
+		User user = userRepository.findByEmail(auth.getName());
 		modelAndView.addObject("userName", "Welcome " + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
 		modelAndView.addObject("adminMessage","Content Available Only for Users with Admin Role");
 		modelAndView.setViewName("admin/home");

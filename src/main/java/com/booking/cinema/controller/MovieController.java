@@ -1,15 +1,11 @@
 package com.booking.cinema.controller;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -18,7 +14,7 @@ import com.booking.cinema.exceptions.ResourceNotFoundException;
 import com.booking.cinema.model.Movie;
 import com.booking.cinema.model.User;
 import com.booking.cinema.repositories.MovieRepository;
-import com.booking.cinema.service.UserService;
+import com.booking.cinema.repositories.UserRepository;
 
 
 @Controller
@@ -28,7 +24,7 @@ public class MovieController {
 	MovieRepository movieRepository;
 	
 	@Autowired
-	private UserService userService;
+	UserRepository userRepository;
 
 	@RequestMapping("/")
 	public String showAllMovies(Model model) {
@@ -51,7 +47,7 @@ public class MovieController {
 	public ModelAndView movieCreatePage(){
 		ModelAndView modelAndView = new ModelAndView();
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		User user = userService.findUserByEmail(auth.getName());
+		User user = userRepository.findByEmail(auth.getName());
 		modelAndView.addObject("userName", "Welcome " + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
 		modelAndView.addObject("adminMessage","Content Available Only for Users with Admin Role");
 		modelAndView.setViewName("admin/movie-create");
