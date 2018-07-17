@@ -49,6 +49,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.antMatchers("/registration").permitAll()
 				.antMatchers("/movies/**").permitAll()
 				.antMatchers("/cinemas/**").permitAll()
+<<<<<<< HEAD
+=======
+				.antMatchers("/buyaticket/**").permitAll()
+>>>>>>> gita3
 				.antMatchers("/admin/**").hasAuthority("ADMIN").anyRequest()
 				.authenticated().and().csrf().disable().formLogin()
 				.loginPage("/").failureUrl("/?error=true")
