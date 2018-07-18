@@ -119,7 +119,8 @@ function createAuditorium() {
  
  function addRow(){
 	 var columns = document.getElementsByClassName("rows");
-	 var j = document.getElementsByClassName("seat") / columns.length;
+	 var j = (document.getElementsByClassName("seat").length / columns.length) + 1;
+	 console.log(j);
 	 for(var i = 0 ; i<columns.length; i++){
 		 var listEl = document.createElement("li");
 			listEl.setAttribute("class", "seat");

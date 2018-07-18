@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.booking.cinema.exceptions.ResourceNotFoundException;
 import com.booking.cinema.model.Movie;
 import com.booking.cinema.repositories.MovieRepository;
+import com.booking.cinema.repositories.ShowtimeRepository;
 import com.booking.cinema.repositories.UserRepository;
 
 @Controller
@@ -23,6 +24,9 @@ public class MovieController {
 
 	@Autowired
 	UserRepository userRepository;
+	
+	@Autowired
+	ShowtimeRepository showtimeRepository;
 
 	@RequestMapping("/")
 	public String showAllMovies(Model model) {
@@ -37,6 +41,8 @@ public class MovieController {
 				movieRepository.findById(movieId).orElseThrow(
 						() -> new ResourceNotFoundException("Movie", "id",
 								movieId)));
+		
+		//model.addAttribute("showtimes",showtimeRepository.findAllShowtimesForMovie(movieId));
 		return "movie";
 	}
 

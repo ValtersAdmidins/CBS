@@ -53,6 +53,11 @@ public class Auditorium {
 	public void setSeats(String seats) {
 		this.seats = seats;
 	}
+	
+
+	public String getSeats() {
+		return seats;
+	}
 
 
 	@Override
