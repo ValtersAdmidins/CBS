@@ -32,6 +32,8 @@ public class Showtime {
 	@JoinColumn(name = "cinema_id")
 	public Cinema cinema;
 	
+	private String takenSeats;
+	
     @Column
 	private Date dateAndTime;
    // @OneToMany(mappedBy = "showtime", cascade = CascadeType.ALL)
