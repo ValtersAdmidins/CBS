@@ -98,11 +98,11 @@ public class CinemaController {
 //	  }
 	
 	@RequestMapping(value="/cinemas/cinema-update", method=RequestMethod.GET)
-	public String updateCinema(@RequestParam(name="cinemaId") Long cinemaId, Model model) {
+	public String updateCinema(
+			@RequestParam(name="cinemaId") Long cinemaId, Model model) {
 	
 	    Cinema cinema = cinemaRepository.findById(cinemaId).orElseThrow(
-				() -> new ResourceNotFoundException("Cinema", "id",
-						cinemaId)); 
+				() -> new ResourceNotFoundException("Cinema", "id", cinemaId)); 
 						
 		model.addAttribute(cinema);
 	    
@@ -120,10 +120,10 @@ public class CinemaController {
 //		cinemaa.setId(cinema.getId());
 //		cinemaa.setName(cinema.getName());
 //		cinemaa.setAddress(cinema.getAddress());
-	     
+	     cinema.setLatitudeAndLongitudeFromAddress();
 		cinemaRepository.save(cinema);
 	    
-	    return "cinemas";
+		return "redirect:/cinemas";
 	
 	}
 	
