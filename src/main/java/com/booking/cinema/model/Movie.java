@@ -1,17 +1,11 @@
 package com.booking.cinema.model;
 
 import java.util.ArrayList;
-import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.validation.constraints.NotBlank;
 
 import com.booking.cinema.enums.AgeLimit;
 import com.booking.cinema.enums.Genre;
@@ -19,7 +13,8 @@ import com.booking.cinema.enums.Language;
 
 @Entity
 public class Movie {
-    @Id
+
+	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
@@ -29,12 +24,7 @@ public class Movie {
 	private ArrayList<Genre> genres;
 	private Language language;
 	private Language subtitles;
-	private double movieLength;
-	//@OneToMany(mappedBy = "movie", cascade = CascadeType.ALL)
-	//public Set<Showtime> showtime;
-
-	
-	 
+	private int movieLengthMinutes;
 
 	public Movie() {
 
@@ -42,24 +32,14 @@ public class Movie {
 
 	public Movie(String title, String plot, AgeLimit ageLimit,
 			ArrayList<Genre> genres, Language language, Language subtitles,
-			double movieLength) {
+			int movieLengthMinutes) {
 		setTitle(title);
 		setPlot(plot);
 		setAgeLimit(ageLimit);
 		setGenres(genres);
 		setLanguage(language);
 		setSubtitles(subtitles);
-		setMovieLength(movieLength);
-	}
-	
-	public double getMovieLength() {
-		return movieLength;
-	}
-
-	
-
-	public void setMovieLength(double movieLength) {
-		this.movieLength = movieLength;
+		setMovieLengthMinutes(movieLengthMinutes);
 	}
 
 	@Id
@@ -71,7 +51,7 @@ public class Movie {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
+
 	public String getTitle() {
 		return title;
 	}
@@ -120,14 +100,20 @@ public class Movie {
 		this.subtitles = subtitles;
 	}
 
-	@Override
-	public String toString() {
-		return "Movie [id=" + id + ", title=" + title + ", plot=" + plot + ", ageLimit=" + ageLimit + ", genres="
-				+ genres + ", language=" + language + ", subtitles=" + subtitles + ", movieLength=" + movieLength + "]";
+	public int getMovieLengthMinutes() {
+		return movieLengthMinutes;
 	}
 
-	
+	public void setMovieLengthMinutes(int movieLengthMinutes) {
+		this.movieLengthMinutes = movieLengthMinutes;
+	}
 
-	 
+	@Override
+	public String toString() {
+		return "Movie [id=" + id + ", title=" + title + ", plot=" + plot
+				+ ", ageLimit=" + ageLimit + ", genres=" + genres
+				+ ", language=" + language + ", subtitles=" + subtitles
+				+ ", movieLengthMinutes=" + movieLengthMinutes + "]";
+	}
 
 }

@@ -6,9 +6,12 @@
 
 	<header th:replace="layout :: site-header" />
 
-	Create a movie here!
+	Edit a movie here!
 
-	<form th:action="@{/movies/movie-create}" th:object="${movie}" method="post">
+	<form th:action="@{/movies/movie-edit}" th:object="${movie}" method="post">
+	
+		<input type="hidden" th:field="*{id}">
+	
 		<div class="form-row">
 			<div class="form-group col-md-6">
 				<label for="inputTitle">Title</label> <input type="text" class="form-control" th:field="*{title}" placeholder="Title">
@@ -58,6 +61,8 @@
 			<button type="submit" class="btn btn-primary">Done</button>
 		</div>
 	</form>
+
+
 
 	<footer th:replace="layout :: site-footer" />
 

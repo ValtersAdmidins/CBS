@@ -16,26 +16,47 @@
 		<p th:text="'Subtitles: ' + ${movie.subtitles} " />
 		<p th:text="'Length ' + ${movie.movieLengthMinutes} " />
 
+		<button onclick="location.href='/buyaticket'" type="button" class="btn btn-primary">Buy ticket</button>
 
-		<div class="container">
+<!-- 		<div class="form-group col-md-4"> -->
 
-			<tr th:each="cinema : ${cinemas}">
-				<div>
-					<h5 style="display: inline;">
-						<td th:text="  ${cinema.name}"></td>
-					</h5>
-					<p style="display: inline">
-						<td th:text="${cinema.surname}"></td>
-					</p>
-					<td><form th:method="post" th:action="@{/buyaticket}>">
-							<input type="hidden" name="cinemaname" value="${cinema.name}"> <input type="hidden" name="moviename" value="${movie.title}"> <input type="submit"
-								value="Buy a ticket">
-						</form></td>
+<!-- 			<label for="inputCinema">Cinema</label> <select th:field="*{cinema}" class="form-control"> -->
 
-				</div>
-			</tr>
-			<br>
-		</div>
+<!-- 				<option th:each="cinema : ${cinemas}" th:value="${cinema.id}" th:text="${cinema.name}"></option> -->
+
+<!-- 			</select> -->
+<!-- 		</div> -->
+
+<!-- 		<form th:method="post" th:action="@{/buyaticket}>"> -->
+<!-- 			<label for="inputCinema">Cinema</label> <select th:field="*{cinema}" class="form-control"> -->
+
+<!-- 				<option th:each="cinema : ${cinemas}" th:value="${cinema.id}" th:text="${cinema.name}"></option> -->
+
+<!-- 			</select> <input type="submit" value="Buy a ticket"> -->
+<!-- 		</form> -->
+
+
+
+		<!-- 		<div class="container"> -->
+
+		<!-- 			<tr th:each="cinema : ${cinemas}"> -->
+		<!-- 				<div> -->
+		<!-- 					<h5 style="display: inline;"> -->
+		<!-- 						<td th:text="  ${cinema.name}"></td> -->
+		<!-- 					</h5> -->
+		<!-- 					<p style="display: inline"> -->
+		<!-- 						<td th:text="${cinema.surname}"></td> -->
+		<!-- 					</p> -->
+		<!-- 					<form th:method="post" th:action="@{/buyaticket}>"> -->
+		<!-- 						<input type="hidden" name="cinemaname" value="${cinema.name}"> <input type="hidden" name="moviename" value="${movie.title}"> <input type="submit" -->
+		<!-- 							value="Buy a ticket"> -->
+		<!-- 					</form> -->
+
+		<!-- 				</div> -->
+
+		<!-- 			</tr> -->
+		<!-- 			<br> -->
+		<!-- 		</div> -->
 
 	</div>
 
