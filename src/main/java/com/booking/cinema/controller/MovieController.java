@@ -41,7 +41,7 @@ public class MovieController {
 						() -> new ResourceNotFoundException("Movie", "id",
 								movieId)));
 		
-		model.addAttribute("showtimes",showtimeRepository.findAllShowtimesForMovie(movieId));
+		//model.addAttribute("showtimes",showtimeRepository.findAllShowtimesForMovie(movieId));
 		return "movie";
 	}
 

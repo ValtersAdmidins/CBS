@@ -2,10 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="layout :: site-head">
 </head>
-<script type="text/javascript" src="../static/buyaticketscript.js"
-	th:src="@{/buyaticketscript.js}"></script>
-	<script type="text/javascript" src="../static/scrt.js"
-	th:src="@{/scrt.js}"></script>
+<script  src="/js/buyaticketscript.js" /></script>
+<script  src="/js/scrt.js" /></script>
 <body th:onload="'stringToView(\'' + ${auditoriumString} + '\');'">
 	<header th:replace="layout :: site-header" /></header>
 

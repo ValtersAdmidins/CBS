@@ -2,14 +2,64 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="layout :: site-head">
 </head>
+
+<script  src="/js/newshowtimescript.js" /></script>
 <body>
 
 	<header th:replace="layout :: site-header" />
 
 
-	<form th:action="@{/}" th:object="${showtime}" method="post">
+	<form th:action="@{/showtimes/showtime-create}" th:object="${showtime}" method="post">
+		<p>
+			Movie:  <select th:field="*{movie}">
+                         <option value=""> -- </option>
+                         <option th:each="m : ${mvs}"
+                            th:value="${m.id}"
+                            th:utext="${m.title}"/>
+                  </select> 
+		</p>
 		
+		<p>
+			Cinema:  <select  id="cinemaSelect" th:onchange="'changeAuditoriums(\'' + ${auditoriums} + '\');'" th:field="*{cinema}">
+                         <option value=""> -- </option>
+                         <option th:each="c : ${cinemas}"
+                            th:value="${c.id}"
+                            th:utext="${c.name}"/>
+                  </select> 
+		</p>
+	
+	
+	<br><br><h4 style="color:red">TEMPORARY : MUST SHOW ONLY AUDITORIUMS OF THE SELECTED CINEMA</h4>
+		<p>
+			Auditorium:  <select id="auditoriumSelect" th:field="*{auditorium}">
+                         <option value=""> -- </option>
+                        <!--  <option th:each="a : ${auditoriums}"
+                            th:value="${a.id}"
+                            th:utext="${a.roomNumber}"/> -->
+                  </select> 
+		</p>
+	<h4 style="color:red">TEMPORARY : MUST SHOW ONLY AUDITORIUMS OF THE SELECTED CINEMA</h4><br><br>
+	
+	<p>
+		Date:  <input type="date" id="showtimeDate"  />
+		</p>
+		<p>
+		Time:  <input type="time" id="showtimeTime"  />
+		</p>
+		
+		<p>
+			<input type="submit" value="Create Showtime" /> <input type="reset" value="Reset" />
+		</p>
+
+<p>
+			<input onclick="test()" type="button" value="tsadsadasd" /> 
+		</p>
+
+
+
 	</form>
+
+
 
 	<footer th:replace="layout :: site-footer" />
 

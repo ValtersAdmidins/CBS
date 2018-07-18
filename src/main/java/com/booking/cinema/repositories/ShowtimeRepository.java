@@ -12,8 +12,8 @@ import com.booking.cinema.model.Showtime;
 @Repository
 public interface ShowtimeRepository extends JpaRepository<Showtime, Long> {
 
-	
+	/*
 	@Query("SELECT s FROM Showtime s WHERE s.movie_id = movie_id")
     public List<Showtime> findAllShowtimesForMovie(@Param("movie_id") Long movie_id);
-	
+	*/
 }
