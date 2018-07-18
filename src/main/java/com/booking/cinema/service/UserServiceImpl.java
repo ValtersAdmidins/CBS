@@ -26,6 +26,7 @@ public class UserServiceImpl implements UserService{
 	public User findUserByEmail(String email) {
 		return userRepository.findByEmail(email);
 	}
+	 
 
 	@Override
 	public void saveUser(User user) {
@@ -35,5 +36,8 @@ public class UserServiceImpl implements UserService{
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
 		userRepository.save(user);
 	}
+
+
+	 
 
 }

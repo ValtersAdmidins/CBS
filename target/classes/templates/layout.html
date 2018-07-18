@@ -67,6 +67,7 @@
 						</ul>
 
 						<div sec:authorize="isAuthenticated()">
+						
 							<form th:action="@{/logout}" method="get">
 								<button class="btn btn-md btn-danger btn-block" name="registration" type="Submit">Logout</button>
 							</form>
@@ -75,7 +76,8 @@
 						<div class="container">
 							<form th:action="@{/}" method="POST" class="form-signin">
 								<h3 class="form-signin-heading" th:text="Welcome"></h3>
-								<br /> <input type="text" id="email" name="email" th:placeholder="Email" class="form-control" /> <br /> <input type="password" th:placeholder="Password" id="password"
+								<br /> <input type="text" id="email" name="email" th:placeholder="Email" class="form-control" /> <br /> 
+								<input type="password" th:placeholder="Password" id="password"
 									name="password" class="form-control" /> <br />
 
 								<div align="center" th:if="${param.error}">
@@ -91,7 +93,17 @@
 				<!-- 				/.container-fluid -->
 			</nav>
 		</div>
+		
+		
+	<div sec:authorize="hasAuthority('USER')">
+ 		<a th:href="@{/userProfile(userId=${user.id})}" class="btn btn-danger">My profile</a>
+ 	
 
+
+	</div>
+	
+	
+	
 	</header>
 
 

@@ -30,4 +30,14 @@ public class UserController {
 								userId)));
 		return "admin/user";
 	}
+	 
+	@RequestMapping("/userProfile/{id}")
+	public String getUserByID(@PathVariable(value = "id") Long userId,
+			Model model) {
+		model.addAttribute("user",
+				userRepository.findById(userId).orElseThrow(
+						() -> new ResourceNotFoundException("User", "id",
+								userId)));
+		return "userprofile";
+	}
 }
