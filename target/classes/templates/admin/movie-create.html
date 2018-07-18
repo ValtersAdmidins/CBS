@@ -20,6 +20,71 @@
 	<header th:replace="layout :: site-header" />
 >>>>>>> origin/valters5
 
+<<<<<<< HEAD
+	TEMPmjfireuhfuierhlfuwhlufhewufhluewhfluwehfhuewlfhweufhlewhflwhe	
+	rkgkerhgioergierjgerger
+	g
+	 
+
+		<form action="#" th:action="@{/movies/movie-create}" th:object="${movie}" method="post">ds
+			<div class="form-row">
+				<div class="form-group col-md-6">
+				<label for="inputTitle">Title</label>
+				<input type="text" class="form-control" th:field="*{title}" placeholder="Title"/>
+				</div>
+				<div class="form-group col-md-6">
+					<label for="inputPlot">Plot</label>
+					<textarea class="form-control" th:field="*{plot}" placeholder="Plot" required></textarea>
+				</div>
+			</div>
+			<div class="form-group col-md-4">
+				<label for="inputAgeLimit">Age limit</label> <select th:field="*{ageLimit}" class="form-control">
+					<option value="NOLIMIT">NOLIMIT</option>
+					<option value="PLUSSIXTEEN">PLUSSIXTEEN</option>
+					<option value="PLUSEIGHTTEEN">PLUSEIGHTTEEN</option>
+				</select>
+			</div>
+			<div class="form-group col-md-4">
+				<label for="inputGenres">Genre</label> <select th:field="*{genres}" class="form-control">
+					<option value="ACTION">ACTION</option>
+					<option value="COMEDY">COMEDY</option>
+					<option value="HORROR">HORROR</option>
+					<option value="DRAMA">DRAMA</option>
+					<option value="ROMANCE">ROMANCE</option>
+					<option value="CRIME">CRIME</option>
+				</select>
+			</div>
+			<div class="form-group col-md-4">
+				<label for="inputLanguage">Language</label> <select th:field="*{language}" class="form-control">
+					<option value="LATVIAN">LATVIAN</option>
+					<option value="ENGLISH">ENGLISH</option>
+					<option value="RUSSIAN">RUSSIAN</option>
+				</select>
+			</div>
+			<div class="form-group col-md-4">
+				<label for="inputSubtitles">Subtitles</label> <select th:field="*{subtitles}" class="form-control">
+					<option value="LATVIAN">LATVIAN</option>
+					<option value="ENGLISH">ENGLISH</option>
+					<option value="RUSSIAN">RUSSIAN</option>
+				</select>
+
+			</div>
+			<div class="form-group col-md-4">
+				<label for="inputMovieLength">Movie Length in minutes</label> <input type="number" class="form-control" th:field="*{movieLength}" placeholder="Movie length">
+			</div>
+			<div class="form-group col-md-4">
+				<label for="inputCinema">Cinema</label> <select th:field="*{cinema}" class="form-control">
+
+					<option th:each="cinema : ${cinemas}" th:value="${cinema.id}" th:text="${cinema.name}">TEST</option>
+
+				</select>
+			</div>
+			<div class="form-group col-md-4">
+				<br>
+				<button type="submit" class="btn btn-primary">Done</button>
+			</div>
+		</form>
+=======
 	Create a movie here!
 
 <<<<<<< HEAD

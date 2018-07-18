@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: site-head">
+</head>
+<body>
+
+	<header th:replace="layout :: site-header" /></header>
+
+	<div sec:authorize="!hasAuthority('ADMIN')">NOT ADMIN</div>
+
+	<div class="container">
+
+	 
+			<div style="background-color: lightgrey;">
+
+	<form th:action="@{/cinemas/cinema-update}" th:object="${cinema}" method="post">
+	<input type="hidden" th:field="*{id}">
+		<p>
+			Name: <input type="text"  th:field="*{name}" />   
+		</p>
+		<p>
+			Address: <input type="text"  th:field="*{address}" />  
+		</p>
+		<p>
+			<input type="submit" value="Submit" /> <input type="reset" value="Reset" />
+		</p>
+	</form>
+
+			</div>
+
+			<div sec:authorize="hasAuthority('ADMIN')">
+
+				
+			</div>
+	 
+	
+
+	<footer th:replace="layout :: site-footer" /></footer>
+
+</body>
+</html>

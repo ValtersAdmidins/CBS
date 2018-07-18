@@ -1,16 +1,23 @@
 package com.booking.cinema.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.booking.cinema.exceptions.ResourceNotFoundException;
 import com.booking.cinema.model.Auditorium;
 import com.booking.cinema.model.Cinema;
+import com.booking.cinema.model.Movie;
 import com.booking.cinema.repositories.AuditoriumRepository;
 import com.booking.cinema.repositories.CinemaRepository;
 import com.booking.cinema.repositories.UserRepository;
@@ -57,7 +64,71 @@ public class CinemaController {
 		cinemaRepository.save(cinema);
 		return "redirect:/cinemas";
 	}
-
+	
+	//Deletes cinema
+	@RequestMapping(value = "/cinemas/cinema-delete", method = RequestMethod.GET)
+	public String handleDeleteCinema(
+			@RequestParam(name="cinemaId")Long cinemaId) {
+	    System.out.println(cinemaId);
+	    System.out.println("test");
+	    Cinema cinema = cinemaRepository.findById(cinemaId) .orElseThrow(() -> new
+	    		  ResourceNotFoundException("Cinema", "id", cinemaId));
+	    		  
+	    		 cinemaRepository.delete(cinema);
+	    return "redirect:/cinemas";
+	}
+	
+	
+	
+// Update a Cinema
+//	  @PutMapping("/cinemas/cinema-update") 
+//	  public Cinema updateCinema(@PathVariable(value
+//	  = "id") Long cinemaId, @Valid @RequestBody Cinema cinemaDetails) {
+//	  
+//	 Cinema cinema = cinemaRepository.findById(cinemaId)
+//			 .orElseThrow(() -> new ResourceNotFoundException("Cinema", "id", cinemaId));
+//	 
+//	 cinema.setName(cinemaDetails.getName());
+//	 cinema.setAddress(cinemaDetails.getAddress());
+//	  
+//	 Cinema updatedCinema = cinemaRepository.save(cinema); 
+//	 
+//	 	return updatedCinema; 
+//	 
+//	  }
+	
+	@RequestMapping(value="/cinemas/cinema-update", method=RequestMethod.GET)
+	public String updateCinema(
+			@RequestParam(name="cinemaId") Long cinemaId, Model model) {
+	
+	    Cinema cinema = cinemaRepository.findById(cinemaId).orElseThrow(
+				() -> new ResourceNotFoundException("Cinema", "id", cinemaId)); 
+						
+		model.addAttribute(cinema);
+	    
+	    
+	    return "admin/cinema-update";
+	
+	}
+	
+	@RequestMapping(value="/cinemas/cinema-update", method=RequestMethod.POST)
+	public String updateCinemaPost(Cinema cinema) {
+	
+//		Cinema cinemaa = cinemaRepository.findById(cinema.getId()).orElseThrow(
+//				() -> new ResourceNotFoundException("Cinema", "id",
+//						cinema.getId()));
+//		cinemaa.setId(cinema.getId());
+//		cinemaa.setName(cinema.getName());
+//		cinemaa.setAddress(cinema.getAddress());
+	     cinema.setLatitudeAndLongitudeFromAddress();
+		cinemaRepository.save(cinema);
+	    
+		return "redirect:/cinemas";
+	
+	}
+	
+	
+	
 	// Loads the auditorium-create html page for admin.
 	@GetMapping("/cinemas/auditorium-create")
 	public String auditoriumCreateForm(Model model) {
