@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: site-head">
+</head>
+<body>
+
+	<header th:replace="layout :: site-header" />
+
+
+	<form th:action="@{/}" th:object="${showtime}" method="post">
+		
+	</form>
+
+	<footer th:replace="layout :: site-footer" />
+
+</body>
+</html>

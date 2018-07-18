@@ -32,6 +32,7 @@ public class Showtime {
 	@JoinColumn(name = "cinema_id")
 	public Cinema cinema;
 	
+	@Column
 	private String takenSeats;
 	
     @Column
