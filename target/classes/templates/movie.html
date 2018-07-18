@@ -16,49 +16,23 @@
 		<p th:text="'Subtitles: ' + ${movie.subtitles} " />
 		<p th:text="'Length ' + ${movie.movieLengthMinutes} " />
 
+
+
+	<tr th:each="showtime : ${showtimes}">
+			<div style="background-color: lightgrey;">
+
+				<td th:text="${showtime.dateAndTime}"></td> <br>
+				<td th:text="${showtime.takenSeats}"></td> <br>
+				<!--  <td th:text="${showtime.ageLimit}"></td> <br>
+				<td th:text="${movie.language}"></td> <br>
+				<td th:text="${movie.subtitles}"></td> <br>
+				<td th:text="${movie.movieLengthMinutes}"></td> <br>-->
+			</div>
+
+		</tr>
 		<button onclick="location.href='/buyaticket'" type="button" class="btn btn-primary">Buy ticket</button>
 
-<!-- 		<div class="form-group col-md-4"> -->
 
-<!-- 			<label for="inputCinema">Cinema</label> <select th:field="*{cinema}" class="form-control"> -->
-
-<!-- 				<option th:each="cinema : ${cinemas}" th:value="${cinema.id}" th:text="${cinema.name}"></option> -->
-
-<!-- 			</select> -->
-<!-- 		</div> -->
-
-<!-- 		<form th:method="post" th:action="@{/buyaticket}>"> -->
-<!-- 			<label for="inputCinema">Cinema</label> <select th:field="*{cinema}" class="form-control"> -->
-
-<!-- 				<option th:each="cinema : ${cinemas}" th:value="${cinema.id}" th:text="${cinema.name}"></option> -->
-
-<!-- 			</select> <input type="submit" value="Buy a ticket"> -->
-<!-- 		</form> -->
-
-
-
-		<!-- 		<div class="container"> -->
-
-		<!-- 			<tr th:each="cinema : ${cinemas}"> -->
-		<!-- 				<div> -->
-		<!-- 					<h5 style="display: inline;"> -->
-		<!-- 						<td th:text="  ${cinema.name}"></td> -->
-		<!-- 					</h5> -->
-		<!-- 					<p style="display: inline"> -->
-		<!-- 						<td th:text="${cinema.surname}"></td> -->
-		<!-- 					</p> -->
-		<!-- 					<form th:method="post" th:action="@{/buyaticket}>"> -->
-		<!-- 						<input type="hidden" name="cinemaname" value="${cinema.name}"> <input type="hidden" name="moviename" value="${movie.title}"> <input type="submit" -->
-		<!-- 							value="Buy a ticket"> -->
-		<!-- 					</form> -->
-
-		<!-- 				</div> -->
-
-		<!-- 			</tr> -->
-		<!-- 			<br> -->
-		<!-- 		</div> -->
-
-	</div>
 
 	<footer th:replace="layout :: site-footer" /></footer>
 
