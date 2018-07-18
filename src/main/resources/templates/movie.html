@@ -30,8 +30,8 @@
 			</div>
 
 		</tr>
-		<button onclick="location.href='/buyaticket'" type="button" class="btn btn-primary">Buy ticket</button>
-
+		
+		<a th:href="@{/tickets(movieId=${movie.id})}" class="btn btn-info">Buy ticket</a>
 
 
 	<footer th:replace="layout :: site-footer" /></footer>

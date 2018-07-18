@@ -15,6 +15,7 @@ import com.booking.cinema.model.Movie;
 import com.booking.cinema.repositories.MovieRepository;
 import com.booking.cinema.repositories.ShowtimeRepository;
 import com.booking.cinema.repositories.UserRepository;
+import com.booking.cinema.service.UserService;
 
 @Controller
 public class MovieController {
@@ -27,10 +28,14 @@ public class MovieController {
 	
 	@Autowired
 	ShowtimeRepository showtimeRepository;
+	
+	@Autowired
+	UserService userService;
 
 	@RequestMapping("/")
 	public String showAllMovies(Model model) {
 		model.addAttribute("movies", movieRepository.findAll());
+		model.addAttribute("user", userService.getCurrentUserId());
 		return "index";
 	}
 

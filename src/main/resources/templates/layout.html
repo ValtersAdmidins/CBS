@@ -91,6 +91,12 @@
 				<!-- 				/.container-fluid -->
 			</nav>
 		</div>
+		
+		<div sec:authorize="hasAuthority('USER')">
+		
+			<a th:href="@{/userProfile(userId=${cinema.id})}" class="btn btn-danger">Update</a>
+		
+		</div>
 
 	</header>
 
