@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: site-head">
+</head>
+<body>
+
+	<header th:replace="layout :: site-header" /></header>
+
+	<div sec:authorize="hasAuthority('ADMIN')">
+
+		<h1>add showtimes</h1>
+
+	</div>
+
+	<div sec:authorize="!hasAuthority('ADMIN')">NOT ADMIN</div>
+
+		<footer th:replace="layout :: site-footer" /></footer>
+</body>
+</html>
