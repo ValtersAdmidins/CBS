@@ -47,16 +47,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 			authorizeRequests()
 				.antMatchers("/").permitAll()
 				.antMatchers("/registration").permitAll()
-<<<<<<< HEAD
 				.antMatchers("/movies").permitAll()
 				.antMatchers("/movies/movie").permitAll()
 				.antMatchers("/cinemas").permitAll()
 				.antMatchers("/cinemas/cinema").permitAll()
-=======
-				.antMatchers("/movies/**").permitAll()
-				.antMatchers("/auditorium-create/**").permitAll()
-				.antMatchers("/cinemas/**").permitAll()
->>>>>>> gita3
 				.antMatchers("/buyaticket/**").permitAll()
 				.antMatchers("/admin/**").hasAuthority("ADMIN").anyRequest()
 				.authenticated().and().csrf().disable().formLogin()
