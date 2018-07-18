@@ -11,6 +11,7 @@
 		LOGGED IN AS ADMIN.
 
 		<button onclick="location.href='/cinemas/cinema-create'" type="button" class="btn btn-primary">Add Cinema</button>
+		 
 
 	</div>
 
@@ -39,7 +40,7 @@
 			<div sec:authorize="hasAuthority('ADMIN')">
 
 				<button onclick="location.href='/cinemas/auditorium-create'" type="button" class="btn btn-primary">Add auditorium</button>
-
+				<a th:href="@{/cinemas/cinema-delete(cinemaId=${cinema.id})}" class="btn btn-danger">Delete</a>
 			</div>
 		</tr>
 

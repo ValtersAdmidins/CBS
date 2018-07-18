@@ -1,12 +1,16 @@
 package com.booking.cinema.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.booking.cinema.exceptions.ResourceNotFoundException;
 import com.booking.cinema.model.Auditorium;
@@ -57,7 +61,35 @@ public class CinemaController {
 		cinemaRepository.save(cinema);
 		return "redirect:/cinemas";
 	}
-
+	
+	//Deletes cinema
+	@RequestMapping(value = "/cinemas/cinema-delete", method = RequestMethod.GET)
+	public String handleDeleteCinema(
+			@RequestParam(name="cinemaId")Long cinemaId) {
+	    System.out.println(cinemaId);
+	    System.out.println("test");
+	    Cinema cinema = cinemaRepository.findById(cinemaId) .orElseThrow(() -> new
+	    		  ResourceNotFoundException("Cinema", "id", cinemaId));
+	    		  
+	    		 cinemaRepository.delete(cinema);
+	    return "redirect:/cinemas";
+	}
+	
+	
+//	@DeleteMapping("/cinemas/cinema-delete") public ResponseEntity<?>
+//	  deleteCinema(@PathVariable(value = "id") Long id) {
+//	  
+//	 Cinema cinema = cinemaRepository.findById(id) .orElseThrow(() -> new
+//	  ResourceNotFoundException("Cinema", "id", id));
+//	  
+//	 cinemaRepository.delete(cinema);
+//	  
+//	  return "redirect:/";
+//	  }
+	
+	
+	
+	
 	// Loads the auditorium-create html page for admin.
 	@GetMapping("/cinemas/auditorium-create")
 	public String auditoriumCreateForm(Model model) {
