@@ -19,16 +19,13 @@
 				<td th:text="${showtime.dateAndTime}"></td>
 				<td  th:text="${showtime.takenSeats}"></td>
 				
-				
-				<input type="button" value="delete" style="background-color: red; border-radius:5px">
-				<br><br>
-				
+				<a th:href="@{/showtimes/showtime-delete(showtimeId=${showtime.id})}" class="btn btn-danger">Delete</a>
 				<!--  <td th:text="${showtime.ageLimit}"></td> <br>
 				<td th:text="${movie.language}"></td> <br>
 				<td th:text="${movie.subtitles}"></td> <br>
 				<td th:text="${movie.movieLengthMinutes}"></td> <br>-->
 			</div>
-			<a th:href="@{/showtimes/showtime-delete(showtimeId=${showtime.id})}" class="btn btn-danger">Delete</a>
+			
 		</tr>
 		
 

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: site-head">
+</head>
+<body>
+
+	<header th:replace="layout :: site-header" /></header>
+
+	<div sec:authorize="hasAuthority('ADMIN')">
+
+		<h1>these are all auditories</h1>
+		
+		<button onclick="location.href='/auditories/auditorium-create'" type="button" class="btn btn-primary">Add Auditorium</button>
+		
+		
+		<tr th:each="auditorium : ${auditories}">
+			<div style="background-color: lightgrey;">
+
+				<td th:text="${auditorium.roomNumber}"></td>
+				<td  th:text="${auditorium.seats}"></td>
+				
+				<a th:href="@{/auditories/auditorium-delete(auditoriumId=${auditorium.id})}" class="btn btn-danger">Delete</a>
+				
+			</div>
+			
+		</tr>
+		
+
+	</div>
+
+	<div sec:authorize="!hasAuthority('ADMIN')">NOT ADMIN</div>
+
+		<footer th:replace="layout :: site-footer" /></footer>
+</body>
+</html>

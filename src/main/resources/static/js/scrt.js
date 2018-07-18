@@ -186,7 +186,7 @@ function submitAuditorium() {
 		//array.push(2);
 	}
 	
-	
+	document.getElementById("seatmapstring").value = seatmapstring;
 	console.log(seatmapstring);
 
 }

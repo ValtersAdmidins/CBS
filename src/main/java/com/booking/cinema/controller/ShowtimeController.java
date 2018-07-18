@@ -41,14 +41,14 @@ public class ShowtimeController {
 	
 	
 	@RequestMapping("/showtimes")
-	public String showAllMovies(Model model) {
+	public String showAllShowtimes(Model model) {
 		
 		model.addAttribute("showtimes", showtimeRepository.findAll());
 		return "admin/showtimes";
 	}
 	
 	@GetMapping("/showtimes/showtime-create")
-	public String cinemaCreateForm(Model model) {
+	public String showtimeCreateForm(Model model) {
 		
 		model.addAttribute("mvs", movieRepository.findAll());
 		model.addAttribute("cinemas",cinemaRepository.findAll());
@@ -63,14 +63,14 @@ public class ShowtimeController {
 	public String showtimeCreateProccess(Showtime showtime) {
 		
 		//showtime.setDateFromString();
-		showtime.setTakenSeats(showtime.getAuditorium().getSeats());
+		//showtime.setTakenSeats(showtime.getAuditorium().getSeats());
 		showtimeRepository.save(showtime);
 		return "redirect:/showtimes";
 	}
 	
 
 	@RequestMapping(value = "/showtimes/showtime-delete", method = RequestMethod.GET)
-	public String movieDeleteProccess(	
+	public String showtimeDeleteProccess(	
 			@RequestParam(name = "showtimeId") Long showtimeId) {
 
 		Showtime showtime =showtimeRepository.findById(showtimeId).orElseThrow(
