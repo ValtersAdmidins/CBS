@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="layout :: site-head">
 </head>
-<script type="text/javascript" src="../../static/scrt.js"
-	th:src="@{/scrt.js}"></script>
-	
-	
+<script type="text/javascript" src="../../static/scrt.js" th:src="@{/scrt.js}"></script>
+
+
 <body>
 
 	<header th:replace="layout :: site-header" /></header>
+<<<<<<< HEAD
 <div style="margin-left: auto; margin-right: auto; width: 50%;">
 	<h1>Form</h1>
 	<form th:action="@{/cinemas/auditorium-create}" th:object="${auditorium}" method="post">
@@ -38,6 +37,34 @@
 
 
 </div>
+=======
+	<div style="margin-left: auto; margin-right: auto; width: 50%;">
+		<h1>Form</h1>
+		<form th:action="@{/cinemas/auditorium-create}" th:object="${auditorium}" method="post">
+
+			<p>
+				Room: <input type="text" required th:field="*{roomNumber}" />
+			</p>
+
+			<p>
+				Size rows: <input type="text" required id="rowsInput" />
+			</p>
+
+			<p>
+				Size columns: <input type="text" required id="columnsInput" />
+			</p>
+
+			<input type="hidden" value="" /> <input type="button" value="create a seatmap" onclick="createAuditorium()">
+		</form>
+		<span id="message"></span>
+		<div id="auditorium"></div>
+		<input type="button" id="addrowbutton" value="Add Row" onclick="addRow()" style="display: none;"> <input type="button" id="addcolumnbutton" value="Add Column"
+			onclick="addColumn()" style="display: none;"> <input type="button" id="submitauditoriumbutton" style="display: none;" value="SUBMIT AUDITORIUM"
+			onclick="submitAuditorium()">
+
+
+	</div>
+>>>>>>> origin/valters5
 	<footer th:replace="layout :: site-footer" /></footer>
 
 </body>

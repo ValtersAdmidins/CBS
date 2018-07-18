@@ -6,6 +6,16 @@
 
 	<header th:replace="layout :: site-header" /></header>
 
+	<div sec:authorize="hasAuthority('ADMIN')">
+
+		LOGGED IN AS ADMIN.
+
+		<button onclick="location.href='/cinemas/cinema-create'" type="button" class="btn btn-primary">Add Cinema</button>
+
+	</div>
+
+	<div sec:authorize="!hasAuthority('ADMIN')">NOT ADMIN</div>
+
 	<div class="container">
 
 		<tr th:each="cinema : ${cinemas}">
@@ -25,8 +35,14 @@
 				</p>
 
 			</div>
-			<button onclick="location.href='/cinemas/auditorium-create'" type="button" class="btn btn-primary">Add auditorium</button>
+
+			<div sec:authorize="hasAuthority('ADMIN')">
+
+				<button onclick="location.href='/cinemas/auditorium-create'" type="button" class="btn btn-primary">Add auditorium</button>
+
+			</div>
 		</tr>
+
 
 		<br>
 
