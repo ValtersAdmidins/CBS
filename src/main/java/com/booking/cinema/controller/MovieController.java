@@ -103,19 +103,21 @@ public class MovieController {
 	@RequestMapping(value = "/movies/movie-edit", method = RequestMethod.POST)
 	public String movieEditProccess(Movie movieDetails) {
 
-		Movie movie = movieRepository.findById(movieDetails.getId()).orElseThrow(
-				() -> new ResourceNotFoundException("Movie", "id", movieDetails.getId()));
+//		Movie movie = movieRepository.findById(movieDetails.getId()).orElseThrow(
+//				() -> new ResourceNotFoundException("Movie", "id", movieDetails.getId()));
+//		
+		movieRepository.save(movieDetails);
 		
-		movie.setId(movieDetails.getId());
-		movie.setTitle(movieDetails.getTitle());
-		movie.setPlot(movieDetails.getPlot());
-		movie.setAgeLimit(movieDetails.getAgeLimit());
-		movie.setGenres(movieDetails.getGenres());
-		movie.setLanguage(movieDetails.getLanguage());
-		movie.setSubtitles(movieDetails.getSubtitles());
-		movie.setMovieLengthMinutes(movieDetails.getMovieLengthMinutes());
+//		movie.setId(movieDetails.getId());
+//		movie.setTitle(movieDetails.getTitle());
+//		movie.setPlot(movieDetails.getPlot());
+//		movie.setAgeLimit(movieDetails.getAgeLimit());
+//		movie.setGenres(movieDetails.getGenres());
+//		movie.setLanguage(movieDetails.getLanguage());
+//		movie.setSubtitles(movieDetails.getSubtitles());
+//		movie.setMovieLengthMinutes(movieDetails.getMovieLengthMinutes());
 		
-		movieRepository.save(movie);
+//		movieRepository.save(movie);
 		
 		return "redirect:/";
 	}
