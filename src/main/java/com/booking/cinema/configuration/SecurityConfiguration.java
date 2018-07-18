@@ -48,6 +48,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.antMatchers("/").permitAll()
 				.antMatchers("/registration").permitAll()
 				.antMatchers("/movies/**").permitAll()
+				.antMatchers("/auditorium-create/**").permitAll()
 				.antMatchers("/cinemas/**").permitAll()
 				.antMatchers("/buyaticket/**").permitAll()
 				.antMatchers("/admin/**").hasAuthority("ADMIN").anyRequest()
