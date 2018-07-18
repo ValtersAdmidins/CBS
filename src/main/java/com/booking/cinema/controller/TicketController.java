@@ -3,25 +3,30 @@ package com.booking.cinema.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 
+import com.booking.cinema.model.Ticket;
 import com.booking.cinema.repositories.TicketRepository;
- 
+
 @Controller
 public class TicketController {
 
-
 	@Autowired
 	TicketRepository ticketRepository;
-	
-	@RequestMapping("/tickets")
-	public String showAllTickets(Model model) {
-		model.addAttribute("tickets", ticketRepository.findAll());
-		return "tickets";
+
+	// Loads the buyaticket html page.
+	@GetMapping("/buyaticket")
+	public String ticketBuyForm(Model model) {
+		model.addAttribute("ticket", new Ticket());
+		return "buyaticket";
 	}
 
-
-
+	// // Proccesses the movie creation and insertion into the database.
+	// @PostMapping("/movies/movie-create")
+	// public String ticketButProccess(Movie movie) {
+	// movieRepository.save(movie);
+	// return "redirect:/";
+	// }
 
 	// @Autowired
 	// CinemaRepository cinemaRepository;
@@ -55,4 +60,3 @@ public class TicketController {
 	// return "buyaticket";
 	// }
 }
-

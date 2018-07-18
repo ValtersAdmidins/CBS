@@ -38,6 +38,10 @@ public class Ticket {
 	@JoinColumn(name = "showtime_id")
 	public Showtime showtime;
 
+	public Ticket() {
+		 
+	}
+	
 	public Ticket(long id, int columnn, int roww, double price) {
 		setId(id);
 		setColumn(columnn);
