@@ -6,10 +6,14 @@ Implementation-Version: 0.0.1-SNAPSHOT
 Built-By: gita
 =======
 Built-By: user
+<<<<<<< HEAD
 >>>>>>> arturs
 =======
 Built-By: Rita
 >>>>>>> valters5
+=======
+>>>>>>> 568e178f3e9ecf9ac398f8bb1a8b22974a589125
+>>>>>>> 65a7cc27282ed893fb269b17212bcecceb1b754c
 Implementation-Vendor-Id: com.example
 Build-Jdk: 1.8.0_171
 Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
