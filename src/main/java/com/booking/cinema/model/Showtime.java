@@ -49,6 +49,15 @@ public class Showtime {
 		setDateAndTime(dateAndTime);
 	}
 	
+	public String getTakenSeats() {
+		return takenSeats;
+	}
+
+	public void setTakenSeats(String takenSeats) {
+		this.takenSeats = "111211121112";
+		//this.takenSeats = auditorium.getSeats();
+	}
+
 	public Cinema getCinema() {
 		return cinema;
 	}
