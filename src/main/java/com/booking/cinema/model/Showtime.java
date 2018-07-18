@@ -18,7 +18,7 @@ public class Showtime {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Long id;
 	
 	@ManyToOne
 	@JoinColumn(name = "movie_id")
@@ -32,20 +32,32 @@ public class Showtime {
 	@JoinColumn(name = "cinema_id")
 	public Cinema cinema;
 	
+	@Column
+	private String takenSeats;
+	
     @Column
 	private Date dateAndTime;
    // @OneToMany(mappedBy = "showtime", cascade = CascadeType.ALL)
     //public Set<Ticket> tickets;
-    
+    public Showtime() {
+	}
  
 	 
 
-	public Showtime(int id, Date dateAndTime) {
+	public Showtime(Long id, Date dateAndTime) {
 		setId(id);
- 
 		setDateAndTime(dateAndTime);
 	}
 	
+	public String getTakenSeats() {
+		return takenSeats;
+	}
+
+	public void setTakenSeats(String takenSeats) {
+		this.takenSeats = "111211121112";
+		//this.takenSeats = auditorium.getSeats();
+	}
+
 	public Cinema getCinema() {
 		return cinema;
 	}
@@ -53,11 +65,11 @@ public class Showtime {
 	public void setCinema(Cinema cinema) {
 		this.cinema = cinema;
 	}
-
-	public int getId() {
+	
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public Movie getMovie() {
@@ -77,6 +89,13 @@ public class Showtime {
 	}
 	public void setDateAndTime(Date dateAndTime) {
 		this.dateAndTime = dateAndTime;
+	}
+	
+	public void setDateFromString(String str) {
+		String filtered = str.replaceAll("[^0-9,]"," ");
+		String[] numbers = filtered.split(" ");
+		
+		Date tmp = new Date(Integer.parseInt(numbers[0]), Integer.parseInt(numbers[1]), Integer.parseInt(numbers[2]), Integer.parseInt(numbers[3]), Integer.parseInt(numbers[4]));
 	}
 	
 	
