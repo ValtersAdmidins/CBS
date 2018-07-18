@@ -7,19 +7,14 @@
 	<header th:replace="layout :: site-header" /></header>
 
 	<div sec:authorize="hasAuthority('ADMIN')">
-	
- 		LOGGED IN AS ADMIN.
+
+		LOGGED IN AS ADMIN.
 
 		<button onclick="location.href='/movies/movie-create'" type="button" class="btn btn-primary">Add Movie</button>
-		<button onclick="location.href='/movies/movie-delete'" type="button" class="btn btn-primary">Delete Movie</button>
-		
- 	</div>
- 	
- 	<div sec:authorize="!hasAuthority('ADMIN')">
-	
- 		NOT ADMIN
- 		
- 	</div>
+
+	</div>
+
+	<div sec:authorize="!hasAuthority('ADMIN')">NOT ADMIN</div>
 
 	<div class="container">
 
@@ -37,6 +32,16 @@
 				<td th:text="${movie.language}"></td> <br>
 				<td th:text="${movie.subtitles}"></td> <br>
 				<td th:text="${movie.movieLengthMinutes}"></td> <br>
+
+			</div>
+
+			<div sec:authorize="hasAuthority('ADMIN')">
+
+				<!-- 				<button onclick="location.href='/movies/movie-delete'" type="button" class="btn btn-primary">Delete Movie</button> -->
+				
+				<a th:href="@{/movies/movie-delete(movieId=${movie.id})}" class="btn btn-danger">Delete</a>
+				<a th:href="@{/movies/movie-edit(movieId=${movie.id})}" class="btn btn-info">Edit</a>
+<!--  -->
 			</div>
 
 		</tr>

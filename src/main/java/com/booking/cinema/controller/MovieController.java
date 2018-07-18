@@ -4,10 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.booking.cinema.exceptions.ResourceNotFoundException;
 import com.booking.cinema.model.Movie;
@@ -52,6 +53,128 @@ public class MovieController {
 		movieRepository.save(movie);
 		return "redirect:/";
 	}
+
+	// // Delete a Movie
+	// @RequestMapping(value = "/movies/movie-delete", method =
+	// RequestMethod.GET)
+	// public String movieDeleteProccess(
+	// @RequestParam(name = "movieId") Long movieId) {
+	// Movie movie = movieRepository.findById(movieId).orElseThrow(
+	// () -> new ResourceNotFoundException("Movie", "id", movieId));
+	//
+	// movieRepository.delete(movie);
+	// return "redirect:/";
+	// }
+
+	// @DeleteMapping("/movies/movie-delete")
+	// public String movieEdit(@PathVariable(value = "id") Long movieId) {
+	//
+	// Movie movie = movieRepository.findById(movieId).orElseThrow(
+	// () -> new ResourceNotFoundException("Movie", "id", movieId));
+	//
+	// movieRepository.delete(movie);
+	// return "redirect:/";
+	// }
+
+	@RequestMapping(value = "/movies/movie-delete", method = RequestMethod.GET)
+	public String movieDeleteProccess(
+			@RequestParam(name = "movieId") Long movieId) {
+
+		Movie movie = movieRepository.findById(movieId).orElseThrow(
+				() -> new ResourceNotFoundException("Movie", "id", movieId));
+
+		movieRepository.delete(movie);
+
+		return "redirect:/";
+	}
+	
+	@RequestMapping(value = "/movies/movie-edit", method = RequestMethod.GET)
+	public String movieEditForm(
+			@RequestParam(name = "movieId") Long movieId, Model model) {
+
+		Movie movie = movieRepository.findById(movieId).orElseThrow(
+				() -> new ResourceNotFoundException("Movie", "id", movieId));
+		
+		model.addAttribute(movie);
+
+		return "admin/movie-edit";
+	}
+	
+	@RequestMapping(value = "/movies/movie-edit", method = RequestMethod.POST)
+	public String movieEditProccess(Movie movieDetails) {
+
+		Movie movie = movieRepository.findById(movieDetails.getId()).orElseThrow(
+				() -> new ResourceNotFoundException("Movie", "id", movieDetails.getId()));
+		
+		movie.setId(movieDetails.getId());
+		movie.setTitle(movieDetails.getTitle());
+		movie.setPlot(movieDetails.getPlot());
+		movie.setAgeLimit(movieDetails.getAgeLimit());
+		movie.setGenres(movieDetails.getGenres());
+		movie.setLanguage(movieDetails.getLanguage());
+		movie.setSubtitles(movieDetails.getSubtitles());
+		movie.setMovieLengthMinutes(movieDetails.getMovieLengthMinutes());
+		
+		movieRepository.save(movie);
+		
+		return "redirect:/";
+	}
+	
+//	  @PutMapping("/movies/{id}") public Movie updateMovie(@PathVariable(value
+//	  = "id") Long movieId, @Valid @RequestBody Movie movieDetails) {
+//	  
+//	  Movie movie = movieRepository.findById(movieId) .orElseThrow(() -> new
+//	  ResourceNotFoundException("Movie", "id", movieId));
+//	  
+//	  movie.setTitle(movieDetails.getTitle());
+//	  movie.setPlot(movieDetails.getPlot());
+//	  
+//	  Movie updatedMovie = movieRepository.save(movie); return updatedMovie; }
+
+	// // Proccesses the movie creation and insertion into the database.
+	// @PostMapping("/movies/movie-create")
+	// public String movieEditProccess(Movie movie) {
+	// movieRepository.save(movie);
+	// return "redirect:/";
+	// }
+
+	// @PutMapping("/movies/movie-edit")
+	// public Movie updateMovie(@PathVariable(value = "id") Long movieId,
+	// @Valid @RequestBody Movie movieDetails) {
+	//
+	// Movie movie = movieRepository.findById(movieId).orElseThrow(
+	// () -> new ResourceNotFoundException("Movie", "id", movieId));
+	//
+	// movie.setTitle(movieDetails.getTitle());
+	// movie.setPlot(movieDetails.getPlot());
+	//
+	// Movie updatedMovie = movieRepository.save(movie);
+	// return updatedMovie;
+	// }
+
+	// // Loads the movie-create html page for admin.
+	// @RequestMapping(value = "/movies/movie-edit", method = RequestMethod.GET)
+	// public String movieDeleteProccess(
+	// @RequestParam(name = "movieId") Long movieId) {
+	// Movie movie = movieRepository.findById(movieId).orElseThrow(
+	// () -> new ResourceNotFoundException("Movie", "id", movieId));
+	//
+	// movieRepository.delete(movie);
+	// return "redirect:/";
+	// }
+
+	// // Update a Movie
+	//
+	// @PutMapping("/movies/{id}") public Movie updateMovie(@PathVariable(value
+	// = "id") Long movieId, @Valid @RequestBody Movie movieDetails) {
+	//
+	// Movie movie = movieRepository.findById(movieId) .orElseThrow(() -> new
+	// ResourceNotFoundException("Movie", "id", movieId));
+	//
+	// movie.setTitle(movieDetails.getTitle());
+	// movie.setPlot(movieDetails.getPlot());
+	//
+	// Movie updatedMovie = movieRepository.save(movie); return updatedMovie; }
 
 	// Loads the movie-create html page for admin.
 	// @RequestMapping(value="/movies/movie-create", method = RequestMethod.GET)
