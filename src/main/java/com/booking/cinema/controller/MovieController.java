@@ -107,6 +107,7 @@ public class MovieController {
 
 		Showtime showtime = showtimeRepository.findById(showtimeId).orElseThrow(
 				() -> new ResourceNotFoundException("Showtime", "id", showtimeId));
+		
 
 		
 		model.addAttribute("movie", movie);
@@ -170,7 +171,6 @@ public class MovieController {
 				() -> new ResourceNotFoundException("Movie", "id", movieId));
 
 		movieRepository.delete(movie);
-		showtimeRepository.deleteShowtimesByMovieId(movieId);
 
 		return "redirect:/";
 	}
