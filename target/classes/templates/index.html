@@ -21,7 +21,7 @@
 		<tr th:each="movie : ${movies}">
 			<div style="background-color: lightgrey;">
 
-				<a th:href="${'/movies/' + movie.id}"><h2>
+				<a th:href="@{/movies/{movieId} (movieId=${movie.id})}"><h2>
 						<td th:text="${movie.title}"></td>
 					</h2></a>
 				<p>

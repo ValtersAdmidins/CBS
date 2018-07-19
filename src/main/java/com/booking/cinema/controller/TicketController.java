@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.booking.cinema.exceptions.ResourceNotFoundException;
+import com.booking.cinema.model.Cinema;
 import com.booking.cinema.model.Movie;
+import com.booking.cinema.repositories.CinemaRepository;
 import com.booking.cinema.repositories.MovieRepository;
 import com.booking.cinema.repositories.TicketRepository;
 
@@ -17,42 +19,62 @@ public class TicketController {
 
 	@Autowired
 	TicketRepository ticketRepository;
-	
+
 	@Autowired
 	MovieRepository movieRepository;
-	
+
 	@Autowired
-	MovieRepository movieRepository;
-	
+	CinemaRepository cinemaRepository;
 
-//	// Loads the buyaticket html page.
-//	@GetMapping("/tickets")
-//	public String ticketBuyForm(Model model) {
-//		model.addAttribute("ticket", new Ticket());
+	// // Loads the buyaticket html page.
+	// @GetMapping("/tickets")
+	// public String ticketBuyForm(Model model) {
+	// model.addAttribute("ticket", new Ticket());
+	// return "buyaticket";
+	// }
+
+//	@RequestMapping(value = "/tickets", method = RequestMethod.GET)
+//	public String ticketBuyForm(@RequestParam(name = "movieId") Long movieId,
+//			Model model) {
+//
+//		Movie movie = movieRepository.findById(movieId).orElseThrow(
+//				() -> new ResourceNotFoundException("Movie", "id", movieId));
+//
+//		model.addAttribute("movie", movie);
+//		model.addAttribute("cinemas", cinemaRepository.findAll());
+//
+//		return "chooseCinema";
+//	}
+//	
+//	@RequestMapping(value = "/tickets/{movieId}")
+//	public String saveClassesProfessor(@RequestParam("movieId") Long movieId, Model model) {
+//		Movie movie = movieRepository.findById(movieId).orElseThrow(
+//				() -> new ResourceNotFoundException("Movie", "id", movieId));
+//
+//		model.addAttribute("movie", movie);
+//		
+//		return "chooseCinema";
+//
+//	}
+//
+//	@RequestMapping(value = "/tickets/{movieId}/chooseCinema")
+//	public String saveClassesProfessor(@RequestParam("movieId") Long movieId,
+//			@RequestParam("cinemaId") Long cinemaId, Model model) {
+//		Movie movie = movieRepository.findById(movieId).orElseThrow(
+//				() -> new ResourceNotFoundException("Movie", "id", movieId));
+//
+//		model.addAttribute("movie", movie);
+//		model.addAttribute("cinemas", cinemaRepository.findAll());
+//
 //		return "buyaticket";
 //	}
-	
-	@RequestMapping(value = "/tickets", method = RequestMethod.GET)
-	public String ticketBuyForm(
-			@RequestParam(name = "movieId") Long movieId, Model model) {
 
-		Movie movie = movieRepository.findById(movieId).orElseThrow(
-				() -> new ResourceNotFoundException("Movie", "id", movieId));
-
-		model.addAttribute("movie", movie);
-		model.addAttribute("cinemas", cinemaRepository.findAll());
-		
-		return "chooseCinema";
-	}
-	
-	
-
-//	// Loads the choose cinema html page.
-//	@GetMapping("/buyaticket")
-//	public String ticketBuyProccess(Model model) {
-//		model.addAttribute("ticket", new Ticket());
-//		return "buyaticket";
-//	}
+	// // Loads the choose cinema html page.
+	// @GetMapping("/buyaticket")
+	// public String ticketBuyProccess(Model model) {
+	// model.addAttribute("ticket", new Ticket());
+	// return "buyaticket";
+	// }
 
 	// // Proccesses the movie creation and insertion into the database.
 	// @PostMapping("/movies/movie-create")

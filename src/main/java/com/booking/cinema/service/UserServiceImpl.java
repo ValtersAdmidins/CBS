@@ -38,16 +38,16 @@ public class UserServiceImpl implements UserService {
 		user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
 		userRepository.save(user);
 	}
-	public Long getCurrentUserId() {
-
-		Authentication authentication = SecurityContextHolder.getContext()
-				.getAuthentication();
-		if (!(authentication instanceof AnonymousAuthenticationToken)) {
-
-			User user = (User) authentication.getPrincipal();
-			Long userId = user.getId();
-			return userId;
-		}
-		return null;
-	}
+//	public User getCurrentUser() {
+//
+//		Authentication authentication = SecurityContextHolder.getContext()
+//				.getAuthentication();
+//		if (!(authentication instanceof AnonymousAuthenticationToken)) {
+//
+//			User user = (User) authentication.getPrincipal();
+//			
+//			return user;
+//		}
+//		return null;
+//	}
 }
