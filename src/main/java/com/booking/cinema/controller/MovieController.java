@@ -171,7 +171,6 @@ public class MovieController {
 				() -> new ResourceNotFoundException("Movie", "id", movieId));
 
 		movieRepository.delete(movie);
-		showtimeRepository.deleteShowtimesByMovieId(movieId);
 
 		return "redirect:/";
 	}
