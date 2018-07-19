@@ -82,10 +82,11 @@ function seatCheckBox(id) {
 }
 
 function makingSeatsTaken() {
+	
 	var newseatmapstring = "";
 	var seats = document.getElementsByClassName("chooseseatbutton");
-	var rowCount = document.getElementsByClassName("newline").length + 1;
-	var k = seats.length/rowCount -1;
+	var rowCount = document.getElementsByClassName("newline").length;
+	var k = seats.length/rowCount;
 	for (var i = 0; i < seats.length; i++) {
 		if(seats[i].style.backgroundColor == ('lightseagreen')){
 			newseatmapstring += "3";
@@ -93,13 +94,13 @@ function makingSeatsTaken() {
 			newseatmapstring += "1";
 		}else if(seats[i].style.backgroundColor == ('black')){
 			newseatmapstring += "3";
-		}else{
+		}else if(seats[i].style.backgroundColor == ('white')){
 			newseatmapstring += "0";
 		}
 		
 		if(k==i){
 			newseatmapstring += "2";
-			k += i+1;
+			k += i;
 			
 		}
 		
@@ -107,6 +108,7 @@ function makingSeatsTaken() {
 	}
 	
 	document.getElementById("newseatmapstring").value = newseatmapstring;
+	console.log(document.getElementById("newseatmapstring"));
 	
 }
 

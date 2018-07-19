@@ -34,12 +34,12 @@
 			</h3>
 			<form action="#" th:action="@{/showtimes/showtime-edit}" th:object="${showtime}" method="post">
 
-				<input type="text" th:field="*{id}"> 
-				<input type="text" th:field="*{cinema}"> 
-				<input type="text" th:field="*{movie}"> 
-				<input type="text" th:field="*{auditorium}"> 
+				<input type="hidden" th:field="*{id}"> 
+				<input type="hidden" th:field="*{cinema}"> 
+				<input type="hidden" th:field="*{movie}"> 
+				<input type="hidden" th:field="*{auditorium}"> 
 				
-				<input type="text" value=""  th:field="*{takenSeats}" id="newseatmapstring"> 
+				<input type="hidden" value=""  th:field="*{takenSeats}" id="newseatmapstring"> 
 					
 				<input type="submit" value="Buy Tickets">
 			</form>
