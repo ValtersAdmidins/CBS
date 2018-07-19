@@ -6,20 +6,14 @@
 
 	<header th:replace="layout :: site-header" /></header>
 
-	<div class="container">
-		<h2 th:text='${movie.title}' />
-
-		<img href="">
-		<p th:text="'Plot: ' + ${movie.plot} " />
-		<p th:text="'Age limit: ' + ${movie.ageLimit} " />
-		<p th:text="'Language: ' + ${movie.language} " />
-		<p th:text="'Subtitles: ' + ${movie.subtitles} " />
-		<p th:text="'Length ' + ${movie.movieLengthMinutes} " />
-
-</div>
-
+	<h1>These are all showtimes for movie:</h1><h2 th:text='${movie.title}'></h2>
+	
+	<h1>In chosen cinema: cinema</h1><h2 th:text='${cinema.name}'></h2>
+	
 	<tr th:each="showtime : ${showtimes}">
-		<div style="background-color: lightgrey;">
+		<div style="background-color: lightgrey">
+
+			<a th:href="@{/movies/{movieId}/chooseCinema/{cinemaId}/showtimes/{showtimeId} (movieId=${movie.id}, cinemaId=${cinema.id}, showtimeId=${showtime.id})}">
 
 			<td th:text="${showtime.dateAndTime}"></td> <br>
 			<td th:text="${showtime.takenSeats}"></td> <br>
@@ -31,10 +25,8 @@
 
 	</tr>
 
-	<a th:href="@{/movies/{movieId}/chooseCinema (movieId=${movie.id})}" class="btn btn-info">choose cinema</a>
-
+	<div sec:authorize="!hasAuthority('ADMIN')">NOT ADMIN</div>
 
 	<footer th:replace="layout :: site-footer" /></footer>
-
 </body>
 </html>

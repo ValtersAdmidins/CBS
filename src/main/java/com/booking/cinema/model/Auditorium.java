@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,14 +19,52 @@ public class Auditorium {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@Column
 	private String roomNumber;
+	
+	@Column(columnDefinition = "TEXT")
 	private String seats;
+	
+	
+//	@ManyToOne
+//	@JoinColumn(name = "cinema_id")
+//	public Cinema cinema;
+//
+//	
+//	public Cinema getCinema() {
+//		return cinema;
+//	}
+//
+//	public void setCinema(Cinema cinema) {
+//		this.cinema = cinema;
+//}
+	/*
+	public void setCinemaId() {
+		this.cinema = cinema;
+}
+*/
+	
+	@Column
+	public Long cinema_id;
+	
+	
+	
+
+	public Long getCinema_id() {
+		return cinema_id;
+	}
+
+
+	public void setCinema_id(Long cinema_id) {
+		this.cinema_id = cinema_id;
+	}
+
 
 	public Auditorium() {
 
 	}
-	
-	
+
+
 	public Auditorium(String roomNumber, String seats) {
 		setRoomNumber(roomNumber);
 		setSeats(seats);

@@ -4,12 +4,19 @@
 </head>
 
 <script  src="/js/newshowtimescript.js" /></script>
+<script  src="/js/scrt.js" /></script>
 <body>
 
 	<header th:replace="layout :: site-header" />
 
 
 	<form th:action="@{/showtimes/showtime-create}" th:object="${showtime}" method="post">
+	
+		<p>
+			Cinema:   IEGUST CINEMA NAME NO ID KAS IR PATH
+			<input type="hidden" id="cinemaid" value="" th:field="*{cinema}"/>
+		</p>
+	
 		<p>
 			Movie:  <select th:field="*{movie}">
                          <option value=""> -- </option>
@@ -19,49 +26,40 @@
                   </select> 
 		</p>
 		
-		<p>
-			Cinema:  <select  id="cinemaSelect" th:onchange="'changeAuditoriums(\'' + ${auditoriums} + '\');'" th:field="*{cinema}">
-                         <option value=""> -- </option>
-                         <option th:each="c : ${cinemas}"
-                            th:value="${c.id}"
-                            th:utext="${c.name}"/>
-                  </select> 
-		</p>
 	
 	
-	<br><br><h4 style="color:red">TEMPORARY : MUST SHOW ONLY AUDITORIUMS OF THE SELECTED CINEMA</h4>
+	
 		<p>
 			Auditorium:  <select id="auditoriumSelect" th:field="*{auditorium}">
                          <option value=""> -- </option>
-                        <!--  <option th:each="a : ${auditoriums}"
+                         <option th:each="a : ${auditoriums}"
                             th:value="${a.id}"
-                            th:utext="${a.roomNumber}"/> -->
+                            th:utext="${a.roomNumber}"/>
                   </select> 
 		</p>
-	<h4 style="color:red">TEMPORARY : MUST SHOW ONLY AUDITORIUMS OF THE SELECTED CINEMA</h4><br><br>
-	
 	<p>
-		Date:  <input type="date" id="showtimeDate"  />
+		Date:  <input type="date" id="showtimeDate" onchange="test()" />
 		</p>
 		<p>
-		Time:  <input type="time" id="showtimeTime"  />
+		Time:  <input type="time" id="showtimeTime"  onchange="test()"/>
 		</p>
 		
 		<p>
+		<input type="hidden" id="stringDate" value="" th:field="*{dateAndTime}" />
 			<input type="submit" value="Create Showtime" /> <input type="reset" value="Reset" />
 		</p>
-
-<p>
-			<input onclick="test()" type="button" value="tsadsadasd" /> 
-		</p>
-
 
 
 	</form>
 
+<a th:href="@{/showtimes/showtime-delete-all}" class="btn btn-danger">Delete</a>
 
 
 	<footer th:replace="layout :: site-footer" />
+<script>
+getCinemaID();
 
+
+</script>
 </body>
 </html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: site-head">
+</head>
+<body>
+
+	<header th:replace="layout :: site-header" /></header>
+
+	<h1>These are all cinemas where this movie is playing.</h1>
+
+	<div class="container">
+
+		<tr th:each="cinema : ${cinemas}">
+			<div style="background-color: lightgrey;">
+
+				<a th:href="@{/movies/{movieId}/chooseCinema/{cinemaId}/showtimes (movieId=${movie.id}, cinemaId=${cinema.id})}">
+
+					<h2>
+						<td th:text="${cinema.name}"></td>
+					</h2>
+				</a>
+				<p>
+					<td th:text="${cinema.address}"></td>
+				</p>
+				<p>
+					<td th:text="${cinema.latitude}"></td>
+				</p>
+				<p>
+					<td th:text="${cinema.longitude}"></td>
+				</p>
+
+			</div>
+
+		</tr>
+
+
+		<br>
+
+		<footer th:replace="layout :: site-footer" /></footer>
+</body>
+</html>

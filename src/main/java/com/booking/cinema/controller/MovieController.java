@@ -11,22 +11,32 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.booking.cinema.exceptions.ResourceNotFoundException;
+import com.booking.cinema.model.Cinema;
 import com.booking.cinema.model.Movie;
+import com.booking.cinema.model.Showtime;
+import com.booking.cinema.repositories.CinemaRepository;
 import com.booking.cinema.repositories.MovieRepository;
 import com.booking.cinema.repositories.ShowtimeRepository;
 import com.booking.cinema.repositories.UserRepository;
+import com.booking.cinema.service.UserService;
 
 @Controller
 public class MovieController {
+
+	@Autowired
+	CinemaRepository cinemaRepository;
 
 	@Autowired
 	MovieRepository movieRepository;
 
 	@Autowired
 	UserRepository userRepository;
-	
+
 	@Autowired
 	ShowtimeRepository showtimeRepository;
+
+	@Autowired
+	UserService userService;
 
 	@RequestMapping("/")
 	public String showAllMovies(Model model) {
@@ -34,16 +44,75 @@ public class MovieController {
 		return "index";
 	}
 
-	@RequestMapping("/movies/{id}")
-	public String getMovieById(@PathVariable(value = "id") Long movieId,
+	@RequestMapping("/movies/{movieId}")
+	public String getMovieById(@PathVariable(value = "movieId") Long movieId,
 			Model model) {
 		model.addAttribute("movie",
 				movieRepository.findById(movieId).orElseThrow(
 						() -> new ResourceNotFoundException("Movie", "id",
 								movieId)));
-		
-		//model.addAttribute("showtimes",showtimeRepository.findAllShowtimesForMovie(movieId));
+
+		model.addAttribute("showtimes",
+				showtimeRepository.findAllShowtimesForMovie(movieId));
+		System.out.println("IZPILDAS FIND ALL SHOWTIMES FOR MOVIE");
+		for (Showtime s : showtimeRepository
+				.findAllShowtimesForMovie(movieId)) {
+			System.out.println(s);
+		}
 		return "movie";
+	}
+
+	@RequestMapping(value = "/movies/{movieId}/chooseCinema", method = RequestMethod.GET)
+	public String chooseCinemaPage(
+			@PathVariable(value = "movieId") Long movieId, Model model) {
+
+		Movie movie = movieRepository.findById(movieId).orElseThrow(
+				() -> new ResourceNotFoundException("Movie", "id", movieId));
+
+		model.addAttribute("movie", movie);
+		model.addAttribute("cinemas", cinemaRepository.findAll());
+
+		return "chooseCinema";
+	}
+
+	@RequestMapping(value = "/movies/{movieId}/chooseCinema/{cinemaId}/showtimes", method = RequestMethod.GET)
+	public String ChooseShowtimesPage(
+			@PathVariable(value = "movieId") Long movieId,
+			@PathVariable(value = "cinemaId") Long cinemaId, Model model) {
+
+		Movie movie = movieRepository.findById(movieId).orElseThrow(
+				() -> new ResourceNotFoundException("Movie", "id", movieId));
+
+		Cinema cinema = cinemaRepository.findById(cinemaId).orElseThrow(
+				() -> new ResourceNotFoundException("Cinema", "id", cinemaId));
+
+		model.addAttribute("movie", movie);
+		model.addAttribute("cinema", cinema);
+		model.addAttribute("showtimes",
+				showtimeRepository.findAllShowtimesForMovie(movieId));
+
+		return "showtimes";
+	}
+
+	@RequestMapping(value = "/movies/{movieId}/chooseCinema/{cinemaId}/showtimes/{showtimeId}", method = RequestMethod.GET)
+	public String ticketBuyForm(@PathVariable(value = "movieId") Long movieId,
+			@PathVariable(value = "cinemaId") Long cinemaId, @PathVariable(value = "showtimeId") Long showtimeId, Model model) {
+
+		Movie movie = movieRepository.findById(movieId).orElseThrow(
+				() -> new ResourceNotFoundException("Movie", "id", movieId));
+
+		Cinema cinema = cinemaRepository.findById(cinemaId).orElseThrow(
+				() -> new ResourceNotFoundException("Cinema", "id", cinemaId));
+
+		Showtime showtime = showtimeRepository.findById(showtimeId).orElseThrow(
+				() -> new ResourceNotFoundException("Showtime", "id", showtimeId));
+
+		
+		model.addAttribute("movie", movie);
+		model.addAttribute("cinema", cinema);
+		model.addAttribute("showtime", showtime);
+		
+		return "buyaticket";
 	}
 
 	// Loads the movie-create html page for admin.
@@ -90,54 +159,57 @@ public class MovieController {
 				() -> new ResourceNotFoundException("Movie", "id", movieId));
 
 		movieRepository.delete(movie);
+		showtimeRepository.deleteShowtimesByMovieId(movieId);
 
 		return "redirect:/";
 	}
-	
+
 	@RequestMapping(value = "/movies/movie-edit", method = RequestMethod.GET)
-	public String movieEditForm(
-			@RequestParam(name = "movieId") Long movieId, Model model) {
+	public String movieEditForm(@RequestParam(name = "movieId") Long movieId,
+			Model model) {
 
 		Movie movie = movieRepository.findById(movieId).orElseThrow(
 				() -> new ResourceNotFoundException("Movie", "id", movieId));
-		
+
 		model.addAttribute(movie);
 
 		return "admin/movie-edit";
 	}
-	
+
 	@RequestMapping(value = "/movies/movie-edit", method = RequestMethod.POST)
 	public String movieEditProccess(Movie movieDetails) {
 
-//		Movie movie = movieRepository.findById(movieDetails.getId()).orElseThrow(
-//				() -> new ResourceNotFoundException("Movie", "id", movieDetails.getId()));
-//		
+		// Movie movie =
+		// movieRepository.findById(movieDetails.getId()).orElseThrow(
+		// () -> new ResourceNotFoundException("Movie", "id",
+		// movieDetails.getId()));
+		//
 		movieRepository.save(movieDetails);
-		
-//		movie.setId(movieDetails.getId());
-//		movie.setTitle(movieDetails.getTitle());
-//		movie.setPlot(movieDetails.getPlot());
-//		movie.setAgeLimit(movieDetails.getAgeLimit());
-//		movie.setGenres(movieDetails.getGenres());
-//		movie.setLanguage(movieDetails.getLanguage());
-//		movie.setSubtitles(movieDetails.getSubtitles());
-//		movie.setMovieLengthMinutes(movieDetails.getMovieLengthMinutes());
-		
-//		movieRepository.save(movie);
-		
+
+		// movie.setId(movieDetails.getId());
+		// movie.setTitle(movieDetails.getTitle());
+		// movie.setPlot(movieDetails.getPlot());
+		// movie.setAgeLimit(movieDetails.getAgeLimit());
+		// movie.setGenres(movieDetails.getGenres());
+		// movie.setLanguage(movieDetails.getLanguage());
+		// movie.setSubtitles(movieDetails.getSubtitles());
+		// movie.setMovieLengthMinutes(movieDetails.getMovieLengthMinutes());
+
+		// movieRepository.save(movie);
+
 		return "redirect:/";
 	}
-	
-//	  @PutMapping("/movies/{id}") public Movie updateMovie(@PathVariable(value
-//	  = "id") Long movieId, @Valid @RequestBody Movie movieDetails) {
-//	  
-//	  Movie movie = movieRepository.findById(movieId) .orElseThrow(() -> new
-//	  ResourceNotFoundException("Movie", "id", movieId));
-//	  
-//	  movie.setTitle(movieDetails.getTitle());
-//	  movie.setPlot(movieDetails.getPlot());
-//	  
-//	  Movie updatedMovie = movieRepository.save(movie); return updatedMovie; }
+
+	// @PutMapping("/movies/{id}") public Movie updateMovie(@PathVariable(value
+	// = "id") Long movieId, @Valid @RequestBody Movie movieDetails) {
+	//
+	// Movie movie = movieRepository.findById(movieId) .orElseThrow(() -> new
+	// ResourceNotFoundException("Movie", "id", movieId));
+	//
+	// movie.setTitle(movieDetails.getTitle());
+	// movie.setPlot(movieDetails.getPlot());
+	//
+	// Movie updatedMovie = movieRepository.save(movie); return updatedMovie; }
 
 	// // Proccesses the movie creation and insertion into the database.
 	// @PostMapping("/movies/movie-create")

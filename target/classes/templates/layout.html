@@ -30,8 +30,10 @@
 						<ul class="nav navbar-nav">
 							<li class="active"><a href="/">Movies</a></li>
 							<li><a href="/cinemas">Cinemas</a></li>
+							<li><a href="/auditories">Auditories</a></li>
 							<li><a href="/admin/users">Users</a></li>
 							<li><a href="/showtimes">Showtimes</a></li>
+							
 						</ul>
 
 						<div sec:authorize="isAuthenticated()">
@@ -87,6 +89,13 @@
 							</form>
 							<a href="/registration">Sign up</a>
 						</div>
+
+						<div sec:authorize="hasAuthority('USER')">
+							<div class="container float-right">
+								<a th:href="@{/userProfile}" class="btn btn-danger">Your profile</a>
+							</div>
+						</div>
+
 					</div>
 					<!-- 					/.navbar-collapse -->
 				</div>
