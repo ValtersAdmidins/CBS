@@ -50,8 +50,8 @@ public class MovieController {
 				movieRepository.findById(movieId).orElseThrow(
 						() -> new ResourceNotFoundException("Movie", "id",
 								movieId)));
-
-		// model.addAttribute("showtimes",showtimeRepository.findAllShowtimesForMovie(movieId));
+		
+		model.addAttribute("showtimes",showtimeRepository.findAllShowtimesForMovie(movieId));
 		return "movie";
 	}
 
@@ -145,6 +145,7 @@ public class MovieController {
 				() -> new ResourceNotFoundException("Movie", "id", movieId));
 
 		movieRepository.delete(movie);
+		showtimeRepository.deleteShowtimesByMovieId(movieId);
 
 		return "redirect:/";
 	}

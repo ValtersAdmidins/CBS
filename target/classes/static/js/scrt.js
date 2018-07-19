@@ -83,6 +83,8 @@ function createAuditorium() {
 }
 
  function addColumn(){
+	  document.getElementById("columnsInput").value+=1;
+		
 	 var seatmap = document.getElementById("rows");
 	 if(seatmap == null){
 		 document.createElement("ol");
@@ -118,6 +120,7 @@ function createAuditorium() {
  
  
  function addRow(){
+	 document.getElementById("rowsInput").value+=1;
 	 var columns = document.getElementsByClassName("rows");
 	 var j = (document.getElementsByClassName("seat").length / columns.length) + 1;
 	 console.log(j);
@@ -186,7 +189,14 @@ function submitAuditorium() {
 		//array.push(2);
 	}
 	
-	
+	document.getElementById("seatmapstring").value = seatmapstring;
 	console.log(seatmapstring);
 
+}
+
+function getCinemaID(){
+	console.log("called");
+	var url_string = window.location.href;
+	var url = new URL(url_string);
+	document.getElementById("cinemaid").value = url.searchParams.get("cinemaId");
 }

@@ -9,10 +9,10 @@
 	<header th:replace="layout :: site-header" /></header>
 <div style="margin-left: auto; margin-right: auto; width: 50%;">
 	<h1>Form</h1>
-	<form th:action="@{/cinemas/auditorium-create}" th:object="${auditorium}" method="post">
-
+	<form th:action="@{/cinemas/auditorium-create}" th:object="${auditorium}"  method="post">
+		
 		<p>
-			Room: <input type="text" required th:field="*{roomNumber}" />
+			Room name: <input type="text" required th:field="*{roomNumber}" />
 		</p>
 
 		<p>
@@ -22,20 +22,23 @@
 		<p>
 			Size columns: <input type="text" required id="columnsInput"/>
 		</p>
-		
-		<input type="hidden" value="" />
+		<input type="hidden" id="seatmapstring" value="" th:field="*{seats}"/>
+		<input type="hidden" id="cinemaid" value="" th:field="*{cinema_id}"/>
 
 		<input type="button" value="create a seatmap" onclick="createAuditorium()">
+		<input type="submit" id="submitauditoriumbutton" style="display:none;" value="SUBMIT AUDITORIUM" onclick="submitAuditorium()">	
 	</form>
 	<span id="message"></span>
 	<div id="auditorium"></div>
 	<input type="button" id="addrowbutton" value="Add Row" onclick="addRow()" style="display:none;" >
 	<input type="button" id="addcolumnbutton" value="Add Column" onclick="addColumn()" style="display:none;" >
-	<input type="button" id="submitauditoriumbutton" style="display:none;" value="SUBMIT AUDITORIUM" onclick="submitAuditorium()">
+	
 
 
 
 	<footer th:replace="layout :: site-footer" /></footer>
-
+<script>
+getCinemaID();
+</script>
 </body>
 </html>

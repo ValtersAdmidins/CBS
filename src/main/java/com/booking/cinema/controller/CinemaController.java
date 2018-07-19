@@ -47,6 +47,8 @@ public class CinemaController {
 				cinemaRepository.findById(cinemaId).orElseThrow(
 						() -> new ResourceNotFoundException("Cinema", "id",
 								cinemaId)));
+//		model.addAttribute("auditoriums",
+//				auditoriumRepository.findAllAuditoriumsInCinema(cinemaId));
 		return "cinema";
 	}
 
@@ -75,6 +77,7 @@ public class CinemaController {
 	    		  ResourceNotFoundException("Cinema", "id", cinemaId));
 	    		  
 	    		 cinemaRepository.delete(cinema);
+	   
 	    return "redirect:/cinemas";
 	}
 	
@@ -128,21 +131,21 @@ public class CinemaController {
 	}
 	
 	
-	
-	// Loads the auditorium-create html page for admin.
-	@GetMapping("/cinemas/auditorium-create")
-	public String auditoriumCreateForm(Model model) {
-		model.addAttribute("auditorium", new Auditorium());
-		return "admin/auditorium-create";
-	}
-
-	// Proccesses the auditorium creation and insertion into the database.
-	@PostMapping("/cinemas/auditorium-create")
-	public String auditoriumCreateProccess(Auditorium auditorium) {
-
-		auditoriumRepository.save(auditorium);
-		return "redirect:/cinemas";
-	}
+//	
+//	// Loads the auditorium-create html page for admin.
+//	@GetMapping("/cinemas/auditorium-create")
+//	public String auditoriumCreateForm(Model model) {
+//		model.addAttribute("auditorium", new Auditorium());
+//		return "admin/auditorium-create";
+//	}
+//
+//	// Proccesses the auditorium creation and insertion into the database.
+//	@PostMapping("/cinemas/auditorium-create")
+//	public String auditoriumCreateProccess(Auditorium auditorium) {
+//
+//		auditoriumRepository.save(auditorium);
+//		return "redirect:/cinemas";
+//	}
 
 	/*
 	 * @RequestMapping("/cinemas/{id}") public String showAllMoviesinCinema(
