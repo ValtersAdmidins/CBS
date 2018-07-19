@@ -51,18 +51,20 @@ public class MovieController {
 				movieRepository.findById(movieId).orElseThrow(
 						() -> new ResourceNotFoundException("Movie", "id",
 								movieId)));
-		
-		model.addAttribute("showtimes",showtimeRepository.findAllShowtimesForMovie(movieId));
+
+		model.addAttribute("showtimes",
+				showtimeRepository.findAllShowtimesForMovie(movieId));
 		System.out.println("IZPILDAS FIND ALL SHOWTIMES FOR MOVIE");
-		for(Showtime s : showtimeRepository.findAllShowtimesForMovie(movieId)) {
+		for (Showtime s : showtimeRepository
+				.findAllShowtimesForMovie(movieId)) {
 			System.out.println(s);
 		}
 		return "movie";
 	}
 
-	@RequestMapping(value = "/movies/{movieId}/cinemas", method = RequestMethod.GET)
-	public String ticketBuyForm(@PathVariable(value = "movieId") Long movieId,
-			Model model) {
+	@RequestMapping(value = "/movies/{movieId}/chooseCinema", method = RequestMethod.GET)
+	public String chooseCinemaPage(
+			@PathVariable(value = "movieId") Long movieId, Model model) {
 
 		Movie movie = movieRepository.findById(movieId).orElseThrow(
 				() -> new ResourceNotFoundException("Movie", "id", movieId));
@@ -72,39 +74,46 @@ public class MovieController {
 
 		return "chooseCinema";
 	}
-	
-	@RequestMapping(value = "/movies/{movieId}/cinemas/{cinemaId}", method = RequestMethod.GET)
-	public String ticketBuyForm(@PathVariable(value = "movieId") Long movieId, @PathVariable(value = "cinemaId") Long cinemaId,
-			Model model) {
+
+	@RequestMapping(value = "/movies/{movieId}/chooseCinema/{cinemaId}/showtimes", method = RequestMethod.GET)
+	public String ChooseShowtimesPage(
+			@PathVariable(value = "movieId") Long movieId,
+			@PathVariable(value = "cinemaId") Long cinemaId, Model model) {
 
 		Movie movie = movieRepository.findById(movieId).orElseThrow(
 				() -> new ResourceNotFoundException("Movie", "id", movieId));
 
 		Cinema cinema = cinemaRepository.findById(cinemaId).orElseThrow(
 				() -> new ResourceNotFoundException("Cinema", "id", cinemaId));
-		
+
 		model.addAttribute("movie", movie);
 		model.addAttribute("cinema", cinema);
+		model.addAttribute("showtimes",
+				showtimeRepository.findAllShowtimesForMovie(movieId));
 
 		return "showtimes";
 	}
-	
-//	@RequestMapping(value = "/movies/{movieId}/cinemas/{cinemaId}/showtimes", method = RequestMethod.GET)
-//	public String ticketBuyForm(@PathVariable(value = "movieId") Long movieId, @PathVariable(value = "cinemaId") Long cinemaId,
-//			Model model) {
-//
-//		Movie movie = movieRepository.findById(movieId).orElseThrow(
-//				() -> new ResourceNotFoundException("Movie", "id", movieId));
-//
-//		Cinema cinema = cinemaRepository.findById(cinemaId).orElseThrow(
-//				() -> new ResourceNotFoundException("Cinema", "id", cinemaId));
-//
-//		
-//		model.addAttribute("movie", movie);
-//		model.addAttribute("cinema", cinema);
-//
-//		return "buyaticket";
-//	}
+
+	@RequestMapping(value = "/movies/{movieId}/chooseCinema/{cinemaId}/showtimes/{showtimeId}", method = RequestMethod.GET)
+	public String ticketBuyForm(@PathVariable(value = "movieId") Long movieId,
+			@PathVariable(value = "cinemaId") Long cinemaId, @PathVariable(value = "showtimeId") Long showtimeId, Model model) {
+
+		Movie movie = movieRepository.findById(movieId).orElseThrow(
+				() -> new ResourceNotFoundException("Movie", "id", movieId));
+
+		Cinema cinema = cinemaRepository.findById(cinemaId).orElseThrow(
+				() -> new ResourceNotFoundException("Cinema", "id", cinemaId));
+
+		Showtime showtime = showtimeRepository.findById(showtimeId).orElseThrow(
+				() -> new ResourceNotFoundException("Showtime", "id", showtimeId));
+
+		
+		model.addAttribute("movie", movie);
+		model.addAttribute("cinema", cinema);
+		model.addAttribute("showtime", showtime);
+		
+		return "buyaticket";
+	}
 
 	// Loads the movie-create html page for admin.
 	@GetMapping("/movies/movie-create")
@@ -150,7 +159,7 @@ public class MovieController {
 				() -> new ResourceNotFoundException("Movie", "id", movieId));
 
 		movieRepository.delete(movie);
-		//showtimeRepository.deleteShowtimesByMovieId(movieId);
+		showtimeRepository.deleteShowtimesByMovieId(movieId);
 
 		return "redirect:/";
 	}
