@@ -40,12 +40,7 @@ public class UserServiceImpl implements UserService {
 		userRepository.save(user);
 	}
 
-
-
-	 
-
-
-//	public User getCurrentUser() {
+//	public User getCurrentUserById(Long userId) {
 //
 //		Authentication authentication = SecurityContextHolder.getContext()
 //				.getAuthentication();
