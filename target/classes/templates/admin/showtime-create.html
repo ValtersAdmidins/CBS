@@ -4,6 +4,7 @@
 </head>
 
 <script  src="/js/newshowtimescript.js" /></script>
+<script  src="/js/scrt.js" /></script>
 <body>
 
 	<header th:replace="layout :: site-header" />
@@ -37,13 +38,14 @@
                   </select> 
 		</p>
 	<p>
-		Date:  <input type="date" id="showtimeDate"  />
+		Date:  <input type="date" id="showtimeDate" onchange="test()" />
 		</p>
 		<p>
-		Time:  <input type="time" id="showtimeTime"  />
+		Time:  <input type="time" id="showtimeTime"  onchange="test()"/>
 		</p>
 		
 		<p>
+		<input type="hidden" id="stringDate" value="" th:field="*{dateAndTime}" />
 			<input type="submit" value="Create Showtime" /> <input type="reset" value="Reset" />
 		</p>
 
@@ -56,6 +58,8 @@
 	<footer th:replace="layout :: site-footer" />
 <script>
 getCinemaID();
+
+
 </script>
 </body>
 </html>

@@ -13,13 +13,13 @@ import com.booking.cinema.model.Showtime;
 public interface ShowtimeRepository extends JpaRepository<Showtime, Long> {
 
 	
-	@Query("select s from Showtime s where s.movie = ?1")
+	@Query(value = "select * from Showtime where movie_id = ?1", nativeQuery = true)
     public List<Showtime> findAllShowtimesForMovie( Long movie_id);
 	
-	 @Modifying
-	 @Query("delete from Showtime s where s.movie = ?1")
-	 public void deleteShowtimesByMovieId(Long movie_id);
-	 
+//	 @Modifying
+//	 @Query("delete from Showtime s where s.movie = ?1")
+//	 public void deleteShowtimesByMovieId(Long movie_id);
+//	 
 	 /*
 	 @Modifying
 	 @Query("delete from Showtime s where s.auditorium = ?1")

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.booking.cinema.exceptions.ResourceNotFoundException;
 import com.booking.cinema.model.Movie;
+import com.booking.cinema.model.Showtime;
 import com.booking.cinema.repositories.MovieRepository;
 import com.booking.cinema.repositories.ShowtimeRepository;
 import com.booking.cinema.repositories.UserRepository;
@@ -44,6 +45,10 @@ public class MovieController {
 		
 		
 		model.addAttribute("showtimes",showtimeRepository.findAllShowtimesForMovie(movieId));
+		System.out.println("IZPILDAS FIND ALL SHOWTIMES FOR MOVIE");
+		for(Showtime s : showtimeRepository.findAllShowtimesForMovie(movieId)) {
+			System.out.println(s);
+		}
 		return "movie";
 	}
 
@@ -91,7 +96,7 @@ public class MovieController {
 				() -> new ResourceNotFoundException("Movie", "id", movieId));
 
 		movieRepository.delete(movie);
-		showtimeRepository.deleteShowtimesByMovieId(movieId);
+		//showtimeRepository.deleteShowtimesByMovieId(movieId);
 
 		return "redirect:/";
 	}

@@ -12,7 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 @Entity
 public class Showtime {
@@ -24,11 +23,13 @@ public class Showtime {
 	@ManyToOne
 	@JoinColumn(name = "movie_id")
 	public Movie movie;
+
 	
 	@ManyToOne
 	@JoinColumn(name = "auditorium_id")
 	public Auditorium auditorium;
 	
+
 	@ManyToOne
 	@JoinColumn(name = "cinema_id")
 	public Cinema cinema;
@@ -45,7 +46,9 @@ public class Showtime {
  
 	 
 
-	public Showtime(Long id, Date dateAndTime) {
+
+
+	public Showtime(Long id, String dateAndTime) {
 		setId(id);
 		setDateAndTime(dateAndTime);
 	}
@@ -55,8 +58,7 @@ public class Showtime {
 	}
 
 	public void setTakenSeats(String takenSeats) {
-		this.takenSeats = "111211121112";
-		//this.takenSeats = auditorium.getSeats();
+		this.takenSeats = auditorium.getSeats();
 	}
 
 	public Cinema getCinema() {
@@ -88,15 +90,15 @@ public class Showtime {
 	public Date getDateAndTime() {
 		return dateAndTime;
 	}
-	public void setDateAndTime(Date dateAndTime) {
-		this.dateAndTime = dateAndTime;
+	public void setDateAndTime(String str) {
+		this.dateAndTime = getDateFromString(str);
 	}
 	
-	public void setDateFromString(String str) {
+	public Date getDateFromString(String str) {
 		String filtered = str.replaceAll("[^0-9,]"," ");
 		String[] numbers = filtered.split(" ");
 		
-		Date tmp = new Date(Integer.parseInt(numbers[0]), Integer.parseInt(numbers[1]), Integer.parseInt(numbers[2]), Integer.parseInt(numbers[3]), Integer.parseInt(numbers[4]));
+		return new Date(Integer.parseInt(numbers[0]), Integer.parseInt(numbers[1]), Integer.parseInt(numbers[2]), Integer.parseInt(numbers[3]), Integer.parseInt(numbers[4]));
 	}
 	
 	
