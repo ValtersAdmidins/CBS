@@ -82,7 +82,7 @@ function createAuditorium() {
 
 }
 
- function addColumn(){
+function addColumn(){
 	  document.getElementById("columnsInput").value+=1;
 		
 	 var seatmap = document.getElementById("rows");
