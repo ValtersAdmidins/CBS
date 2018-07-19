@@ -39,12 +39,12 @@ public class UserServiceImpl implements UserService {
 		user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
 		userRepository.save(user);
 	}
-<<<<<<< HEAD
+
 
 
 	 
 
-=======
+
 //	public User getCurrentUser() {
 //
 //		Authentication authentication = SecurityContextHolder.getContext()
@@ -57,5 +57,5 @@ public class UserServiceImpl implements UserService {
 //		}
 //		return null;
 //	}
->>>>>>> master
+
 }

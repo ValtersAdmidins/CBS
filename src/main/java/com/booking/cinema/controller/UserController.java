@@ -37,7 +37,7 @@ public class UserController {
 				() -> new ResourceNotFoundException("User", "id", userId)));
 		return "admin/user";
 	}
-<<<<<<< HEAD
+
 	 
 	@RequestMapping("/userProfile/{id}")
 	public String getUserByID(@PathVariable(value = "id") Long userId,
@@ -48,7 +48,7 @@ public class UserController {
 								userId)));
 		return "userprofile";
 	}
-=======
+
 
 //	@RequestMapping(value = "/userProfile", method = RequestMethod.GET)
 //	public String movieEditForm(@RequestParam(name = "userId") Long userId,
@@ -69,5 +69,5 @@ public class UserController {
 	
 	
 
->>>>>>> master
+
 }
