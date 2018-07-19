@@ -4,7 +4,7 @@ function stringToView(str) {
 	var j = 1;
 	var k = 0;
 	for (var i = 0; i < str.length; i++) {
-		
+
 		k++;
 		var seat = document.createElement("input");
 		seat.setAttribute("id", "R" + j + "C" + k);
@@ -13,7 +13,7 @@ function stringToView(str) {
 		seat.setAttribute("onclick", "seatCheckBox(this.id)");
 
 		if (str[i] == 1) {
-			
+
 			seat
 					.setAttribute("style",
 							"background-color:Linen; width: 50px; height: 50px; border-radius: 25px;");
@@ -29,9 +29,9 @@ function stringToView(str) {
 			seat.disabled = true;
 		} else if (str[i] == 2) {
 			var brln = document.createElement("br");
-			brln.setAttribute("class","newline");
+			brln.setAttribute("class", "newline");
 			auditoriumDiv.appendChild(brln);
-			
+
 			k = 0;
 			j++;
 		} else {
@@ -47,11 +47,11 @@ function stringToView(str) {
 
 function changeSeatButtonBuying(id) {
 	var b = document.getElementById(id);
-	
-	b.style.backgroundColor = (b.style.backgroundColor == ('lightseagreen')) ? 'Linen':'lightseagreen';
-	
-}
 
+	b.style.backgroundColor = (b.style.backgroundColor == ('lightseagreen')) ? 'Linen'
+			: 'lightseagreen';
+
+}
 
 function seatCheckBox(id) {
 	changeSeatButtonBuying(id);
@@ -74,7 +74,7 @@ function seatCheckBox(id) {
 		// ar id checkedseats
 		var para = document.createElement("p");
 		para.setAttribute("id", "p" + id);
-		para.setAttribute("class","CHT");
+		para.setAttribute("class", "CHT");
 		var node = document.createTextNode(id);
 		para.appendChild(node);
 
@@ -86,34 +86,36 @@ function seatCheckBox(id) {
 }
 
 function makingSeatsTaken() {
-	
+
 	var newseatmapstring = "";
 	var seats = document.getElementsByClassName("chooseseatbutton");
 	var rowCount = document.getElementsByClassName("newline").length;
-	var k = seats.length/rowCount;
-	for (var i = 0; i < seats.length; i++) {
-		if(seats[i].style.backgroundColor == ('lightseagreen')){
-			newseatmapstring += "3";
-		}else if(seats[i].style.backgroundColor == ('linen')){
-			newseatmapstring += "1";
-		}else if(seats[i].style.backgroundColor == ('black')){
-			newseatmapstring += "3";
-		}else if(seats[i].style.backgroundColor == ('white')){
-			newseatmapstring += "0";
-		}
-		
-		if(k==i){
-			newseatmapstring += "2";
-			k += i;
-			
-		}
-		
-		
-	}
+	var columnCount = seats.length / rowCount;
 	
+		for (var i = 0; i < rowCount; i++) {
+			for (var j = 0; j < columnCount; j++) {
+				var button = document.getElementById("R" + (i + 1) + "C"+ (j + 1));
+				if (button.style.backgroundColor == ('lightseagreen')) {
+					newseatmapstring += "3";
+				} else if (seats[i].style.backgroundColor == ('linen')) {
+					newseatmapstring += "1";
+				} else if (seats[i].style.backgroundColor == ('black')) {
+					newseatmapstring += "3";
+				} else {
+					newseatmapstring += "0";
+				}
+				console.log("R" + (i + 1) + "C"+ (j + 1));
+				
+				
+			}
+			newseatmapstring += "2";
+		}
+
+
+
 	document.getElementById("newseatmapstring").value = newseatmapstring;
 	console.log(document.getElementById("newseatmapstring"));
-	
+
 }
 
 function calculateTotal(id) {
@@ -136,16 +138,16 @@ function calculateTotal(id) {
 	document.getElementById("total").innerHTML = total + "€";
 }
 
-function doBuy(){
+function doBuy() {
 	var x = document.getElementsByClassName("CHT");
 	var str = "";
-	for(var i = 0; i<x.length ; i++){
-		str += (i+1) + ". " + x[i].innerHTML + "\n";
+	for (var i = 0; i < x.length; i++) {
+		str += (i + 1) + ". " + x[i].innerHTML + "\n";
 	}
-	if(confirm("Do you really want to buy these tickets? \n" + str)){
+	if (confirm("Do you really want to buy these tickets? \n" + str)) {
 		document.getElementById("buyForm").submit();
-	}else{
-		
+	} else {
+
 	}
-		
+
 }
