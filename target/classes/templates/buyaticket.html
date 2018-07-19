@@ -14,7 +14,6 @@
 			<h3 style="text-align: center;">SCREEN</h3>
 		</div>
 
-
 		<div id="stringauditorium"></div>
 
 		<div style="width: 50%; margin-left: auto; margin-right: auto;">
@@ -32,7 +31,7 @@
 			<h3>
 				Total: <span id="total">0</span>
 			</h3>
-			<form action="#" th:action="@{/showtimes/showtime-edit}" th:object="${showtime}" method="post">
+			<form action="#" id="buyForm" th:action="@{/showtimes/showtime-edit(row=${4},column=${4})}" th:object="${showtime}" method="post">
 
 				<input type="hidden" th:field="*{id}"> 
 				<input type="hidden" th:field="*{cinema}"> 
@@ -41,7 +40,7 @@
 				
 				<input type="hidden" value=""  th:field="*{takenSeats}" id="newseatmapstring"> 
 					
-				<input type="submit" value="Buy Tickets">
+				<input type="button" value="Buy Tickets" id="buybutton" onclick="doBuy()">
 			</form>
 
 

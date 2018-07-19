@@ -42,6 +42,20 @@ public class Ticket {
 		 
 	}
 	
+	
+	
+	public Date getDate() {
+		return date;
+	}
+
+
+
+	public void setDate() {
+		this.date = new Date();
+	}
+
+
+
 	public Ticket(long id, int columnn, int roww, double price) {
 		setId(id);
 		setColumn(columnn);
