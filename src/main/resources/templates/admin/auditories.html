@@ -10,17 +10,16 @@
 
 		<h1>these are all auditories</h1>
 		
-		<button onclick="location.href='/auditories/auditorium-create'" type="button" class="btn btn-primary">Add Auditorium</button>
+		<button onclick="location.href='/cinemas/auditorium-create'" type="button" class="btn btn-primary">Add Auditorium</button>
 		
 		
 		<tr th:each="auditorium : ${auditories}">
 			<div style="background-color: lightgrey;">
 
 				<td th:text="${auditorium.roomNumber}"></td>
-				<td  th:text="${auditorium.seats}"></td>
 				
 				<a th:href="@{/auditories/auditorium-delete(auditoriumId=${auditorium.id})}" class="btn btn-danger">Delete</a>
-				
+				<a th:href="@{/auditories/auditorium-edit(auditoriumId=${auditorium.id})}" class="btn btn-info">Edit</a>
 			</div>
 			
 		</tr>

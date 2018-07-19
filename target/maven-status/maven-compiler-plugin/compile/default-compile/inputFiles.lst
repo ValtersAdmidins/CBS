@@ -6,9 +6,12 @@
 /home/gita/Desktop/NEW/CBS/src/main/java/com/booking/cinema/service/UserServiceImpl.java
 /home/gita/Desktop/NEW/CBS/src/main/java/com/booking/cinema/CinemaApplication.java
 /home/gita/Desktop/NEW/CBS/src/main/java/com/booking/cinema/model/User.java
+/home/gita/Desktop/NEW/CBS/src/main/java/com/booking/cinema/repositories/ShowtimeRepository.java
+/home/gita/Desktop/NEW/CBS/src/main/java/com/booking/cinema/controller/ShowtimeController.java
 /home/gita/Desktop/NEW/CBS/src/main/java/com/booking/cinema/enums/Genre.java
 /home/gita/Desktop/NEW/CBS/src/main/java/com/booking/cinema/controller/AuditoriumController.java
 /home/gita/Desktop/NEW/CBS/src/main/java/com/booking/cinema/enums/Language.java
+/home/gita/Desktop/NEW/CBS/src/main/java/com/booking/cinema/controller/UserController.java
 /home/gita/Desktop/NEW/CBS/src/main/java/com/booking/cinema/repositories/UserRepository.java
 /home/gita/Desktop/NEW/CBS/src/main/java/com/booking/cinema/service/UserService.java
 /home/gita/Desktop/NEW/CBS/src/main/java/com/booking/cinema/controller/LoginController.java

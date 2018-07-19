@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -46,13 +47,29 @@ public class ShowtimeController {
 		model.addAttribute("showtimes", showtimeRepository.findAll());
 		return "admin/showtimes";
 	}
-	
+//	
+//	
+//	// Loads the auditorium-create html page.
+//		@GetMapping("/cinemas/auditorium-create")
+//		public String auditoriumCreatePage(  Model model) {
+//			model.addAttribute("auditorium", new Auditorium());
+//			
+//			return "admin/auditorium-create";
+//		}
+//		
+//		
+//		// Proccesses the auditorium creation and insertion into the database.
+//			@PostMapping("/cinemas/auditorium-create")
+//			public String auditoriumCreateProccess(Auditorium auditorium) {
+//				auditoriumRepository.save(auditorium);
+//				return "redirect:/auditories";
+//			} 
+//	
 	@GetMapping("/showtimes/showtime-create")
-	public String showtimeCreateForm(Model model) {
+	public String showtimeCreateForm(@RequestParam(value = "cinemaId") Long cinemaid, Model model) {
 		
 		model.addAttribute("mvs", movieRepository.findAll());
-		model.addAttribute("cinemas",cinemaRepository.findAll());
-		model.addAttribute("auditoriums",auditoriumRepository.findAll());
+		model.addAttribute("auditoriums",auditoriumRepository.findAllAuditoriumsInCinema(cinemaid));
 		model.addAttribute("showtime",new Showtime());
 		
 		return "admin/showtime-create";

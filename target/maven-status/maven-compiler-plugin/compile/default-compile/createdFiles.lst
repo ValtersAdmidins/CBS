@@ -1,11 +1,13 @@
 com/booking/cinema/repositories/AuditoriumRepository.class
 com/booking/cinema/model/Role.class
 com/booking/cinema/model/Movie.class
+com/booking/cinema/controller/ShowtimeController.class
 com/booking/cinema/model/User.class
 com/booking/cinema/repositories/RoleRepository.class
 com/booking/cinema/controller/LoginController.class
 com/booking/cinema/repositories/CinemaRepository.class
 com/booking/cinema/configuration/SecurityConfiguration.class
+com/booking/cinema/repositories/ShowtimeRepository.class
 com/booking/cinema/service/UserService.class
 com/booking/cinema/model/Auditorium.class
 com/booking/cinema/exceptions/ResourceNotFoundException.class
@@ -22,6 +24,7 @@ com/booking/cinema/configuration/WebMvcConfig.class
 com/booking/cinema/repositories/UserRepository.class
 com/booking/cinema/model/Showtime.class
 com/booking/cinema/enums/Genre.class
+com/booking/cinema/controller/UserController.class
 com/booking/cinema/controller/TicketController.class
 com/booking/cinema/repositories/MovieRepository.class
 com/booking/cinema/model/Ticket.class

@@ -10,14 +10,7 @@
 <div style="margin-left: auto; margin-right: auto; width: 50%;">
 	<h1>Form</h1>
 	<form th:action="@{/cinemas/auditorium-create}" th:object="${auditorium}"  method="post">
-		<p>
-			Cinema:  <select  id="cinemaSelect" th:field="*{cinema}" >
-                         <option value=""> -- </option>
-                         <option th:each="c : ${cinemas}"
-                            th:value="${c.id}"
-                            th:utext="${c.name}"/>
-                  </select> 
-		</p>
+		
 		<p>
 			Room name: <input type="text" required th:field="*{roomNumber}" />
 		</p>
@@ -29,8 +22,8 @@
 		<p>
 			Size columns: <input type="text" required id="columnsInput"/>
 		</p>
-		
 		<input type="hidden" id="seatmapstring" value="" th:field="*{seats}"/>
+		<input type="hidden" id="cinemaid" value="" th:field="*{cinema_id}"/>
 
 		<input type="button" value="create a seatmap" onclick="createAuditorium()">
 		<input type="submit" id="submitauditoriumbutton" style="display:none;" value="SUBMIT AUDITORIUM" onclick="submitAuditorium()">	
@@ -44,6 +37,8 @@
 
 
 	<footer th:replace="layout :: site-footer" /></footer>
-
+<script>
+getCinemaID();
+</script>
 </body>
 </html>

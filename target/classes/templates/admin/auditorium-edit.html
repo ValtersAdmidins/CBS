@@ -4,28 +4,21 @@
 </head>
 <script  src="/js/scrt.js" /></script>
 
-<body>
+<body >
 
 	<header th:replace="layout :: site-header" /></header>
 <div style="margin-left: auto; margin-right: auto; width: 50%;">
 	<h1>Form</h1>
-	<form th:action="@{/cinemas/auditorium-create}" th:object="${auditorium}"  method="post">
+	<form th:action="@{/cinemas/auditorium-create}" th:object="${auditorium}"  method="post" ">
 		
 		<p>
 			Room name: <input type="text" required th:field="*{roomNumber}" />
+		</p><input type="text"  required id="rowsInput" />
 		</p>
 
 		<p>
-			Size rows: <input type="text"  required id="rowsInput" />
-		</p>
-
-		<p>
-			Size columns: <input type="text" required id="columnsInput"/>
-		</p>
-		<input type="hidden" id="seatmapstring" value="" th:field="*{seats}"/>
-		<input type="hidden" id="cinemaid" value="" th:field="*{cinema_id}"/>
-
-		<input type="button" value="create a seatmap" onclick="createAuditorium()">
+			<input type="text" required id="columnsInput"/>
+		</p>	
 		<input type="submit" id="submitauditoriumbutton" style="display:none;" value="SUBMIT AUDITORIUM" onclick="submitAuditorium()">	
 	</form>
 	<span id="message"></span>
@@ -37,8 +30,7 @@
 
 
 	<footer th:replace="layout :: site-footer" /></footer>
-<script>
-getCinemaID();
-</script>
+
+
 </body>
 </html>
