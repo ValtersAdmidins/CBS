@@ -75,7 +75,7 @@ public class MovieController {
 		return "chooseCinema";
 	}
 
-	@RequestMapping(value = "/movies/{movieId}/chooseCinema/{cinemaId}", method = RequestMethod.GET)
+	@RequestMapping(value = "/movies/{movieId}/chooseCinema/{cinemaId}/showtimes", method = RequestMethod.GET)
 	public String ChooseShowtimesPage(
 			@PathVariable(value = "movieId") Long movieId,
 			@PathVariable(value = "cinemaId") Long cinemaId, Model model) {
@@ -94,9 +94,9 @@ public class MovieController {
 		return "showtimes";
 	}
 
-	@RequestMapping(value = "/movies/{movieId}/chooseCinema/{cinemaId}/showtimes", method = RequestMethod.GET)
+	@RequestMapping(value = "/movies/{movieId}/chooseCinema/{cinemaId}/showtimes/{showtimeId}", method = RequestMethod.GET)
 	public String ticketBuyForm(@PathVariable(value = "movieId") Long movieId,
-			@PathVariable(value = "cinemaId") Long cinemaId, Model model) {
+			@PathVariable(value = "cinemaId") Long cinemaId, @PathVariable(value = "showtimeId") Long showtimeId, Model model) {
 
 		Movie movie = movieRepository.findById(movieId).orElseThrow(
 				() -> new ResourceNotFoundException("Movie", "id", movieId));
@@ -104,9 +104,14 @@ public class MovieController {
 		Cinema cinema = cinemaRepository.findById(cinemaId).orElseThrow(
 				() -> new ResourceNotFoundException("Cinema", "id", cinemaId));
 
+		Showtime showtime = showtimeRepository.findById(showtimeId).orElseThrow(
+				() -> new ResourceNotFoundException("Showtime", "id", showtimeId));
+
+		
 		model.addAttribute("movie", movie);
 		model.addAttribute("cinema", cinema);
-
+		model.addAttribute("showtime", showtime);
+		
 		return "buyaticket";
 	}
 

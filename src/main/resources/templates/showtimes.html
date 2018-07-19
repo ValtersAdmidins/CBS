@@ -10,16 +10,17 @@
 	
 	<h1>In chosen cinema: cinema</h1><h2 th:text='${cinema.name}'></h2>
 	
-
 	<tr th:each="showtime : ${showtimes}">
-		<div style="background-color: lightgrey;">
+		<div style="background-color: lightgrey">
 
-			<td th:text="${showtime.dateAndTime}"></td>
-			<td th:text="${showtime.takenSeats}"></td> <a th:href="@{/showtimes/showtime-delete(showtimeId=${showtime.id})}" class="btn btn-danger">Delete</a>
-			<td th:text="${showtime.ageLimit}"></td> <br>
-			<td th:text="${movie.language}"></td> <br>
-			<td th:text="${movie.subtitles}"></td> <br>
-			<td th:text="${movie.movieLengthMinutes}"></td> <br>
+			<a th:href="@{/movies/{movieId}/chooseCinema/{cinemaId}/showtimes/{showtimeId} (movieId=${movie.id}, cinemaId=${cinema.id}, showtimeId=${showtime.id})}">
+
+			<td th:text="${showtime.dateAndTime}"></td> <br>
+			<td th:text="${showtime.takenSeats}"></td> <br>
+			<!--  <td th:text="${showtime.ageLimit}"></td> <br>
+				<td th:text="${movie.language}"></td> <br>
+				<td th:text="${movie.subtitles}"></td> <br>
+				<td th:text="${movie.movieLengthMinutes}"></td> <br>-->
 		</div>
 
 	</tr>
