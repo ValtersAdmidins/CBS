@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.booking.cinema.model.User;
+import com.booking.cinema.repositories.MovieRepository;
 import com.booking.cinema.service.UserService;
 
 @Controller
@@ -17,6 +18,9 @@ public class LoginController {
 	
 	@Autowired
 	UserService userService;
+	
+	@Autowired
+	MovieRepository movieRepository;
 	
 //	@GetMapping("/movies/movie-create")
 //	public String movieCreateForm(Model model) {
@@ -48,7 +52,8 @@ public class LoginController {
 			userService.saveUser(user);
 			modelAndView.addObject("successMessage", "User has been registered successfully");
 			modelAndView.addObject("user", new User());
-			modelAndView.setViewName("registration");
+			modelAndView.addObject("movies", movieRepository.findAll());
+			modelAndView.setViewName("index");
 			
 		}
 		return modelAndView;
