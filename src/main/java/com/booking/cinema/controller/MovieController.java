@@ -13,11 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.booking.cinema.exceptions.ResourceNotFoundException;
 import com.booking.cinema.model.Cinema;
 import com.booking.cinema.model.Movie;
-<<<<<<< HEAD
 import com.booking.cinema.model.Showtime;
-=======
 import com.booking.cinema.repositories.CinemaRepository;
->>>>>>> 6ab59e42298e1566d803e4742139625b56a93e88
 import com.booking.cinema.repositories.MovieRepository;
 import com.booking.cinema.repositories.ShowtimeRepository;
 import com.booking.cinema.repositories.UserRepository;

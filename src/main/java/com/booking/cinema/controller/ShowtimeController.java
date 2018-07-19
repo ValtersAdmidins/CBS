@@ -79,6 +79,8 @@ public class ShowtimeController {
 	
 	@RequestMapping(value = "/showtimes/showtime-create", method=RequestMethod.POST)
 	public String showtimeCreateProccess(Showtime showtime) {
+		
+		showtime.setTakenSeats(showtime.getAuditorium().getSeats());
 		showtimeRepository.save(showtime);
 		return "redirect:/showtimes";
 	}

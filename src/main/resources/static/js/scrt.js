@@ -177,16 +177,11 @@ function submitAuditorium() {
 			id = "R"+i+"C"+j;
 			
 			button = document.getElementById(id);
-			if(button.style.backgroundColor == ('white')){
-				//array.push(0);
-				seatmapstring+="0";
-			}else{
+			if(button.style.backgroundColor != ('white')){
 				seatmapstring+="1";
-				//array.push(1);
 			}
 		}
 		seatmapstring+="2";
-		//array.push(2);
 	}
 	
 	document.getElementById("seatmapstring").value = seatmapstring;

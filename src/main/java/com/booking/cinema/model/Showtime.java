@@ -94,11 +94,10 @@ public class Showtime {
 		this.dateAndTime = getDateFromString(str);
 	}
 	
-	public Date getDateFromString(String str) {
+	private Date getDateFromString(String str) {
 		String filtered = str.replaceAll("[^0-9,]"," ");
 		String[] numbers = filtered.split(" ");
-		
-		return new Date(Integer.parseInt(numbers[0]), Integer.parseInt(numbers[1]), Integer.parseInt(numbers[2]), Integer.parseInt(numbers[3]), Integer.parseInt(numbers[4]));
+		return new Date(Integer.parseInt(numbers[0])-1900, Integer.parseInt(numbers[1]), Integer.parseInt(numbers[2]), Integer.parseInt(numbers[3]), Integer.parseInt(numbers[4]));
 	}
 	
 	
