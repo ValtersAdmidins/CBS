@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: site-head">
+</head>
+<body>
+
+	<header th:replace="layout :: site-header" /></header>
+
+	<h1>These are all showtimes for movie:</h1><h2 th:text='${movie.title}'></h2>
+	
+	<h1>In chosen cinema: cinema</h1><h2 th:text='${cinema.name}'></h2>
+	
+
+	<tr th:each="showtime : ${showtimes}">
+		<div style="background-color: lightgrey;">
+
+			<td th:text="${showtime.dateAndTime}"></td>
+			<td th:text="${showtime.takenSeats}"></td> <a th:href="@{/showtimes/showtime-delete(showtimeId=${showtime.id})}" class="btn btn-danger">Delete</a>
+			<td th:text="${showtime.ageLimit}"></td> <br>
+			<td th:text="${movie.language}"></td> <br>
+			<td th:text="${movie.subtitles}"></td> <br>
+			<td th:text="${movie.movieLengthMinutes}"></td> <br>
+		</div>
+
+	</tr>
+
+	<div sec:authorize="!hasAuthority('ADMIN')">NOT ADMIN</div>
+
+	<footer th:replace="layout :: site-footer" /></footer>
+</body>
+</html>
