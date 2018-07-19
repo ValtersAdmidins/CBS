@@ -6,25 +6,17 @@
 
 	<header th:replace="layout :: site-header" /></header>
 
-	<div sec:authorize="hasAuthority('ADMIN')">
-
-		LOGGED IN AS ADMIN.
-
-		<button onclick="location.href='/cinemas/cinema-create'" type="button" class="btn btn-primary">Add Cinema</button>
-		 
-
-	</div>
-
-	<div sec:authorize="!hasAuthority('ADMIN')">NOT ADMIN</div>
-
 	<div class="container">
 
 		<tr th:each="cinema : ${cinemas}">
 			<div style="background-color: lightgrey;">
 
-				<a th:href="${'/cinemas/' + cinema.id}"><h2>
+				<a th:href="@{/movies/{movieId}/chooseCinema/{cinemaId} (movieId=${movie.id}, cinemaId=${cinema.id})}">
+
+					<h2>
 						<td th:text="${cinema.name}"></td>
-					</h2></a>
+					</h2>
+				</a>
 				<p>
 					<td th:text="${cinema.address}"></td>
 				</p>
@@ -37,11 +29,6 @@
 
 			</div>
 
-			<div sec:authorize="hasAuthority('ADMIN')">
-
-				<a th:href="@{/cinemas/cinema-delete(cinemaId=${cinema.id})}" class="btn btn-danger">Delete</a>
-				<a th:href="@{/cinemas/cinema-update(cinemaId=${cinema.id})}" class="btn btn-danger">Update</a>
-			</div>
 		</tr>
 
 
