@@ -107,6 +107,7 @@ public class MovieController {
 
 		Showtime showtime = showtimeRepository.findById(showtimeId).orElseThrow(
 				() -> new ResourceNotFoundException("Showtime", "id", showtimeId));
+		
 
 		
 		model.addAttribute("movie", movie);
