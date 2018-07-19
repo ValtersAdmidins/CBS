@@ -76,7 +76,7 @@ function seatCheckBox(id) {
 
 		checkedSeats.appendChild(para);
 	}
-
+	makingSeatsTaken();
 	calculateTotal(id);
 
 }
@@ -107,8 +107,7 @@ function makingSeatsTaken() {
 	}
 	
 	document.getElementById("newseatmapstring").value = newseatmapstring;
-	confirm(newseatmapstring);
-	console.log(newseatmapstring);
+	
 }
 
 function calculateTotal(id) {

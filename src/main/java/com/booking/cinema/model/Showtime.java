@@ -22,17 +22,17 @@ public class Showtime {
 	
 	@ManyToOne
 	@JoinColumn(name = "movie_id")
-	public Movie movie;
+	private Movie movie;
 
 	
 	@ManyToOne
 	@JoinColumn(name = "auditorium_id")
-	public Auditorium auditorium;
+	private Auditorium auditorium;
 	
 
 	@ManyToOne
 	@JoinColumn(name = "cinema_id")
-	public Cinema cinema;
+	private Cinema cinema;
 	
 	@Column(columnDefinition = "TEXT")
 	private String takenSeats;
@@ -58,7 +58,7 @@ public class Showtime {
 	}
 
 	public void setTakenSeats(String takenSeats) {
-		this.takenSeats = auditorium.getSeats();
+		this.takenSeats = takenSeats;
 	}
 
 	public Cinema getCinema() {

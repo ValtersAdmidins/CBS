@@ -86,6 +86,14 @@ public class ShowtimeController {
 	}
 	
 
+	@RequestMapping(value = "/showtimes/showtime-edit", method=RequestMethod.POST)
+	public String showtimeEditSeats(Showtime showtime) {
+		System.out.println("IZPILDAS FUNKCIJAS SHOWTIME EDIT");
+		showtimeRepository.save(showtime);
+		return "redirect:/showtimes";
+	}
+	
+
 	@RequestMapping(value = "/showtimes/showtime-delete", method = RequestMethod.GET)
 	public String showtimeDeleteProccess(	
 			@RequestParam(name = "showtimeId") Long showtimeId) {

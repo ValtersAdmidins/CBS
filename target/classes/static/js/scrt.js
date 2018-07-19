@@ -179,6 +179,8 @@ function submitAuditorium() {
 			button = document.getElementById(id);
 			if(button.style.backgroundColor != ('white')){
 				seatmapstring+="1";
+			}else{
+				seatmapstring+="0";
 			}
 		}
 		seatmapstring+="2";

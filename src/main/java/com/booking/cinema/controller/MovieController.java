@@ -90,6 +90,7 @@ public class MovieController {
 		model.addAttribute("cinema", cinema);
 		model.addAttribute("showtimes",
 				showtimeRepository.findAllShowtimesForMovie(movieId));
+		
 
 		return "showtimes";
 	}
@@ -111,9 +112,19 @@ public class MovieController {
 		model.addAttribute("movie", movie);
 		model.addAttribute("cinema", cinema);
 		model.addAttribute("showtime", showtime);
+		model.addAttribute("auditoriumString",showtime.getTakenSeats());
 		
 		return "buyaticket";
 	}
+	/*
+	@RequestMapping(value = "/movies/{movieId}/chooseCinema/{cinemaId}/showtimes/{showtimeId}", method = RequestMethod.GET)
+	public String ticketBuyProcess(@PathVariable(value = "movieId") Long movieId,
+			@PathVariable(value = "cinemaId") Long cinemaId, @PathVariable(value = "showtimeId") Long showtimeId) {
+
+		
+		
+		return "/";
+	}*/
 
 	// Loads the movie-create html page for admin.
 	@GetMapping("/movies/movie-create")
