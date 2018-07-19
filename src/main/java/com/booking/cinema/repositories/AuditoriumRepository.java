@@ -14,5 +14,5 @@ import com.booking.cinema.model.Showtime;
 public interface AuditoriumRepository extends JpaRepository<Auditorium, Long> {
 	
 	@Query("select a from Auditorium a where a.cinema_id = ?1")
-    public List<Auditorium> findAllAuditoriumsInCinema( Long cinema_id);
+    public List<Auditorium> findAllAuditoriumsInCinema(Long cinema_id);
 }
