@@ -86,7 +86,8 @@ public class ShowtimeController {
 	@RequestMapping(value = "/showtimes/showtime-edit", method = RequestMethod.POST)
 	public String showtimeEditSeats(Showtime showtime) {
 		System.out.println("IZPILDAS FUNKCIJAS SHOWTIME EDIT");
-		showtimeRepository.save(showtime);
+		showtimeRepository.save(showtime); // updating seats
+		
 		return "redirect:/showtimes";
 	}
 

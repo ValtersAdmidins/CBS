@@ -16,11 +16,11 @@
 		</p>
 
 		<p>
-			Size rows: <input type="text"  required id="rowsInput" />
+			Size rows: <input type="number" min="2" max="15" required id="rowsInput" />
 		</p>
 
 		<p>
-			Size columns: <input type="text" required id="columnsInput"/>
+			Size columns: <input type="number" min="2" max="15" required id="columnsInput"/>
 		</p>
 		<input type="hidden" id="seatmapstring" value="" th:field="*{seats}"/>
 		<input type="hidden" id="cinemaid" value="" th:field="*{cinema_id}"/>
