@@ -3,32 +3,26 @@
 <head th:replace="layout :: site-head">
 </head>
 <body>
-
 	<header th:replace="layout :: site-header" /></header>
-
 	<div class="container">
-
+	
 		<tr th:each="user : ${users}">
 			<div style="background-color: lightgrey;">
-
-				<a th:href="${'/admin/users/' + user.id}"><h2>
-						<td th:text="${user.id} + ${user.name} + ${user.lastName}"></td>
-					</h2></a>
-				<p>
-					<td th:text="${user.email}"></td>
-				</p>
-				<p>
-					<td th:text="${user.password}"></td>
-				</p>
-
-			</div>
-
+				<a th:href="${'/admin/users/' + user.id}">
+					<h2> <td th:text="${user.id}"></td>						
+						 <td th:text="${user.name} + ${user.lastName}"></td>
+					</h2>
+				</a>
+				<p><td th:text="${user.email}"></td></p>
+				<p><td th:text="${user.password}"></td></p>
+				
+			</div> 
+			<a th:href="@{/admin/user-delete(userId=${user.id})}" class="btn btn-danger">Delete</a>		
+			
+			
 		</tr>
-
 	</div>
-
 	<br>
-
 	<footer th:replace="layout :: site-footer" /></footer>
 </body>
 </html>

@@ -99,7 +99,7 @@ public class CinemaController {
 //	 	return updatedCinema; 
 //	 
 //	  }
-	
+	//cinema update load
 	@RequestMapping(value="/cinemas/cinema-update", method=RequestMethod.GET)
 	public String updateCinema(
 			@RequestParam(name="cinemaId") Long cinemaId, Model model) {
@@ -113,7 +113,7 @@ public class CinemaController {
 	    return "admin/cinema-update";
 	
 	}
-	
+	//cinema update create from model
 	@RequestMapping(value="/cinemas/cinema-update", method=RequestMethod.POST)
 	public String updateCinemaPost(Cinema cinema) {
 	
