@@ -38,11 +38,12 @@
 			</div>
 
 			<div sec:authorize="hasAuthority('ADMIN')">
-			<a th:href="@{/showtimes/showtime-create(cinemaId=${cinema.id})}" class="btn btn-success">Add showtimes</a>
-			<a th:href="@{/cinemas/auditorium-create(cinemaId=${cinema.id})}" class="btn btn-primary">Add auditorium</a>
+			
+				<a th:href="@{/showtimes/showtime-create(cinemaId=${cinema.id})}" class="btn btn-success">Add showtimes</a>
+				<a th:href="@{/cinemas/auditorium-create(cinemaId=${cinema.id})}" class="btn btn-primary">Add auditorium</a>
+					<a th:href="@{/cinemas/cinema-delete(cinemaId=${cinema.id})}" class="btn btn-danger">Delete</a>
+					<a th:href="@{/cinemas/cinema-update(cinemaId=${cinema.id})}" class="btn btn-danger">Update</a>
 				
-				<a th:href="@{/cinemas/cinema-delete(cinemaId=${cinema.id})}" class="btn btn-danger">Delete</a>
-				<a th:href="@{/cinemas/cinema-update(cinemaId=${cinema.id})}" class="btn btn-danger">Update</a>
 			</div>
 		</tr>
 

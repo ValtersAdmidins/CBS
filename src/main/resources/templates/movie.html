@@ -16,7 +16,7 @@
 		<p th:text="'Subtitles: ' + ${movie.subtitles} " />
 		<p th:text="'Length ' + ${movie.movieLengthMinutes} " />
 
-
+</div>
 
 	<tr th:each="showtime : ${showtimes}">
 			<div style="background-color: lightgrey;">
@@ -30,8 +30,8 @@
 			</div>
 
 		</tr>
-		<button onclick="location.href='/buyaticket'" type="button" class="btn btn-primary">Buy ticket</button>
-
+		
+		<a th:href="@{/movies/{movieId}/chooseCinema (movieId=${movie.id})}" class="btn btn-info">choose cinema</a>
 
 
 	<footer th:replace="layout :: site-footer" /></footer>
