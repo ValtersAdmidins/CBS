@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.booking.cinema.email.NotificationService;
 import com.booking.cinema.exceptions.ResourceNotFoundException;
 import com.booking.cinema.model.Auditorium;
 import com.booking.cinema.model.Cinema;
@@ -52,7 +53,8 @@ public class ShowtimeController {
 	@Autowired
 	UserService userService;
 	
-	
+	@Autowired
+	NotificationService notificationService;
 	
 	
 	@RequestMapping("/showtimes")
@@ -106,6 +108,8 @@ public class ShowtimeController {
 		UserDetails userDetail = (UserDetails) auth.getPrincipal();
 		User user = userService.findUserByEmail(userDetail.getUsername()); 
 		
+		
+		
 		Ticket t = new Ticket();
 		t.setColumn(column);
 		t.setRow(row);
@@ -114,6 +118,7 @@ public class ShowtimeController {
 		t.setDate();
 		ticketRepository.save(t);
 		showtimeRepository.save(showtime);
+		notificationService.sendNotification(user.getEmail());
 		return "redirect:/showtimes";
 	}
 	
