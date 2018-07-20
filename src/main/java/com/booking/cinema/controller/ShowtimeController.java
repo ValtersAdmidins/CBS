@@ -112,8 +112,6 @@ public class ShowtimeController {
 		ticketRepository.save(t);
 		showtimeRepository.save(showtime);
 		notificationService.sendNotification(user.getEmail());
-		 
-		
 		
 		return "redirect:/showtimes";
 	}
