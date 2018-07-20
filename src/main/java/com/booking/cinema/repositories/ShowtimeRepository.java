@@ -18,7 +18,7 @@ public interface ShowtimeRepository extends JpaRepository<Showtime, Long> {
 	 @Modifying
 	 @Query(value = "delete s from Showtime s where s.movie_id = ?1", nativeQuery = true)
 	 public void deleteShowtimesByMovieId(Long movie_id);
-
+	 
 	 /*
 	 @Modifying
 	 @Query("delete from Showtime s where s.auditorium = ?1")

@@ -52,13 +52,7 @@ public class MovieController {
 						() -> new ResourceNotFoundException("Movie", "id",
 								movieId)));
 
-		model.addAttribute("showtimes",
-				showtimeRepository.findAllShowtimesForMovie(movieId));
-		System.out.println("IZPILDAS FIND ALL SHOWTIMES FOR MOVIE");
-		for (Showtime s : showtimeRepository
-				.findAllShowtimesForMovie(movieId)) {
-			System.out.println(s);
-		}
+		
 		return "movie";
 	}
 
@@ -128,14 +122,14 @@ public class MovieController {
 	}*/
 
 	// Loads the movie-create html page for admin.
-	@GetMapping("/movies/movie-create")
+	@GetMapping("/admin/movie-create")
 	public String movieCreateForm(Model model) {
 		model.addAttribute("movie", new Movie());
 		return "admin/movie-create";
 	}
 
 	// Proccesses the movie creation and insertion into the database.
-	@PostMapping("/movies/movie-create")
+	@PostMapping("/admin/movie-create")
 	public String movieCreateProccess(Movie movie) {
 		movieRepository.save(movie);
 		return "redirect:/";
@@ -163,7 +157,7 @@ public class MovieController {
 	// return "redirect:/";
 	// }
 
-	@RequestMapping(value = "/movies/movie-delete", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/movie-delete", method = RequestMethod.GET)
 	public String movieDeleteProccess(
 			@RequestParam(name = "movieId") Long movieId) {
 
@@ -175,7 +169,7 @@ public class MovieController {
 		return "redirect:/";
 	}
 
-	@RequestMapping(value = "/movies/movie-edit", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/movie-edit", method = RequestMethod.GET)
 	public String movieEditForm(@RequestParam(name = "movieId") Long movieId,
 			Model model) {
 
@@ -187,7 +181,7 @@ public class MovieController {
 		return "admin/movie-edit";
 	}
 
-	@RequestMapping(value = "/movies/movie-edit", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/movie-edit", method = RequestMethod.POST)
 	public String movieEditProccess(Movie movieDetails) {
 
 		// Movie movie =

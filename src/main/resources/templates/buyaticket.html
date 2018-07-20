@@ -17,43 +17,40 @@
 
 		<div id="stringauditorium"></div>
 
-		<div style="width: 50%; margin-left: auto; margin-right: auto;">
-			<h3>
-				Movie:
-				<p style="text-decoration: line-through;">dynamic movie name</p>
-			</h3>
+		<form action="#" th:action="@{/showtimes/showtime-edit(column=${4}, row=${4})}" th:object="${showtime}" method="post">
 
-			<h3>Chosen seats:</h3>
-			<div id="chosenseats"></div>
-			<h3>
-				Tickets: <span id="counter">0</span>
-			</h3>
+			<input type="hidden" th:field="*{id}"> <input type="hidden" th:field="*{cinema}"> <input type="hidden" th:field="*{movie}"> <input type="hidden"
+				th:field="*{auditorium}"> <input type="hidden" value="" th:field="*{takenSeats}" id="newseatmapstring">
 
-			<h3>
-				Total: <span id="total">0</span>
-			</h3>
-			<form action="#" th:action="@{/showtimes/showtime-edit}" th:object="${showtime}" method="post">
+			<div style="width: 50%; margin-left: auto; margin-right: auto;">
+				<h3>
+					Movie:
+					<p th:text="${movie.title}"></p>
+				</h3>
 
-				<input type="text" th:field="*{id}"> 
-				<input type="text" th:field="*{cinema}"> 
-				<input type="text" th:field="*{movie}"> 
-				<input type="text" th:field="*{auditorium}"> 
-				
-				
-				<input type="text" value=""  th:field="*{takenSeats}" id="newseatmapstring"> 
-				
-<<<<<<< HEAD
-				<input type="submit" value="Buy Tickets">
-=======
-				<input type="hidden" value=""  th:field="*{takenSeats}" id="newseatmapstring"> 
-				<input type="button" value="Buy Tickets" id="buybutton" onclick="doBuy()">
->>>>>>> gita3
-			</form>
+				<h3>Chosen seats:</h3>
+				<div id="chosenseats"></div>
+				<h3>
+					Tickets: <span id="counter">0</span>
+				</h3>
+
+				<h3>
+					Total: <span id="total">0</span>
+				</h3>
+
+				<div sec:authorize="isAuthenticated()">
+
+					<input type="submit" value="Buy Tickets">
+
+				</div>
+
+				<div sec:authorize="!isAuthenticated()">Please login to buy a ticket.</div>
+		</form>
 
 
 
-		</div>
+	</div>
 
-		<footer th:replace="layout :: site-footer" /></footer>
+	<footer th:replace="layout :: site-footer" /></footer>
 </body>
 </html>

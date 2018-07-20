@@ -8,7 +8,9 @@
 
 	<div sec:authorize="hasAuthority('ADMIN')">
 		LOGGED IN AS ADMIN.
-		<button onclick="location.href='/cinemas/cinema-create'" type="button" class="btn btn-primary">Add Cinema</button>		 
+
+		<button onclick="location.href='/admin/cinema-create'" type="button" class="btn btn-primary">Add Cinema</button>
+
 	</div>
 	<div sec:authorize="!hasAuthority('ADMIN')">NOT ADMIN</div>
 	<div class="container">
@@ -19,24 +21,22 @@
 				<a th:href="${'/cinemas/' + cinema.id}"><h2>
 						<td th:text="${cinema.name}"></td>
 					</h2></a>
-				<p>
-					<td th:text="${cinema.address}"></td>
-				</p>
-				<p>
-					<td th:text="${cinema.latitude}"></td>
-				</p>
-				<p>
-					<td th:text="${cinema.longitude}"></td>
-				</p>
+
+				<label>Address: </label>
+				<td th:text="${cinema.address}">></td> <br> <label>Lattitude: </label>
+				<td th:text="${cinema.latitude}"></td> <br> <label>Longitude: </label>
+				<td th:text="${cinema.longitude}"></td> <br>
+
+
 			</div>
 
 			<div sec:authorize="hasAuthority('ADMIN')">
-			
-				<a th:href="@{/showtimes/showtime-create(cinemaId=${cinema.id})}" class="btn btn-success">Add showtimes</a>
-				<a th:href="@{/cinemas/auditorium-create(cinemaId=${cinema.id})}" class="btn btn-primary">Add auditorium</a>
-					<a th:href="@{/cinemas/cinema-delete(cinemaId=${cinema.id})}" class="btn btn-danger">Delete</a>
-					<a th:href="@{/cinemas/cinema-update(cinemaId=${cinema.id})}" class="btn btn-danger">Update</a>
-				
+
+				<a th:href="@{/admin/showtime-create(cinemaId=${cinema.id})}" class="btn btn-success">Add showtimes</a> <a th:href="@{/admin/auditorium-create(cinemaId=${cinema.id})}"
+					class="btn btn-primary">Add auditorium</a> <a th:href="@{/admin/cinema-delete(cinemaId=${cinema.id})}" class="btn btn-danger">Delete</a> <a
+					th:href="@{/admin/cinema-update(cinemaId=${cinema.id})}" class="btn btn-danger">Update</a>
+
+
 			</div>
 		</tr>
 

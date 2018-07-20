@@ -9,7 +9,7 @@
 	<header th:replace="layout :: site-header" /></header>
 <div style="margin-left: auto; margin-right: auto; width: 50%;">
 	<h1>Form</h1>
-	<form th:action="@{/cinemas/auditorium-create}" th:object="${auditorium}"  method="post">
+	<form th:action="@{/admin/auditorium-create}" th:object="${auditorium}"  method="post">
 		
 		<p>
 			Room name: <input type="text" required th:field="*{roomNumber}" />

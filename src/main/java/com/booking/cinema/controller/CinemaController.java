@@ -1,5 +1,7 @@
 package com.booking.cinema.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +38,10 @@ public class CinemaController {
 
 	@RequestMapping("/cinemas")
 	public String showAllMovies(Model model) {
-		model.addAttribute("cinemas", cinemaRepository.findAll());
+		List<Cinema> allCinemas = cinemaRepository.findAll();
+		model.addAttribute("cinemas", allCinemas);
+		
+		
 		return "cinemas";
 	}
 
@@ -47,20 +52,20 @@ public class CinemaController {
 				cinemaRepository.findById(cinemaId).orElseThrow(
 						() -> new ResourceNotFoundException("Cinema", "id",
 								cinemaId)));
-//		model.addAttribute("auditoriums",
-//				auditoriumRepository.findAllAuditoriumsInCinema(cinemaId));
+		model.addAttribute("auditoriums",
+				auditoriumRepository.findAllAuditoriumsInCinema(cinemaId));
 		return "cinema";
 	}
 
 	// Loads the cinema-create html page for admin.
-	@GetMapping("/cinemas/cinema-create")
+	@GetMapping("/admin/cinema-create")
 	public String cinemaCreateForm(Model model) {
 		model.addAttribute("cinema", new Cinema());
 		return "admin/cinema-create";
 	}
 
 	// Proccesses the cinema creation and insertion into the database.
-	@PostMapping("/cinemas/cinema-create")
+	@PostMapping("/admin/cinema-create")
 	public String cinemaCreateProccess(Cinema cinema) {
 		cinema.setLatitudeAndLongitudeFromAddress();
 		cinemaRepository.save(cinema);
@@ -68,7 +73,7 @@ public class CinemaController {
 	}
 	
 	//Deletes cinema
-	@RequestMapping(value = "/cinemas/cinema-delete", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/cinema-delete", method = RequestMethod.GET)
 	public String handleDeleteCinema(
 			@RequestParam(name="cinemaId")Long cinemaId) {
 	    System.out.println(cinemaId);
@@ -100,7 +105,7 @@ public class CinemaController {
 //	 
 //	  }
 	//cinema update load
-	@RequestMapping(value="/cinemas/cinema-update", method=RequestMethod.GET)
+	@RequestMapping(value="/admin/cinema-update", method=RequestMethod.GET)
 	public String updateCinema(
 			@RequestParam(name="cinemaId") Long cinemaId, Model model) {
 	
@@ -114,7 +119,7 @@ public class CinemaController {
 	
 	}
 	//cinema update create from model
-	@RequestMapping(value="/cinemas/cinema-update", method=RequestMethod.POST)
+	@RequestMapping(value="/admin/cinema-update", method=RequestMethod.POST)
 	public String updateCinemaPost(Cinema cinema) {
 	
 //		Cinema cinemaa = cinemaRepository.findById(cinema.getId()).orElseThrow(
