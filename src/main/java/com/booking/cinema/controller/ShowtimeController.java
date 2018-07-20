@@ -114,7 +114,7 @@ public class ShowtimeController {
 		
 		notificationService.sendNotification(user);
 		
-		return "redirect:/showtimes";
+		return "redirect:/";
 	}
 
 

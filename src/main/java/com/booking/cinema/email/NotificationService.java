@@ -25,20 +25,17 @@ public class NotificationService {
 	public void sendNotification(User user)  {
 	 
 		//send email
-	 
 		SimpleMailMessage mail = new SimpleMailMessage();
 		mail.setTo(user.getEmail());
-	
 		mail.setFrom("bootcampstests@gmail.com");
-		mail.setSubject("test");
-		mail.setText("test");
- 
-	 
-		
+		mail.setSubject("Your ticket!");
+		mail.setText("You have purchased tickets to ...");
 		JavaMailSender jsd =getJavaMailSender();
 		jsd.send(mail);
 	}
 	 
+	
+
 	public JavaMailSender getJavaMailSender() {
 	    JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
 	    mailSender.setHost("smtp.gmail.com");
