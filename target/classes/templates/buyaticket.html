@@ -31,7 +31,11 @@
 			<h3>
 				Total: <span id="total">0</span>
 			</h3>
+<<<<<<< HEAD
 			<form action="#" id="buyForm" th:action="@{/showtimes/showtime-edit}" th:object="${showtime}" method="post">
+=======
+			<form action="#" id="buyForm" th:action="@{/showtimes/showtime-edit(row=${4},column=${4})}" th:object="${showtime}" method="post">
+>>>>>>> master
 
 				<input type="hidden" th:field="*{id}"> 
 				<input type="hidden" th:field="*{cinema}"> 

@@ -5,6 +5,9 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,10 +22,14 @@ import com.booking.cinema.exceptions.ResourceNotFoundException;
 import com.booking.cinema.model.Auditorium;
 import com.booking.cinema.model.Cinema;
 import com.booking.cinema.model.Showtime;
+import com.booking.cinema.model.Ticket;
+import com.booking.cinema.model.User;
 import com.booking.cinema.repositories.AuditoriumRepository;
 import com.booking.cinema.repositories.CinemaRepository;
 import com.booking.cinema.repositories.MovieRepository;
 import com.booking.cinema.repositories.ShowtimeRepository;
+import com.booking.cinema.repositories.TicketRepository;
+import com.booking.cinema.service.UserService;
 
 @Controller
 public class ShowtimeController {
@@ -38,6 +45,12 @@ public class ShowtimeController {
 	
 	@Autowired
 	AuditoriumRepository auditoriumRepository;
+	
+	@Autowired
+	TicketRepository ticketRepository;
+	
+	@Autowired
+	UserService userService;
 	
 	
 	
@@ -87,8 +100,20 @@ public class ShowtimeController {
 	
 
 	@RequestMapping(value = "/showtimes/showtime-edit", method=RequestMethod.POST)
-	public String showtimeEditSeats(Showtime showtime) {
-		System.out.println("IZPILDAS FUNKCIJAS SHOWTIME EDIT");
+	public String showtimeEditSeats(Showtime showtime, @RequestParam(value = "column") int column, @RequestParam(value = "row") int row) {
+		
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication(); 
+		UserDetails userDetail = (UserDetails) auth.getPrincipal();
+		User user = userService.findUserByEmail(userDetail.getUsername()); 
+
+		
+		Ticket t = new Ticket();
+		t.setColumn(column);
+		t.setRow(row);
+		t.setShowtime(showtime);
+		t.setUser(user);
+		t.setDate();
+		ticketRepository.save(t);
 		showtimeRepository.save(showtime);
 		return "redirect:/showtimes";
 	}

@@ -94,6 +94,7 @@ function makingSeatsTaken() {
 	
 		for (var i = 0; i < rowCount; i++) {
 			for (var j = 0; j < columnCount; j++) {
+				
 				var button = document.getElementById("R" + (i + 1) + "C"+ (j + 1));
 				if (button.style.backgroundColor == ('lightseagreen')) {
 					newseatmapstring += "3";
@@ -101,7 +102,7 @@ function makingSeatsTaken() {
 					newseatmapstring += "1";
 				} else if (seats[i].style.backgroundColor == ('black')) {
 					newseatmapstring += "3";
-				} else {
+				} else if (seats[i].style.backgroundColor == ('white')) {
 					newseatmapstring += "0";
 				}
 				console.log("R" + (i + 1) + "C"+ (j + 1));
