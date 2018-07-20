@@ -51,6 +51,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.antMatchers("/movies/**").permitAll()
 				.antMatchers("/cinemas").permitAll()
 				.antMatchers("/cinemas/**").permitAll()
+				.antMatchers("/test").permitAll()
 				.antMatchers("/userProfile").hasAuthority("USER").anyRequest()
 				.authenticated()
 				.antMatchers("/admin/**").hasAuthority("ADMIN").anyRequest()

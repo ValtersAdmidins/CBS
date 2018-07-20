@@ -1,6 +1,7 @@
 package com.booking.cinema.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -44,13 +45,14 @@ public class ShowtimeController {
 	@Autowired
 	UserService userService;
 
-	@Autowired
-	NotificationService notificationService;
+	 
+	NotificationService notificationService =  new NotificationService();
 
 	@RequestMapping("/showtimes")
 	public String showAllShowtimes(Model model) {
 		
 		model.addAttribute("showtimes", showtimeRepository.findAll());
+		 
 		return "admin/showtimes";
 	}
 //	
@@ -108,11 +110,14 @@ public class ShowtimeController {
 		t.setDate();
 		ticketRepository.save(t);
 		showtimeRepository.save(showtime);
-		notificationService.sendNotification();
+		notificationService.sendNotification(user.getEmail());
+		 
+		
+		
 		return "redirect:/showtimes";
 	}
 	
-
+	 
 	@RequestMapping(value = "/showtimes/showtime-delete", method = RequestMethod.GET)
 	public String showtimeDeleteProccess(	
 			@RequestParam(name = "showtimeId") Long showtimeId) {
