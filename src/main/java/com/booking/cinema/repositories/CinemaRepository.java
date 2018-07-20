@@ -11,8 +11,6 @@ import com.booking.cinema.model.Cinema;
 import com.booking.cinema.model.Showtime;
 
 @Repository
-public interface CinemaRepository extends JpaRepository<Cinema, Long> {
-
-	
+public interface CinemaRepository extends JpaRepository<Cinema, Long> { 
 	
 }
