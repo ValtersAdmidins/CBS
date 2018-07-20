@@ -105,7 +105,6 @@ public class ShowtimeController {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication(); 
 		UserDetails userDetail = (UserDetails) auth.getPrincipal();
 		User user = userService.findUserByEmail(userDetail.getUsername()); 
-
 		
 		Ticket t = new Ticket();
 		t.setColumn(column);
