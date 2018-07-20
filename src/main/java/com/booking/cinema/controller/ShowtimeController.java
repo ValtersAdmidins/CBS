@@ -101,14 +101,14 @@ public class ShowtimeController {
 		
 		
 		Ticket t = new Ticket();
-		t.setColumn(column);
-		t.setRow(row);
+		t.setColumnn(column);
+		t.setRoww(row);
 		t.setShowtime(showtime);
 		t.setUser(user);
 		t.setDate();
 		ticketRepository.save(t);
 		showtimeRepository.save(showtime);
-		notificationService.sendNotification(user.getEmail());
+		notificationService.sendNotification();
 		return "redirect:/showtimes";
 	}
 	

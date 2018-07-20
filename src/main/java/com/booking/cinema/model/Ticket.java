@@ -1,9 +1,7 @@
 package com.booking.cinema.model;
 
 import java.util.Date;
-import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,9 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "ticket")
@@ -39,29 +35,39 @@ public class Ticket {
 	public Showtime showtime;
 
 	public Ticket() {
-		 
+
 	}
-	
-	
-	
+
+	public Ticket(long id, int columnn, int roww, double price) {
+		setId(id);
+		setColumnn(columnn);
+		setRoww(roww);
+		setPrice(price);
+
+	}
+
+	public int getColumnn() {
+		return columnn;
+	}
+
+	public void setColumnn(int columnn) {
+		this.columnn = columnn;
+	}
+
+	public int getRoww() {
+		return roww;
+	}
+
+	public void setRoww(int roww) {
+		this.roww = roww;
+	}
+
 	public Date getDate() {
 		return date;
 	}
 
-
-
 	public void setDate() {
 		this.date = new Date();
-	}
-
-
-
-	public Ticket(long id, int columnn, int roww, double price) {
-		setId(id);
-		setColumn(columnn);
-		setRow(roww);
-		setPrice(price);
-		 
 	}
 
 	public Showtime getShowtime() {
@@ -79,8 +85,6 @@ public class Ticket {
 	public void setShowtime(Showtime showtime) {
 		this.showtime = showtime;
 	}
-
-	
 
 	private void setPrice(double price) {
 		if (price < 0.01) {
@@ -107,35 +111,10 @@ public class Ticket {
 		}
 	}
 
-	public int getColumn() {
-		return columnn;
-	}
-
-	public void setColumn(int columnn) {
-		if (columnn < 0) {
-			System.out.println("Column cannot be lower than 1");
-		} else {
-			this.columnn = columnn;
-		}
-	}
-
-	public int getRow() {
-		return roww;
-	}
-
-	public void setRow(int roww) {
-		if (roww < 0) {
-			System.out.println("Row cannot be lower than 1");
-		} else {
-			this.roww = roww;
-		}
-	}
-
-	  
-
 	@Override
 	public String toString() {
-		return "Ticket [id=" + id + ", column=" + columnn + ", row=" + roww + " + " + "]";
+		return "Ticket [id=" + id + ", column=" + columnn + ", row=" + roww
+				+ " + " + "]";
 	}
 
 }
