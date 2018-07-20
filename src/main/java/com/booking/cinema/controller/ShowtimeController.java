@@ -102,7 +102,7 @@ public class ShowtimeController {
 				.getAuthentication();
 		UserDetails userDetail = (UserDetails) auth.getPrincipal();
 		User user = userService.findUserByEmail(userDetail.getUsername());
-
+		
 		Ticket t = new Ticket();
 		t.setColumnn(column);
 		t.setRoww(row);
@@ -111,7 +111,8 @@ public class ShowtimeController {
 		t.setDate();
 		ticketRepository.save(t);
 		showtimeRepository.save(showtime);
-		notificationService.sendNotification(user.getEmail());
+		
+		notificationService.sendNotification(user);
 		
 		return "redirect:/showtimes";
 	}
