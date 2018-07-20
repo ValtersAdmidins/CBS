@@ -27,10 +27,11 @@
 				<p>
 					<td th:text="${movie.plot}"></td>
 				</p>
-				<td th:text="${movie.genres}"></td> <br>
-				<td th:text="${movie.ageLimit}"></td> <br>
-				<td th:text="${movie.language}"></td> <br>
-				<td th:text="${movie.subtitles}"></td> <br>
+				<label>Genre: </label>
+				<td th:text="${movie.genres}"></td> <br> <label>Age limit: </label>
+				<td th:text="${movie.ageLimit}"></td> <br> <label>Language: </label>
+				<td th:text="${movie.language}"></td> <br> <label>Subtitles: </label>
+				<td th:text="${movie.subtitles}"></td> <br> <label>Movie length in minutes: </label>
 				<td th:text="${movie.movieLengthMinutes}"></td> <br>
 
 			</div>
@@ -38,10 +39,9 @@
 			<div sec:authorize="hasAuthority('ADMIN')">
 
 				<!-- 				<button onclick="location.href='/movies/movie-delete'" type="button" class="btn btn-primary">Delete Movie</button> -->
-				
-				<a th:href="@{/admin/movie-delete(movieId=${movie.id})}" class="btn btn-danger">Delete</a>
-				<a th:href="@{/admin/movie-edit(movieId=${movie.id})}" class="btn btn-info">Edit</a>
-<!--  -->
+
+				<a th:href="@{/admin/movie-delete(movieId=${movie.id})}" class="btn btn-danger">Delete</a> <a th:href="@{/admin/movie-edit(movieId=${movie.id})}" class="btn btn-info">Edit</a>
+				<!--  -->
 			</div>
 
 		</tr>

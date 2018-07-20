@@ -9,27 +9,30 @@
 	<div class="container">
 		<h2 th:text='${movie.title}' />
 
-		<img href="">
-		<p th:text="'Plot: ' + ${movie.plot} " />
-		<p th:text="'Age limit: ' + ${movie.ageLimit} " />
-		<p th:text="'Language: ' + ${movie.language} " />
-		<p th:text="'Subtitles: ' + ${movie.subtitles} " />
-		<p th:text="'Length ' + ${movie.movieLengthMinutes} " />
+		<p>
+			<td th:text="${movie.plot}"></td>
+		</p>
+		<label>Genre: </label>
+		<td th:text="${movie.genres}"></td> <br> <label>Age limit: </label>
+		<td th:text="${movie.ageLimit}"></td> <br> <label>Language: </label>
+		<td th:text="${movie.language}"></td> <br> <label>Subtitles: </label>
+		<td th:text="${movie.subtitles}"></td> <br> <label>Movie length in minutes: </label>
+		<td th:text="${movie.movieLengthMinutes}"></td> <br>
 
-</div>
+	</div>
 
-	<tr th:each="showtime : ${showtimes}">
-		<div style="background-color: lightgrey;">
+<!-- 	<tr th:each="showtime : ${showtimes}"> -->
+<!-- 		<div style="background-color: lightgrey;"> -->
 
-			<td th:text="${showtime.dateAndTime}"></td> <br>
-			<td th:text="${showtime.takenSeats}"></td> <br>
-			<!--  <td th:text="${showtime.ageLimit}"></td> <br>
-				<td th:text="${movie.language}"></td> <br>
-				<td th:text="${movie.subtitles}"></td> <br>
-				<td th:text="${movie.movieLengthMinutes}"></td> <br>-->
-		</div>
+<!-- 			<td th:text="${showtime.dateAndTime}"></td> <br> -->
+<!-- 			<td th:text="${showtime.takenSeats}"></td> <br> -->
+<!-- 			<!--  <td th:text="${showtime.ageLimit}"></td> <br> -->
+<!-- 				<td th:text="${movie.language}"></td> <br> -->
+<!-- 				<td th:text="${movie.subtitles}"></td> <br> -->
+<!-- 				<td th:text="${movie.movieLengthMinutes}"></td> <br>--> -->
+<!-- 		</div> -->
 
-	</tr>
+<!-- 	</tr> -->
 
 	<a th:href="@{/movies/{movieId}/chooseCinema (movieId=${movie.id})}" class="btn btn-info">choose cinema</a>
 
