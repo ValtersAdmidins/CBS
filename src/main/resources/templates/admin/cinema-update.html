@@ -13,7 +13,7 @@
 	 
 			<div style="background-color: lightgrey;">
 
-	<form th:action="@{/cinemas/cinema-update}" th:object="${cinema}" method="post">
+	<form th:action="@{/admin/cinema-update}" th:object="${cinema}" method="post">
 	<input type="hidden" th:field="*{id}">
 		<p>
 			Name: <input type="text"  th:field="*{name}" />   

@@ -10,7 +10,7 @@
 
 		LOGGED IN AS ADMIN.
 
-		<button onclick="location.href='/movies/movie-create'" type="button" class="btn btn-primary">Add Movie</button>
+		<button onclick="location.href='/admin/movie-create'" type="button" class="btn btn-primary">Add Movie</button>
 
 	</div>
 
@@ -39,8 +39,8 @@
 
 				<!-- 				<button onclick="location.href='/movies/movie-delete'" type="button" class="btn btn-primary">Delete Movie</button> -->
 				
-				<a th:href="@{/movies/movie-delete(movieId=${movie.id})}" class="btn btn-danger">Delete</a>
-				<a th:href="@{/movies/movie-edit(movieId=${movie.id})}" class="btn btn-info">Edit</a>
+				<a th:href="@{/admin/movie-delete(movieId=${movie.id})}" class="btn btn-danger">Delete</a>
+				<a th:href="@{/admin/movie-edit(movieId=${movie.id})}" class="btn btn-info">Edit</a>
 <!--  -->
 			</div>
 

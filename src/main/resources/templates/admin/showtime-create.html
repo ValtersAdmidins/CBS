@@ -10,7 +10,7 @@
 	<header th:replace="layout :: site-header" />
 
 
-	<form th:action="@{/showtimes/showtime-create}" th:object="${showtime}" method="post">
+	<form th:action="@{/admin/showtime-create}" th:object="${showtime}" method="post">
 	
 		<p>
 			Cinema:   IEGUST CINEMA NAME NO ID KAS IR PATH
@@ -52,7 +52,7 @@
 
 	</form>
 
-<a th:href="@{/showtimes/showtime-delete-all}" class="btn btn-danger">Delete</a>
+<!-- <a th:href="@{/showtimes/showtime-delete-all}" class="btn btn-danger">Delete</a> -->
 
 
 	<footer th:replace="layout :: site-footer" />

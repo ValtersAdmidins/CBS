@@ -25,22 +25,22 @@ import com.booking.cinema.service.UserService;
 
 @Controller
 public class ShowtimeController {
-	
+
 	@Autowired
 	ShowtimeRepository showtimeRepository;
-	
+
 	@Autowired
 	MovieRepository movieRepository;
-	
+
 	@Autowired
 	CinemaRepository cinemaRepository;
-	
+
 	@Autowired
 	AuditoriumRepository auditoriumRepository;
-	
+
 	@Autowired
 	TicketRepository ticketRepository;
-	
+
 	@Autowired
 	UserService userService;
 
@@ -49,57 +49,58 @@ public class ShowtimeController {
 
 	@RequestMapping("/showtimes")
 	public String showAllShowtimes(Model model) {
-		
+
 		model.addAttribute("showtimes", showtimeRepository.findAll());
 		return "admin/showtimes";
 	}
-//	
-//	
-//	// Loads the auditorium-create html page.
-//		@GetMapping("/cinemas/auditorium-create")
-//		public String auditoriumCreatePage(  Model model) {
-//			model.addAttribute("auditorium", new Auditorium());
-//			
-//			return "admin/auditorium-create";
-//		}
-//		
-//		
-//		// Proccesses the auditorium creation and insertion into the database.
-//			@PostMapping("/cinemas/auditorium-create")
-//			public String auditoriumCreateProccess(Auditorium auditorium) {
-//				auditoriumRepository.save(auditorium);
-//				return "redirect:/auditories";
-//			} 
-//	
-	@GetMapping("/showtimes/showtime-create")
-	public String showtimeCreateForm(@RequestParam(value = "cinemaId") Long cinemaid, Model model) {
-		
+	//
+	//
+	// // Loads the auditorium-create html page.
+	// @GetMapping("/cinemas/auditorium-create")
+	// public String auditoriumCreatePage( Model model) {
+	// model.addAttribute("auditorium", new Auditorium());
+	//
+	// return "admin/auditorium-create";
+	// }
+	//
+	//
+	// // Proccesses the auditorium creation and insertion into the database.
+	// @PostMapping("/cinemas/auditorium-create")
+	// public String auditoriumCreateProccess(Auditorium auditorium) {
+	// auditoriumRepository.save(auditorium);
+	// return "redirect:/auditories";
+	// }
+	//
+	@GetMapping("/admin/showtime-create")
+	public String showtimeCreateForm(
+			@RequestParam(value = "cinemaId") Long cinemaid, Model model) {
+
 		model.addAttribute("mvs", movieRepository.findAll());
-		model.addAttribute("auditoriums",auditoriumRepository.findAllAuditoriumsInCinema(cinemaid));
-		model.addAttribute("showtime",new Showtime());
-		
+		model.addAttribute("auditoriums",
+				auditoriumRepository.findAllAuditoriumsInCinema(cinemaid));
+		model.addAttribute("showtime", new Showtime());
+
 		return "admin/showtime-create";
 	}
-	
-	
-	@RequestMapping(value = "/showtimes/showtime-create", method=RequestMethod.POST)
+
+	@RequestMapping(value = "/admin/showtime-create", method = RequestMethod.POST)
 	public String showtimeCreateProccess(Showtime showtime) {
-		
+
 		showtime.setTakenSeats(showtime.getAuditorium().getSeats());
 		showtimeRepository.save(showtime);
 		return "redirect:/showtimes";
 	}
-	
 
-	@RequestMapping(value = "/showtimes/showtime-edit", method=RequestMethod.POST)
-	public String showtimeEditSeats(Showtime showtime, @RequestParam(value = "column") int column, @RequestParam(value = "row") int row) {
-		
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication(); 
+	@RequestMapping(value = "/showtimes/showtime-edit", method = RequestMethod.POST)
+	public String showtimeEditSeats(Showtime showtime,
+			@RequestParam(value = "column") int column,
+			@RequestParam(value = "row") int row) {
+
+		Authentication auth = SecurityContextHolder.getContext()
+				.getAuthentication();
 		UserDetails userDetail = (UserDetails) auth.getPrincipal();
-		User user = userService.findUserByEmail(userDetail.getUsername()); 
-		
-		
-		
+		User user = userService.findUserByEmail(userDetail.getUsername());
+
 		Ticket t = new Ticket();
 		t.setColumnn(column);
 		t.setRoww(row);
@@ -111,21 +112,17 @@ public class ShowtimeController {
 		notificationService.sendNotification();
 		return "redirect:/showtimes";
 	}
-	
 
-	@RequestMapping(value = "/showtimes/showtime-delete", method = RequestMethod.GET)
-	public String showtimeDeleteProccess(	
+	@RequestMapping(value = "/admin/showtime-delete", method = RequestMethod.GET)
+	public String showtimeDeleteProccess(
 			@RequestParam(name = "showtimeId") Long showtimeId) {
 
-		Showtime showtime =showtimeRepository.findById(showtimeId).orElseThrow(
-				() -> new ResourceNotFoundException("Movie", "id",
-						showtimeId));
+		Showtime showtime = showtimeRepository.findById(showtimeId).orElseThrow(
+				() -> new ResourceNotFoundException("Movie", "id", showtimeId));
 
 		showtimeRepository.delete(showtime);
 
 		return "redirect:/showtimes";
-}
-	
-	
-	
+	}
+
 }

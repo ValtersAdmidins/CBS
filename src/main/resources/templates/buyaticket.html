@@ -32,7 +32,7 @@
 			<h3>
 				Total: <span id="total">0</span>
 			</h3>
-			<form action="#" th:action="@{/showtimes/showtime-edit}" th:object="${showtime}" method="post">
+			<form action="#" th:action="@{/showtimes/showtime-edit(column=${4}, row=${4})}" th:object="${showtime}" method="post">
 
 				<input type="text" th:field="*{id}"> 
 				<input type="text" th:field="*{cinema}"> 
@@ -40,8 +40,20 @@
 				<input type="text" th:field="*{auditorium}"> 
 				
 				
+				
 				<input type="text" value=""  th:field="*{takenSeats}" id="newseatmapstring"> 
-				<input type="submit" value="Buy Tickets">
+				
+				<div sec:authorize="isAuthenticated()">
+				
+					<input type="submit" value="Buy Tickets">
+				
+				</div>
+				
+				<div sec:authorize="!isAuthenticated()">
+				
+					Please login to buy a ticket.
+				
+				</div>
 
 			</form>
 

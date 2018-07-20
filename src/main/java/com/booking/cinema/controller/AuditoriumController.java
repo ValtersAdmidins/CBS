@@ -69,7 +69,7 @@ public class AuditoriumController {
 	}
 
 	// Loads the auditorium-create html page.
-	@GetMapping("/cinemas/auditorium-create")
+	@GetMapping("/admin/auditorium-create")
 	public String auditoriumCreatePage(  Model model) {
 		model.addAttribute("auditorium", new Auditorium());
 		
@@ -78,14 +78,14 @@ public class AuditoriumController {
 	
 	
 	// Proccesses the auditorium creation and insertion into the database.
-		@PostMapping("/cinemas/auditorium-create")
+		@PostMapping("/admin/auditorium-create")
 		public String auditoriumCreateProccess(Auditorium auditorium) {
 			auditoriumRepository.save(auditorium);
 			return "redirect:/auditories";
 		}
 		
 		
-		@RequestMapping(value = "/auditories/auditorium-delete", method = RequestMethod.GET)
+		@RequestMapping(value = "/admin/auditorium-delete", method = RequestMethod.GET)
 		public String auditoriumDeleteProccess(	
 				@RequestParam(name = "auditoriumId") Long auditoriumId) {
 
@@ -100,7 +100,7 @@ public class AuditoriumController {
 		
 		
 		
-		@RequestMapping(value = "/auditories/auditorium-edit/{auditoriumId}", method = RequestMethod.GET)
+		@RequestMapping(value = "/admin/auditorium-edit/{auditoriumId}", method = RequestMethod.GET)
 		public String auditoriumEdit(
 				@RequestParam(name = "auditoriumId") Long auditoriumId, Model model) {
 
@@ -112,7 +112,7 @@ public class AuditoriumController {
 			return "admin/auditorium-edit";
 		}
 		
-		@RequestMapping(value = "/auditories/auditorium-edit", method = RequestMethod.POST)
+		@RequestMapping(value = "/admin/auditorium-edit", method = RequestMethod.POST)
 		public String auditoriumEditProccess(Auditorium auditorium) {
 
 //			
