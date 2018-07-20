@@ -8,12 +8,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.booking.cinema.exceptions.ResourceNotFoundException;
-import com.booking.cinema.model.Movie;
 import com.booking.cinema.model.User;
+import com.booking.cinema.repositories.TicketRepository;
 import com.booking.cinema.repositories.UserRepository;
 import com.booking.cinema.service.UserService;
 
@@ -22,6 +20,9 @@ public class UserController {
 
 	@Autowired
 	UserRepository userRepository;
+	
+	@Autowired
+	TicketRepository ticketRepository;
 
 	@Autowired
 	UserService userService;
@@ -83,6 +84,8 @@ public class UserController {
 	    
 	    User user = userService.findUserByEmail(userDetail.getUsername());
 		model.addAttribute("user", user);
+		
+		model.addAttribute("tickets", ticketRepository.findAllTicketsForUser(user.getId()));
 		
 		return "userProfile";
 	}

@@ -7,18 +7,37 @@
 	<header th:replace="layout :: site-header" /></header>
 
 	<div class="container">
-	
+
 		<h2 th:text='${user.id} + ${user.name} + ${user.lastName}' />
 		<p th:text="'Email: ' + ${user.email} " />
-		
+
 		<h2>Your tickets:</h2>
-		
-		
-		
-		
-	</div>
 
-	<footer th:replace="layout :: site-footer" /></footer>
+		<div class="container">
 
+		<tr th:each="ticket : ${tickets}">
+			<div style="background-color: lightgrey;">
+
+				<p>
+					<td th:text="${ticket.columnn}"></td>
+				</p>
+				<p>
+					<td th:text="${ticket.roww}"></td>
+				</p>
+				<p>
+					<td th:text="${cinema.price}"></td>
+				</p>
+				<p>
+					<td th:text="${cinema.date}"></td>
+				</p>
+				
+			</div>
+
+		</tr>
+
+
+		<br>
+
+		<footer th:replace="layout :: site-footer" /></footer>
 </body>
 </html>
