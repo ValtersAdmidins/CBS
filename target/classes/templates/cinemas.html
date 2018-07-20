@@ -8,7 +8,9 @@
 
 	<div sec:authorize="hasAuthority('ADMIN')">
 		LOGGED IN AS ADMIN.
+
 		<button onclick="location.href='/admin/cinema-create'" type="button" class="btn btn-primary">Add Cinema</button>
+
 	</div>
 	<div sec:authorize="!hasAuthority('ADMIN')">NOT ADMIN</div>
 	<div class="container">
@@ -19,10 +21,12 @@
 				<a th:href="${'/cinemas/' + cinema.id}"><h2>
 						<td th:text="${cinema.name}"></td>
 					</h2></a>
+
 				<label>Address: </label>
 				<td th:text="${cinema.address}">></td> <br> <label>Lattitude: </label>
 				<td th:text="${cinema.latitude}"></td> <br> <label>Longitude: </label>
 				<td th:text="${cinema.longitude}"></td> <br>
+
 
 			</div>
 
@@ -31,6 +35,7 @@
 				<a th:href="@{/admin/showtime-create(cinemaId=${cinema.id})}" class="btn btn-success">Add showtimes</a> <a th:href="@{/admin/auditorium-create(cinemaId=${cinema.id})}"
 					class="btn btn-primary">Add auditorium</a> <a th:href="@{/admin/cinema-delete(cinemaId=${cinema.id})}" class="btn btn-danger">Delete</a> <a
 					th:href="@{/admin/cinema-update(cinemaId=${cinema.id})}" class="btn btn-danger">Update</a>
+
 
 			</div>
 		</tr>
