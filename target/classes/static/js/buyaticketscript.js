@@ -23,8 +23,8 @@ function stringToView(str) {
 			console.log("ayo");
 			seat
 					.setAttribute(
-							"style",
-							" background-color:red;  background:none;border:0;  margin:0; padding:0; width: 50px; height: 50px;");
+							"style",	
+							" background-color:white;  border:0;  margin:0; padding:0; width: 50px; height: 50px;");
 			auditoriumDiv.appendChild(seat);
 			seat.disabled = true;
 		} else if (str[i] == 2) {
@@ -48,8 +48,7 @@ function stringToView(str) {
 function changeSeatButtonBuying(id) {
 	var b = document.getElementById(id);
 
-	b.style.backgroundColor = (b.style.backgroundColor == ('lightseagreen')) ? 'Linen'
-			: 'lightseagreen';
+	b.style.backgroundColor = (b.style.backgroundColor == ('lightseagreen')) ? 'Linen' : 'lightseagreen';
 
 }
 
@@ -98,11 +97,11 @@ function makingSeatsTaken() {
 				var button = document.getElementById("R" + (i + 1) + "C"+ (j + 1));
 				if (button.style.backgroundColor == ('lightseagreen')) {
 					newseatmapstring += "3";
-				} else if (seats[i].style.backgroundColor == ('linen')) {
+				} else if (button.style.backgroundColor == ('linen')) {
 					newseatmapstring += "1";
-				} else if (seats[i].style.backgroundColor == ('black')) {
+				} else if (button.style.backgroundColor == ('black')) {
 					newseatmapstring += "3";
-				} else if (seats[i].style.backgroundColor == ('white')) {
+				} else if (button.style.backgroundColor == ('white')) {
 					newseatmapstring += "0";
 				}
 				console.log("R" + (i + 1) + "C"+ (j + 1));
