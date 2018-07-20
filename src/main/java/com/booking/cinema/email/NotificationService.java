@@ -19,11 +19,11 @@ public class NotificationService {
 		this.javaMailSender = javaMailSender;
 				
 	}
-	public void sendNotification(String email) {
+	public void sendNotification() {
 		//send email
 		SimpleMailMessage mail = new SimpleMailMessage();
 		mail.setTo("sisirepasts123@gmail.com");
-		mail.setFrom(mail.getFrom());
+		mail.setFrom("sisirepasts123@gmail.com");
 		mail.setSubject("test");
 		mail.setText("test");
 		
