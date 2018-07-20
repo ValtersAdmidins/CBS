@@ -18,7 +18,7 @@
 				<td th:text="${showtime.dateAndTime}"></td>
 				<td  th:text="${showtime.takenSeats}"></td>
 				
-				<a th:href="@{/showtimes/showtime-delete(showtimeId=${showtime.id})}" class="btn btn-danger">Delete</a>
+				<a th:href="@{/admin/showtime-delete(showtimeId=${showtime.id})}" class="btn btn-danger">Delete</a>
 				<!--  <td th:text="${showtime.ageLimit}"></td> <br>
 				<td th:text="${movie.language}"></td> <br>
 				<td th:text="${movie.subtitles}"></td> <br>
