@@ -117,16 +117,11 @@ public class ShowtimeController {
 		
 		return "redirect:/showtimes";
 	}
-<<<<<<< HEAD
-	
-	 
-	@RequestMapping(value = "/showtimes/showtime-delete", method = RequestMethod.GET)
-	public String showtimeDeleteProccess(	
-=======
+
 
 	@RequestMapping(value = "/admin/showtime-delete", method = RequestMethod.GET)
 	public String showtimeDeleteProccess(
->>>>>>> 2b90a3cc206579fd939da8252696f6e51c98e98f
+
 			@RequestParam(name = "showtimeId") Long showtimeId) {
 
 		Showtime showtime = showtimeRepository.findById(showtimeId).orElseThrow(
