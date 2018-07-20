@@ -22,11 +22,11 @@ public class NotificationService {
 	public void sendNotification() {
 		//send email
 		SimpleMailMessage mail = new SimpleMailMessage();
-		mail.setTo("sisirepasts123@gmail.com");
-		mail.setFrom("sisirepasts123@gmail.com");
+		mail.setTo("arturskristapurs@gmail.com");
+		mail.setFrom(mail.getFrom());
 		mail.setSubject("test");
 		mail.setText("test");
-		
+		System.out.println(mail.getFrom());
 		javaMailSender.send(mail);
 	}
 }
