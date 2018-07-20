@@ -1,5 +1,7 @@
 package com.booking.cinema.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +38,10 @@ public class CinemaController {
 
 	@RequestMapping("/cinemas")
 	public String showAllMovies(Model model) {
-		model.addAttribute("cinemas", cinemaRepository.findAll());
+		List<Cinema> allCinemas = cinemaRepository.findAll();
+		model.addAttribute("cinemas", allCinemas);
+		
+		
 		return "cinemas";
 	}
 
@@ -47,8 +52,8 @@ public class CinemaController {
 				cinemaRepository.findById(cinemaId).orElseThrow(
 						() -> new ResourceNotFoundException("Cinema", "id",
 								cinemaId)));
-//		model.addAttribute("auditoriums",
-//				auditoriumRepository.findAllAuditoriumsInCinema(cinemaId));
+		model.addAttribute("auditoriums",
+				auditoriumRepository.findAllAuditoriumsInCinema(cinemaId));
 		return "cinema";
 	}
 

@@ -52,13 +52,7 @@ public class MovieController {
 						() -> new ResourceNotFoundException("Movie", "id",
 								movieId)));
 
-		model.addAttribute("showtimes",
-				showtimeRepository.findAllShowtimesForMovie(movieId));
-		System.out.println("IZPILDAS FIND ALL SHOWTIMES FOR MOVIE");
-		for (Showtime s : showtimeRepository
-				.findAllShowtimesForMovie(movieId)) {
-			System.out.println(s);
-		}
+		
 		return "movie";
 	}
 
