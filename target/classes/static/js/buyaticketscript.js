@@ -1,48 +1,48 @@
 function stringToView(str) {
 
-	var auditoriumDiv = document.getElementById("stringauditorium");
-	var j = 1;
-	var k = 0;
-	for (var i = 0; i < str.length; i++) {
+    var auditoriumDiv = document.getElementById("stringauditorium");
+    var j = 1;
+    var k = 0;
+    for (var i = 0; i < str.length; i++) {
 
-		k++;
-		var seat = document.createElement("input");
-		seat.setAttribute("id", "R" + j + "C" + k);
-		seat.setAttribute("type", "button");
-		seat.setAttribute("class", "chooseseatbutton");
-		seat.setAttribute("onclick", "seatCheckBox(this.id)");
+        k++;
+        var seat = document.createElement("input");
+        seat.setAttribute("id", "R" + j + "C" + k);
+        seat.setAttribute("type", "button");
+        seat.setAttribute("class", "chooseseatbutton");
+        seat.setAttribute("onclick", "seatCheckBox(this.id)");
 
-		if (str[i] == 1) {
+        if (str[i] == 1) {
 
-			seat
-					.setAttribute("style",
-							"background-color:Linen; width: 50px; height: 50px; border-radius: 25px;");
-			seat.setAttribute("value", "R" + j + "C" + k);
-			auditoriumDiv.appendChild(seat);
-		} else if (str[i] == 0) {
-			console.log("ayo");
-			seat
-					.setAttribute(
-							"style",
-							" background-color:red;  background:none;border:0;  margin:0; padding:0; width: 50px; height: 50px;");
-			auditoriumDiv.appendChild(seat);
-			seat.disabled = true;
-		} else if (str[i] == 2) {
-			var brln = document.createElement("br");
-			brln.setAttribute("class", "newline");
-			auditoriumDiv.appendChild(brln);
+            seat
+                    .setAttribute("style",
+                            "background-color:Linen; width: 50px; height: 50px; border-radius: 25px;");
+            seat.setAttribute("value", "R" + j + "C" + k);
+            auditoriumDiv.appendChild(seat);
+        } else if (str[i] == 0) {
+            console.log("ayo");
+            seat
+                    .setAttribute(
+                            "style",
+                            " background-color:white;  background:none;border:0;  margin:0; padding:0; width: 50px; height: 50px;");
+            auditoriumDiv.appendChild(seat);
+            seat.disabled = true;
+        } else if (str[i] == 2) {
+            var brln = document.createElement("br");
+            brln.setAttribute("class", "newline");
+            auditoriumDiv.appendChild(brln);
 
-			k = 0;
-			j++;
-		} else {
-			seat
-					.setAttribute("style",
-							"background-color:black; width: 50px; height: 50px; border-radius: 25px;");
-			seat.disabled = true;
-			auditoriumDiv.appendChild(seat);
-		}
+            k = 0;
+            j++;
+        } else {
+            seat
+                    .setAttribute("style",
+                            "background-color:black; width: 50px; height: 50px; border-radius: 25px;");
+            seat.disabled = true;
+            auditoriumDiv.appendChild(seat);
+        }
 
-	}
+    }
 }
 
 function changeSeatButtonBuying(id) {
@@ -87,35 +87,35 @@ function seatCheckBox(id) {
 
 function makingSeatsTaken() {
 
-	var newseatmapstring = "";
-	var seats = document.getElementsByClassName("chooseseatbutton");
-	var rowCount = document.getElementsByClassName("newline").length;
-	var columnCount = seats.length / rowCount;
-	
-		for (var i = 0; i < rowCount; i++) {
-			for (var j = 0; j < columnCount; j++) {
-				
-				var button = document.getElementById("R" + (i + 1) + "C"+ (j + 1));
-				if (button.style.backgroundColor == ('lightseagreen')) {
-					newseatmapstring += "3";
-				} else if (seats[i].style.backgroundColor == ('linen')) {
-					newseatmapstring += "1";
-				} else if (seats[i].style.backgroundColor == ('black')) {
-					newseatmapstring += "3";
-				} else if (seats[i].style.backgroundColor == ('white')) {
-					newseatmapstring += "0";
-				}
-				console.log("R" + (i + 1) + "C"+ (j + 1));
-				
-				
-			}
-			newseatmapstring += "2";
-		}
+    var newseatmapstring = "";
+    var seats = document.getElementsByClassName("chooseseatbutton");
+    var rowCount = document.getElementsByClassName("newline").length;
+    var columnCount = seats.length / rowCount;
+
+        for (var i = 0; i < rowCount; i++) {
+            for (var j = 0; j < columnCount; j++) {
+
+                var button = document.getElementById("R" + (i + 1) + "C"+ (j + 1));
+                if (button.style.backgroundColor == ('lightseagreen')) {
+                    newseatmapstring += "3";
+                } else if (button.style.backgroundColor == ('linen')) {
+                    newseatmapstring += "1";
+                } else if (button.style.backgroundColor == ('black')) {
+                    newseatmapstring += "3";
+                } else if (button.style.backgroundColor == ('white')) {
+                    newseatmapstring += "0";
+                }
+                console.log("R" + (i + 1) + "C"+ (j + 1));
+
+
+            }
+            newseatmapstring += "2";
+        }
 
 
 
-	document.getElementById("newseatmapstring").value = newseatmapstring;
-	console.log(document.getElementById("newseatmapstring"));
+    document.getElementById("newseatmapstring").value = newseatmapstring;
+    console.log(document.getElementById("newseatmapstring"));
 
 }
 
